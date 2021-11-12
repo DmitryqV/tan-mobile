@@ -1,6 +1,6 @@
 import React from 'react';
 import { NativeRouter, Routes, Route } from 'react-router-native';
-
+import { } from './src/pages/index.export.js';
 export const App = () => {
   return (
     <NativeRouter>
