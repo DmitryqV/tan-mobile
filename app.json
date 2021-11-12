@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "tan-mobile",
+    "slug": "tan-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "tan-mobile"
+}
