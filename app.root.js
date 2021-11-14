@@ -1,9 +1,6 @@
 import React from 'react';
 import { NativeRouter, Routes, Route } from 'react-router-native';
-// import { Login, Test } from './src/pages/index.export.js';
-import { Login } from './src/pages/login/Login';
-import { Test } from './src/pages/login/Test.js';
-
+import { Login, Test } from './src/pages/index.export.js';
 
 export const App = () => {
   return (
