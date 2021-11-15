@@ -1,19 +1,34 @@
 import React from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { login } from "../../api/api.post";
 
 export const Login = () => {
+
+  const [email, onChangeEmail] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+
   return (
     <View style={styles.container}>
       <Text style={styles.loginTitle}>Вход</Text>
-      <TextInput id='inputLogin' style={styles.inputLogin} placeholder='Введите логин' />
-      <TextInput id='inputPassword' style={styles.inputLogin} placeholder='Введите пароль' />
-      <Pressable style={styles.loginButton}>
+      <TextInput
+        id='inputEmail'
+        style={styles.inputLogin}
+        onChangeText={onChangeEmail}
+        placeholder='Введите логин'
+      />
+      <TextInput
+        id='inputPassword'
+        style={styles.inputLogin}
+        onChangeText={onChangePassword}
+        placeholder='Введите пароль'
+      />
+      <Pressable style={styles.loginButton} onPress={() => { login(email, password) }}>
         <Text style={styles.loginButtonText}>Войти</Text>
       </Pressable>
       <Pressable>
         <Text style={styles.buttonRecoveryPassword}>Восстановить пароль</Text>
       </Pressable>
-    </View>
+    </View >
   );
 }
 
