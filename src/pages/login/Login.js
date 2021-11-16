@@ -6,6 +6,8 @@ export const Login = () => {
 
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
+  const [loginChecker, onChangeLoginChecker] = React.useState(true);
+
 
   return (
     <View style={styles.container}>
@@ -23,7 +25,19 @@ export const Login = () => {
         placeholder='Введите пароль'
         secureTextEntry={true}
       />
-      <Pressable style={styles.loginButton} onPress={() => { loginPOST(email, password) }}>
+
+      {
+        console.log(loginChecker),
+        loginChecker === false ?
+          <Text style={styles.errorTxt}>неверный логин или пароль</Text>
+          :
+          null
+      }
+
+      <Pressable
+        style={styles.loginButton}
+        onPress={() => { loginPOST(email, password, onChangeLoginChecker) }}
+      >
         <Text style={styles.loginButtonText}>Войти</Text>
       </Pressable>
       <Pressable>
@@ -73,5 +87,8 @@ const styles = StyleSheet.create({
   },
   buttonRecoveryPassword: {
     color: '#d4d4d4',
+  },
+  errorTxt: {
+    color: 'red'
   }
 })
