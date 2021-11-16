@@ -21,6 +21,7 @@ export const Login = () => {
         style={styles.inputLogin}
         onChangeText={onChangePassword}
         placeholder='Введите пароль'
+        secureTextEntry={true}
       />
       <Pressable style={styles.loginButton} onPress={() => { login(email, password) }}>
         <Text style={styles.loginButtonText}>Войти</Text>
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingLeft: 10,
     marginBottom: 15,
+    maxWidth: 400
   },
   loginButton: {
     width: '65%',
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#5d78ff',
     marginTop: 10,
     marginBottom: 10,
+    maxWidth: 400
   },
   loginButtonText: {
     fontSize: 16,
