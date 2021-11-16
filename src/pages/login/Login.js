@@ -6,7 +6,7 @@ export const Login = () => {
 
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
-  const [loginChecker, onChangeLoginChecker] = React.useState(true);
+  const [loginChecker, onChangeLoginChecker] = React.useState();
 
 
   return (
