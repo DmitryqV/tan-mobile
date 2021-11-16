@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
-import { login } from "../../api/api.post";
+import { loginPOST } from "../../api/api.post";
 
 export const Login = () => {
 
@@ -23,7 +23,7 @@ export const Login = () => {
         placeholder='Введите пароль'
         secureTextEntry={true}
       />
-      <Pressable style={styles.loginButton} onPress={() => { login(email, password) }}>
+      <Pressable style={styles.loginButton} onPress={() => { loginPOST(email, password) }}>
         <Text style={styles.loginButtonText}>Войти</Text>
       </Pressable>
       <Pressable>
