@@ -1,7 +1,8 @@
 import axios from 'axios';
+const serverUrl = 'http://178.154.210.118';
 
 function login(email, password) {
-  axios.post('http://178.154.210.118/api/v1/auth/login', {
+  axios.post(`${serverUrl}/api/v1/auth/login`, {
     email: email,
     password: password
   })

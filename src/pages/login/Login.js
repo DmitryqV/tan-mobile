@@ -7,9 +7,13 @@ export const Login = () => {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
 
+  const [checkLogin, onChangeCheckLogin] = React.useState('');
+  console.log(checkLogin);
   return (
     <View style={styles.container}>
       <Text style={styles.loginTitle}>Вход</Text>
+      {
+        console.log(checkLogin)}
       <TextInput
         id='inputEmail'
         style={styles.inputLogin}
@@ -23,7 +27,7 @@ export const Login = () => {
         placeholder='Введите пароль'
         secureTextEntry={true}
       />
-      <Pressable style={styles.loginButton} onPress={() => { login(email, password) }}>
+      <Pressable style={styles.loginButton} checker={onChangeCheckLogin} onPress={() => { login(email, password, checker) }}>
         <Text style={styles.loginButtonText}>Войти</Text>
       </Pressable>
       <Pressable>
