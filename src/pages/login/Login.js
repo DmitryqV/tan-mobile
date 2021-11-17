@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
 
-export const Login = () => {
+export const Login = ({ navigation }) => {
 
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
@@ -36,7 +36,10 @@ export const Login = () => {
 
       <Pressable
         style={styles.loginButton}
-        onPress={() => { loginPOST(email, password, onChangeLoginChecker) }}
+        onPress={() => {
+          loginPOST(email, password, onChangeLoginChecker)
+          navigation.navigate('test');
+        }}
       >
         <Text style={styles.loginButtonText}>Войти</Text>
       </Pressable>

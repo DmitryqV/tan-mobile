@@ -8,7 +8,7 @@ function loginPOST(email, password, onChangeLoginChecker) {
   })
     .then(function (response) {
       console.log(response);
-      onChangeLoginChecker(true)
+      onChangeLoginChecker(true);
     })
     .catch(function (error) {
       console.log(error);
