@@ -37,8 +37,7 @@ export const Login = ({ navigation }) => {
       <Pressable
         style={styles.loginButton}
         onPress={() => {
-          loginPOST(email, password, onChangeLoginChecker)
-          navigation.navigate('test');
+          loginPOST(email, password, onChangeLoginChecker, navigation)
         }}
       >
         <Text style={styles.loginButtonText}>Войти</Text>

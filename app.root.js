@@ -9,10 +9,7 @@ export const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="login"
-          component={Login}
-        />
+        <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="test" component={Test} />
       </Stack.Navigator>
     </NavigationContainer>
