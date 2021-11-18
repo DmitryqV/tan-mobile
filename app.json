@@ -1,11 +1,20 @@
 {
   "expo": {
-    "name": "tan-mobile",
-    "slug": "tan-mobile",
+    "name": "LKM",
+    "slug": "LKM",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.snaf.LKM"
+    }
   },
-  "name": "tan-mobile"
+  "ios": {
+    "supportsTablet": true
+  },
+  "android": {
+    "package": "com.yourcompany.yourappname"
+  },
+  "name": "LKM"
 }
