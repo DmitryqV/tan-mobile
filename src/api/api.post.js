@@ -7,12 +7,10 @@ function loginPOST(email, password, onChangeLoginChecker, navigation) {
     password: password
   })
     .then(function (response) {
-      console.log(response);
       onChangeLoginChecker(true);
       navigation.navigate('test');
     })
     .catch(function (error) {
-      console.log(error);
       onChangeLoginChecker(false)
     });
 }

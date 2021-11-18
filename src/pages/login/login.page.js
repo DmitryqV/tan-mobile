@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
 
 export const Login = ({ navigation }) => {
 
-  const [email, onChangeEmail] = React.useState('');
-  const [password, onChangePassword] = React.useState('');
-  const [loginChecker, onChangeLoginChecker] = React.useState();
+  const [email, onChangeEmail] = useState('');
+  const [password, onChangePassword] = useState('');
+  const [loginChecker, onChangeLoginChecker] = useState();
 
 
   return (
@@ -27,7 +27,6 @@ export const Login = ({ navigation }) => {
       />
 
       {
-        console.log(loginChecker),
         loginChecker === false ?
           <Text style={styles.errorTxt}>неверный логин или пароль</Text>
           :
