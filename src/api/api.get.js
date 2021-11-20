@@ -16,7 +16,7 @@ function checkStudent(token, navigation) {
     });
 }
 
-function getProfile(token) {
+function getProfile(token, onChangeDataProfile) {
   axios.get(`${serverUrl}/api/v1/user/profile`, {
     params: {
       api_token: token,
@@ -24,6 +24,7 @@ function getProfile(token) {
   })
     .then(function (response) {
       console.log(response.data);
+      onChangeDataProfile(response.data);
     })
     .catch(function (error) {
       console.log(error);
