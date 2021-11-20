@@ -7,8 +7,7 @@ function checkStudent(token, navigation) {
       api_token: token,
     }
   })
-    .then(function (response) {
-      console.log(response);
+    .then(function () {
       navigation.navigate('profile');
     })
     .catch(function (error) {
@@ -23,7 +22,6 @@ function getProfile(token, onChangeDataProfile) {
     }
   })
     .then(function (response) {
-      console.log(response.data);
       onChangeDataProfile(response.data);
     })
     .catch(function (error) {
