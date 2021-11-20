@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { StyleSheet } from "react-native";
 import { View, Text } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile } from "../../api/api.get";
@@ -32,9 +33,12 @@ export const Profile = () => {
       });
   }
   return (
-    <View>
+    <View style={styles.profilePage}>
+      <Text>Мой профиль</Text>
       {dataProfile !== undefined ?
-        <UserInfo dataProfile={dataProfile} />
+        <>
+          <UserInfo dataProfile={dataProfile} />
+        </>
         :
         null
       }
@@ -42,3 +46,9 @@ export const Profile = () => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  profilePage: {
+    backgroundColor: '#f2f3f8',
+  },
+})
