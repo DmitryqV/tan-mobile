@@ -10,19 +10,28 @@ export const UserInfo = ({ dataProfile }) => {
         <View style={styles.profilePicture}></View>
         <View style={styles.mainInfoText}>
           <Text style={styles.name}>{dataProfile.full_name}</Text>
-          <Text style={{ color: '#757ca5' }}>
-            {dataProfile.email}
-          </Text>
-          {/* <Text style={{ color: '#757ca5' }}>
-            <Text style={styles.spanBold}>Дата рождения: </Text>
-            {dataProfile.birth_date}
-          </Text>
-          <Text style={{ color: '#757ca5' }}>
-            <Text style={styles.spanBold}>Пол: </Text>
-            {dataProfile.sex}
-          </Text> */}
         </View>
       </View>
+      <Text style={styles.persInfoData}>
+        <Text style={styles.persInfoSpan}>Дата рождения{"\n"}</Text>
+        {dataProfile.birth_date}
+      </Text>
+      <Text style={styles.persInfoData}>
+        <Text style={styles.persInfoSpan}>Пол{"\n"}</Text>
+        {dataProfile.sex}
+      </Text>
+      <Text style={styles.persInfoData}>
+        <Text style={styles.persInfoSpan}>Электронная почта{"\n"}</Text>
+        {dataProfile.email}
+      </Text>
+      <Text style={styles.persInfoData}>
+        <Text style={styles.persInfoSpan}>Телефон{"\n"}</Text>
+        +{dataProfile.prefix} {dataProfile.phone}
+      </Text>
+      <Text style={styles.persInfoData}>
+        <Text style={styles.persInfoSpan}>Дата регистрации{"\n"}</Text>
+        {dataProfile.created_at}
+      </Text>
     </View>
   )
 }
@@ -35,7 +44,8 @@ const styles = StyleSheet.create({
   },
   mainInfo: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 20,
   },
   profilePicture: {
     backgroundColor: '#242939',
@@ -46,11 +56,14 @@ const styles = StyleSheet.create({
   mainInfoText: {
     marginLeft: 10
   },
-  spanBold: {
+  persInfoSpan: {
     fontWeight: 'bold',
-    fontSize: windowWidth <= 330 ? 15 : 16,
-    maxWidth: windowWidth <= 330 ? 198 : null,
-    color: '#646c9a'
+    fontSize: windowWidth <= 330 ? 15 : 18,
+    maxWidth: windowWidth <= 330 ? 198 : windowWidth - 120,
+    color: '#646c9a',
+  },
+  persInfoData: {
+    color: '#646c9a',
   },
   name: {
     fontWeight: 'bold',
