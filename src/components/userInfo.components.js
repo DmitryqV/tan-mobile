@@ -4,8 +4,8 @@ import { View, Text } from 'react-native';
 
 export const UserInfo = ({ dataProfile }) => {
   return (
-    <View style={styles.container}>
-      <Text>{dataProfile.sex}</Text>
+    <View>
+      <Text>{dataProfile.email}</Text>
     </View>
   )
 }
