@@ -50,5 +50,7 @@ export const Profile = () => {
 const styles = StyleSheet.create({
   profilePage: {
     backgroundColor: '#f2f3f8',
+    flex: 1,
+    alignItems: 'center',
   },
 })

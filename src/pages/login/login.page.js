@@ -17,6 +17,7 @@ export const Login = ({ navigation }) => {
         style={styles.inputLogin}
         onChangeText={onChangeEmail}
         placeholder='Введите логин'
+        defaultValue='amalec_tandem@tandemservice.ru'
       />
       <TextInput
         id='inputPassword'
@@ -24,6 +25,7 @@ export const Login = ({ navigation }) => {
         onChangeText={onChangePassword}
         placeholder='Введите пароль'
         secureTextEntry={true}
+        defaultValue='DohjjbUwxFgk46PJksp30'
       />
 
       {
