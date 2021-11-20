@@ -16,4 +16,18 @@ function checkStudent(token, navigation) {
     });
 }
 
-export { checkStudent }
+function getProfile(token) {
+  axios.get(`${serverUrl}/api/v1/user/profile`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile }
