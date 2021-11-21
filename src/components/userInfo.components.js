@@ -20,14 +20,30 @@ export const UserInfo = ({ dataProfile }) => {
         <Text style={styles.persInfoSpan}>Пол{"\n"}</Text>
         {dataProfile.sex}
       </Text>
-      <Text style={styles.persInfoData}>
-        <Text style={styles.persInfoSpan}>Электронная почта{"\n"}</Text>
-        {dataProfile.email}
-      </Text>
-      <Text style={styles.persInfoData}>
-        <Text style={styles.persInfoSpan}>Телефон{"\n"}</Text>
-        +{dataProfile.prefix} {dataProfile.phone}
-      </Text>
+      {dataProfile.email_verified_at !== null ?
+        <Text style={styles.persInfoData}>
+          <Text style={styles.persInfoSpan}>Электронная почта{"\n"}</Text>
+          {dataProfile.email}
+        </Text>
+        :
+        <Text style={styles.notVerified}>
+          <Text style={styles.persInfoSpan}>Электронная почта </Text>
+          <Text style={styles.verifiedButton}>(подтвердить){"\n"}</Text>
+          {dataProfile.email}
+        </Text>
+      }
+      {dataProfile.phone_verified_at !== null ?
+        <Text style={styles.persInfoData}>
+          <Text style={styles.persInfoSpan}>Телефон{"\n"}</Text>
+          +{dataProfile.prefix} {dataProfile.phone}
+        </Text>
+        :
+        <Text style={styles.notVerified}>
+          <Text style={styles.persInfoSpan}>Телефон </Text>
+          <Text style={styles.verifiedButton}>(подтвердить){"\n"}</Text>
+          +{dataProfile.prefix} {dataProfile.phone}
+        </Text>
+      }
       <Text style={styles.persInfoData}>
         <Text style={styles.persInfoSpan}>Дата регистрации{"\n"}</Text>
         {dataProfile.created_at}
@@ -67,6 +83,13 @@ const styles = StyleSheet.create({
   persInfoData: {
     color: '#646c9a',
     marginBottom: 5,
+  },
+  notVerified: {
+    color: '#fd397a',
+    marginBottom: 5,
+  },
+  verifiedButton: {
+    color: '#5867dd'
   },
   name: {
     fontWeight: 'bold',
