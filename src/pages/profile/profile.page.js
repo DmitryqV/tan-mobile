@@ -2,42 +2,37 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { View, Text } from 'react-native';
 import storage from '../../utils/storage.utils';
-import { getProfile } from "../../api/api.get";
+import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo } from "../../components/userInfo.components";
+import { SutentInfo } from "../../components/studentInfo.components";
+import { onChange } from "react-native-reanimated";
 
 export const Profile = () => {
 
   const [dataProfile, onChangeDataProfile] = useState();
+  const [studentInfo, onChangeStudentInfo] = useState();
 
-  if (dataProfile === undefined) {
+  if (dataProfile === undefined && studentInfo === undefined) {
     storage.load({
       key: 'token',
       id: 228,
     })
       .then(ret => {
-        // found data goes to then()
-        getProfile(ret, onChangeDataProfile)
+        getProfile(ret, onChangeDataProfile);
+        getStudentInfo(ret, onChangeStudentInfo)
       })
       .catch(err => {
-        // any exception including data not found
-        // goes to catch()
         console.warn(err.message);
-        switch (err.name) {
-          case 'NotFoundError':
-            // TODO;
-            break;
-          case 'ExpiredError':
-            // TODO
-            break;
-        }
       });
   }
+
   return (
     <View style={styles.profilePage}>
       <Text>Мой профиль</Text>
       {dataProfile !== undefined ?
         <>
           <UserInfo dataProfile={dataProfile} />
+          <SutentInfo studentInfo={studentInfo} />
         </>
         :
         null

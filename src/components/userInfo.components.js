@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     width: '95%',
     padding: 15,
+    borderRadius: 4,
+    marginBottom: 10,
   },
   mainInfo: {
     flexDirection: 'row',
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
   },
   persInfoData: {
     color: '#646c9a',
+    marginBottom: 5,
   },
   name: {
     fontWeight: 'bold',

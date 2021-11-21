@@ -29,4 +29,18 @@ function getProfile(token, onChangeDataProfile) {
     })
 }
 
-export { checkStudent, getProfile }
+function getStudentInfo(token, onChangeStudentInfo) {
+  axios.get(`${serverUrl}/api/v1/user/profile/student`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then(function (response) {
+      onChangeStudentInfo(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo }
