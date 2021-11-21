@@ -9,7 +9,8 @@ function loginPOST(email, password, onChangeLoginChecker, navigation) {
     password: password
   })
     .then(function (response) {
-      onChangeLoginChecker(true); storage.save({
+      onChangeLoginChecker(true);
+      storage.save({
         key: 'token',
         id: 228,
         data: response.data.token
