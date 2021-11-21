@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile } from "../../api/api.get";
 import { UserInfo } from "../../components/userInfo.components";
+import { SutentInfo } from "../../components/studentInfo.components";
 
 export const Profile = () => {
 
@@ -38,6 +39,7 @@ export const Profile = () => {
       {dataProfile !== undefined ?
         <>
           <UserInfo dataProfile={dataProfile} />
+          <SutentInfo />
         </>
         :
         null
