@@ -9,6 +9,7 @@ function checkStudent(token, navigation) {
   })
     .then(function () {
       navigation.navigate('main');
+      //Тут нужно бы обновить state
     })
     .catch(function (error) {
       console.log(error);
