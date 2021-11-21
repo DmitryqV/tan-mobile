@@ -8,7 +8,7 @@ function checkStudent(token, navigation) {
     }
   })
     .then(function () {
-      navigation.navigate('profile');
+      navigation.navigate('main');
     })
     .catch(function (error) {
       console.log(error);
