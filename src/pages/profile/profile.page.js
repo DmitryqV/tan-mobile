@@ -35,7 +35,6 @@ export const Profile = () => {
         :
         null
       }
-
     </View>
   )
 }
