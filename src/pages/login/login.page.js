@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
 
-export const Login = ({ navigation, onChangeIsLoggedIn }) => {
+export const Login = ({ onChangeIsLoggedIn }) => {
 
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');

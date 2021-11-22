@@ -6,8 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Login, Profile, Main } from './src/pages/index.export.js';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import storage from './src/utils/storage.utils';
-
 
 const Stack = createNativeStackNavigator();
 
@@ -25,17 +23,6 @@ function MyDrawer() {
 export const App = () => {
 
   const [isLoggedIn, onChangeIsLoggedIn] = useState(false);
-
-  // storage.load({
-  //   key: 'token',
-  //   id: 228,
-  // })
-  //   .then(ret => {
-  //     console.log(ret)
-  //   })
-  //   .catch(err => {
-  //     console.warn(err.message);
-  //   });
 
   return (
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
