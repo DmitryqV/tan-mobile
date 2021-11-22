@@ -1,15 +1,14 @@
 import axios from 'axios';
 const serverUrl = 'http://178.154.210.118';
 
-function checkStudent(token, navigation) {
+function checkStudent(token, onChangeIsLoggedIn) {
   axios.get(`${serverUrl}/api/v1/is/student`, {
     params: {
       api_token: token,
     }
   })
     .then(function () {
-      navigation.navigate('main');
-      //Тут нужно бы обновить state
+      onChangeIsLoggedIn(true)
     })
     .catch(function (error) {
       console.log(error);

@@ -45,7 +45,9 @@ export const App = () => {
             <MyDrawer />
             :
             <Stack.Navigator>
-              <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
+              <Stack.Screen name="login" options={{ headerShown: false }}>
+                {() => <Login onChangeIsLoggedIn={onChangeIsLoggedIn} />}
+              </Stack.Screen>
             </Stack.Navigator>
           }
         </NavigationContainer>
