@@ -14,8 +14,8 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Home' }} />
-      <Drawer.Screen name="profile" component={Profile} />
+      <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Главная', title: 'Главная' }} />
+      <Drawer.Screen name="profile" component={Profile} options={{ drawerLabel: 'Профиль', title: 'Профиль' }} />
     </Drawer.Navigator>
   );
 }
