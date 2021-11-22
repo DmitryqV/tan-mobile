@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
 
-export const Login = ({ navigation }) => {
+export const Login = ({ onChangeIsLoggedIn }) => {
 
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const [loginChecker, onChangeLoginChecker] = useState();
-
 
   return (
     <View style={styles.container}>
@@ -36,7 +35,7 @@ export const Login = ({ navigation }) => {
       <Pressable
         style={styles.loginButton}
         onPress={() => {
-          loginPOST(email, password, onChangeLoginChecker, navigation)
+          loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn)
         }}
       >
         <Text style={styles.loginButtonText}>Войти</Text>

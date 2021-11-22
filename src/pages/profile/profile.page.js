@@ -5,7 +5,6 @@ import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo } from "../../components/userInfo.components";
 import { SutentInfo } from "../../components/studentInfo.components";
-import { onChange } from "react-native-reanimated";
 
 export const Profile = () => {
 
@@ -28,7 +27,6 @@ export const Profile = () => {
 
   return (
     <View style={styles.profilePage}>
-      <Text>Мой профиль</Text>
       {dataProfile !== undefined ?
         <>
           <UserInfo dataProfile={dataProfile} />
@@ -37,7 +35,6 @@ export const Profile = () => {
         :
         null
       }
-
     </View>
   )
 }
