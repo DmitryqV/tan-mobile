@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo } from "../../components/userInfo.components";
@@ -26,16 +25,18 @@ export const Profile = () => {
   }
 
   return (
-    <View style={styles.profilePage}>
-      {dataProfile !== undefined ?
-        <>
-          <UserInfo dataProfile={dataProfile} />
-          <SutentInfo studentInfo={studentInfo} />
-        </>
-        :
-        null
-      }
-    </View>
+    <ScrollView>
+      <View style={styles.profilePage}>
+        {dataProfile !== undefined ?
+          <>
+            <UserInfo dataProfile={dataProfile} />
+            <SutentInfo studentInfo={studentInfo} />
+          </>
+          :
+          null
+        }
+      </View>
+    </ScrollView>
   )
 }
 
