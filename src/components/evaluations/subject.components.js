@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 export const Subject = ({ props }) => {
   return (
     <View>
-      <Text>{props}</Text>
+      <Text>{props.title}</Text>
     </View>
   )
 }
