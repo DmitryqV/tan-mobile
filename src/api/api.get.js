@@ -52,6 +52,9 @@ function getEvaluations(token) {
     .then((response) => {
       console.log(response);
     })
+    .catch((error) => {
+      console.log(error);
+    })
 }
 
 export { checkStudent, getProfile, getStudentInfo, getEvaluations }
