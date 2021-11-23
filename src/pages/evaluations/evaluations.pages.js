@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getEvaluations } from "../../api/api.get";
 import { Subject } from "../../components/components.export";
@@ -40,11 +40,3 @@ export const Evaluations = () => {
     </ScrollView>
   )
 }
-
-// const styles = StyleSheet.create({
-//   profilePage: {
-//     backgroundColor: '#f2f3f8',
-//     flex: 1,
-//     alignItems: 'center',
-//   },
-// })
