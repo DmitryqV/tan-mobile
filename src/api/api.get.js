@@ -43,4 +43,15 @@ function getStudentInfo(token, onChangeStudentInfo) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo }
+function getEvaluations(token) {
+  axios.get(`${serverUrl}/api/v1/student/marks/records`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      console.log(response);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations }
