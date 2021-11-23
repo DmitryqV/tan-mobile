@@ -27,7 +27,9 @@ export const Evaluations = () => {
       {
         dataEvaluations !== undefined ?
           dataEvaluations.map((subject) => {
-            return <Subject props={subject} />
+            return (
+              <Subject props={subject} key={subject.id} />
+            );
           })
           :
           null
