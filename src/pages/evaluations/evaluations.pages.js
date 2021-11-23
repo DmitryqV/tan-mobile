@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getEvaluations } from "../../api/api.get";
+import { Subject } from "../../components/components.export";
 
 export const Evaluations = () => {
 
@@ -23,7 +24,14 @@ export const Evaluations = () => {
   console.log(dataEvaluations);
   return (
     <View>
-      <Text>ЗАЧЕТНАЯ КНИЖКА</Text>
+      {
+        dataEvaluations !== undefined ?
+          dataEvaluations.map((subject) => {
+            return <Subject props={subject.title} />
+          })
+          :
+          null
+      }
     </View>
   )
 }

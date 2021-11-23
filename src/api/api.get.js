@@ -50,7 +50,7 @@ function getEvaluations(token, onChangeDataEvaluations) {
     }
   })
     .then((response) => {
-      onChangeDataEvaluations(response);
+      onChangeDataEvaluations(response.data.data);
     })
     .catch((error) => {
       console.log(error);
