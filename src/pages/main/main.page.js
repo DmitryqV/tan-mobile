@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 export const Main = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.note}>Добавте сюда виджеты жля максимально быстрого доступа к важным разделам приложения</Text>
+      <Text style={styles.note}>Добавте сюда виджеты для максимально быстрого доступа к важным разделам приложения</Text>
     </View>
   )
 }
