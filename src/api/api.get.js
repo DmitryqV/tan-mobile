@@ -1,7 +1,7 @@
 import axios from 'axios';
 const serverUrl = 'http://178.154.210.118';
 
-function checkStudent(token, onChangeIsLoggedIn) {
+function checkStudent(token, onChangeIsLoggedIn, onChangeLoginChecker) {
   axios.get(`${serverUrl}/api/v1/is/student`, {
     params: {
       api_token: token,
@@ -10,8 +10,8 @@ function checkStudent(token, onChangeIsLoggedIn) {
     .then(function () {
       onChangeIsLoggedIn(true)
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function () {
+      onChangeLoginChecker('notStudent')
     });
 }
 

@@ -15,7 +15,7 @@ function loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn) {
         id: 228,
         data: response.data.token
       });
-      checkStudent(response.data.token, onChangeIsLoggedIn);
+      checkStudent(response.data.token, onChangeIsLoggedIn, onChangeLoginChecker);
     })
     .catch(function (error) {
       onChangeLoginChecker('invalidData')
