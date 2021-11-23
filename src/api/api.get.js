@@ -43,14 +43,14 @@ function getStudentInfo(token, onChangeStudentInfo) {
     })
 }
 
-function getEvaluations(token) {
+function getEvaluations(token, onChangeDataEvaluations) {
   axios.get(`${serverUrl}/api/v1/student/marks/records`, {
     params: {
       api_token: token,
     }
   })
     .then((response) => {
-      console.log(response);
+      onChangeDataEvaluations(response);
     })
     .catch((error) => {
       console.log(error);
