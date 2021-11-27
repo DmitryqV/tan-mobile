@@ -22,7 +22,6 @@ export const Evaluations = () => {
       });
   }
 
-  console.log(dataEvaluations);
   return (
     <ScrollView>
       <View>
