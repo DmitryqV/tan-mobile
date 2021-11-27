@@ -1,4 +1,3 @@
-import { hide } from "expo-splash-screen";
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
