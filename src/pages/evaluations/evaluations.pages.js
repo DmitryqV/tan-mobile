@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getEvaluations } from "../../api/api.get";
 import { Subject } from "../../components/components.export";
-import { ScrollView } from "react-native-gesture-handler";
 
 export const Evaluations = () => {
 
@@ -23,19 +22,40 @@ export const Evaluations = () => {
   }
 
   return (
-    <ScrollView>
-      <View>
-        {
-          dataEvaluations !== undefined ?
-            dataEvaluations.map((subject) => {
-              return (
-                <Subject props={subject} key={subject.id} />
-              );
-            })
-            :
-            null
-        }
-      </View>
-    </ScrollView>
+    <>
+      {dataEvaluations !== undefined ?
+        <ScrollView>
+          <View>
+            {
+              dataEvaluations !== undefined ?
+                dataEvaluations.map((subject) => {
+                  return (
+                    <Subject props={subject} key={subject.id} />
+                  );
+                })
+                :
+                null
+            }
+          </View>
+        </ScrollView>
+        :
+        <View style={styles.containerLoad}>
+          <Text style={styles.textLoad}>Загрузка...</Text>
+        </View>
+      }
+    </>
+
   )
 }
+
+const styles = StyleSheet.create({
+  containerLoad: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textLoad: {
+    color: '#595d6e'
+  }
+})
