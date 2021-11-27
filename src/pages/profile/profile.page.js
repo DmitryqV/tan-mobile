@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
-import { UserInfo } from "../../components/userInfo.components";
-import { SutentInfo } from "../../components/studentInfo.components";
+import { UserInfo, SutentInfo } from "../../components/components.export";
 
 export const Profile = () => {
 
