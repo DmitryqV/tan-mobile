@@ -10,7 +10,11 @@ export const Subject = ({ props }) => {
     <>
       <Pressable onPress={() => moreInfo === false ? onChangeMoreInfo(true) : onChangeMoreInfo(false)}>
         <View style={styles.subject}>
-          <Text style={styles.arrow}>&#5125;</Text>
+          <Text
+            style={[styles.arrow, moreInfo === false ? null : { transform: [{ rotate: "90deg" }] }]}
+          >
+            &#5125;
+          </Text>
           <Text style={styles.title}>{props.title}</Text>
         </View>
         <View style={moreInfo === false ? styles.hideMoreInfo : null}>
