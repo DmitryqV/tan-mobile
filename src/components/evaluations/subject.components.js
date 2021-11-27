@@ -17,10 +17,33 @@ export const Subject = ({ props }) => {
           </Text>
           <Text style={styles.title}>{props.title}</Text>
         </View>
-        <View style={moreInfo === false ? styles.hideMoreInfo : null}>
-          <Text id={props.id} style={styles.aboba}>ABOBA</Text>
-        </View>
       </Pressable>
+      <View style={moreInfo === false ? styles.hideMoreInfo : styles.moreInfo}>
+        <Text style={styles.spanMoreInfo}>
+          Учебный год
+          <Text style={styles.dataMoreInfo}>  {props.year_title}</Text>
+        </Text>
+        <Text style={styles.spanMoreInfo}>
+          Семестр
+          <Text style={styles.dataMoreInfo}>  {props.semester}</Text>
+        </Text>
+        <Text style={styles.spanMoreInfo}>
+          Форма контроля
+          <Text style={styles.dataMoreInfo}>  {props.controlaction_title}</Text>
+        </Text>
+        <Text style={styles.spanMoreInfo}>
+          Оценка в сессию
+          <Text style={styles.dataMoreInfo}>  {props.value_session_title}</Text>
+        </Text>
+        <Text style={styles.spanMoreInfo}>
+          Итоговая оценка
+          <Text style={styles.dataMoreInfo}>  {props.value_title}</Text>
+        </Text>
+        <Text style={styles.spanMoreInfo}>
+          Дата сдачи
+          <Text style={styles.dataMoreInfo}>  {props.mark_perform_date}</Text>
+        </Text>
+      </View>
     </>
   )
 }
@@ -47,9 +70,17 @@ const styles = StyleSheet.create({
     color: '#595d6e'
   },
   moreInfo: {
-    color: 'red'
+    backgroundColor: '#ffffff',
   },
   hideMoreInfo: {
     display: 'none'
   },
+  spanMoreInfo: {
+    fontWeight: 'bold',
+    marginLeft: 35,
+    marginBottom: 10
+  },
+  dataMoreInfo: {
+    fontWeight: 'normal'
+  }
 })
