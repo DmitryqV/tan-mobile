@@ -26,10 +26,13 @@ export const Login = ({ onChangeIsLoggedIn }) => {
       />
 
       {
-        loginChecker === false ?
+        loginChecker === 'invalidData' ?
           <Text style={styles.errorTxt}>неверный логин или пароль</Text>
           :
-          null
+          loginChecker === 'notStudent' ?
+            <Text style={styles.errorTxt}>Вы не являетесь студентом</Text>
+            :
+            null
       }
 
       <Pressable
