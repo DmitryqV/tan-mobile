@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 export const Subject = ({ props }) => {
 
   const [moreInfo, onChangeMoreInfo] = useState(false)
-  console.log(moreInfo);
+
   return (
     <>
       <Pressable onPress={() => moreInfo === false ? onChangeMoreInfo(true) : onChangeMoreInfo(false)}>
