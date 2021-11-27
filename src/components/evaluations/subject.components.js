@@ -21,23 +21,44 @@ export const Subject = ({ props }) => {
       <View style={moreInfo === false ? styles.hideMoreInfo : styles.moreInfo}>
         <Text style={styles.spanMoreInfo}>
           Учебный год
-          <Text style={styles.dataMoreInfo}>  {props.year_title}</Text>
+          <Text style={styles.dataMoreInfo}>&#8199;{props.year_title}</Text>
         </Text>
         <Text style={styles.spanMoreInfo}>
           Семестр
-          <Text style={styles.dataMoreInfo}>  {props.semester}</Text>
+          <Text style={styles.dataMoreInfo}>&#8199;{props.semester}</Text>
         </Text>
         <Text style={styles.spanMoreInfo}>
           Форма контроля
-          <Text style={styles.dataMoreInfo}>  {props.controlaction_title}</Text>
+          <Text style={styles.dataMoreInfo}>&#8199;{props.controlaction_title}</Text>
         </Text>
         <Text style={styles.spanMoreInfo}>
           Оценка в сессию
-          <Text style={styles.dataMoreInfo}>  {props.value_session_title}</Text>
+          <Text style={
+            [styles.dataMoreInfo,
+            props.value_shorttitle_session !== 'неуваж.' ?
+              props.value_shorttitle_session !== 'незач.' ?
+                styles.greenText
+                :
+                styles.redText
+              :
+              styles.redText
+            ]}>
+            &#8199;{props.value_session_title}
+          </Text>
         </Text>
         <Text style={styles.spanMoreInfo}>
           Итоговая оценка
-          <Text style={styles.dataMoreInfo}>  {props.value_title}</Text>
+          <Text style={
+            [styles.dataMoreInfo,
+            props.value_shorttitle !== 'неуваж.' ?
+              props.value_shorttitle !== 'незач.' ?
+                styles.greenText
+                :
+                styles.redText
+              :
+              styles.redText
+            ]}>
+            &#8199;{props.value_title}</Text>
         </Text>
         <Text style={styles.spanMoreInfo}>
           Дата сдачи
@@ -76,11 +97,19 @@ const styles = StyleSheet.create({
     display: 'none'
   },
   spanMoreInfo: {
+    color: '#595d6e',
+    fontSize: 14,
     fontWeight: 'bold',
     marginLeft: 35,
-    marginBottom: 10
+    marginBottom: 10,
   },
   dataMoreInfo: {
     fontWeight: 'normal'
+  },
+  greenText: {
+    color: '#1dc9b7'
+  },
+  redText: {
+    color: '#fd397a'
   }
 })
