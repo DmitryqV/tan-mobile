@@ -1,18 +1,20 @@
-import React from "react";
+import { hide } from "expo-splash-screen";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-function openInfoSubject(id) {
-  console.log(id);
-}
-
 export const Subject = ({ props }) => {
+
+  const [moreInfo, onChangeMoreInfo] = useState(false)
+  console.log(moreInfo);
   return (
     <>
-      <Pressable onPress={() => openInfoSubject(props.id)}>
+      <Pressable onPress={() => moreInfo === false ? onChangeMoreInfo(true) : onChangeMoreInfo(false)}>
         <View style={styles.subject}>
           <Text style={styles.arrow}>&#5125;</Text>
           <Text style={styles.title}>{props.title}</Text>
-          <Text id={props.id} style={styles.aboba}>  ABOBA</Text>
+        </View>
+        <View style={moreInfo === false ? styles.hideMoreInfo : null}>
+          <Text id={props.id} style={styles.aboba}>ABOBA</Text>
         </View>
       </Pressable>
     </>
@@ -39,5 +41,11 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#595d6e'
-  }
+  },
+  moreInfo: {
+    color: 'red'
+  },
+  hideMoreInfo: {
+    display: 'none'
+  },
 })
