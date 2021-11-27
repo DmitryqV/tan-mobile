@@ -7,11 +7,16 @@ function checkStudent(token, onChangeIsLoggedIn, onChangeLoginChecker) {
       api_token: token,
     }
   })
-    .then(function () {
-      onChangeIsLoggedIn(true)
+    .then(function (response) {
+      console.log(response.data[0]);
+      if (response.data[0] === 'true') {
+        onChangeIsLoggedIn(true)
+      } else {
+        onChangeLoginChecker('notStudent')
+      }
     })
-    .catch(function () {
-      onChangeLoginChecker('notStudent')
+    .catch(function (error) {
+      console.log(error);
     });
 }
 

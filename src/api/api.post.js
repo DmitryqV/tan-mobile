@@ -9,7 +9,6 @@ function loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn) {
     password: password
   })
     .then(function (response) {
-      onChangeLoginChecker(true);
       storage.save({
         key: 'token',
         id: 228,
@@ -17,7 +16,7 @@ function loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn) {
       });
       checkStudent(response.data.token, onChangeIsLoggedIn, onChangeLoginChecker);
     })
-    .catch(function (error) {
+    .catch(function () {
       onChangeLoginChecker('invalidData')
     });
 }
