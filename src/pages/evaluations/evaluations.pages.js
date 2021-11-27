@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getEvaluations } from "../../api/api.get";
-import { Subject } from "../../components/components.export";
+import { Subject, FilterSubject } from "../../components/components.export";
 
 export const Evaluations = () => {
 
@@ -23,6 +23,7 @@ export const Evaluations = () => {
 
   return (
     <>
+      <FilterSubject />
       {dataEvaluations !== undefined ?
         <ScrollView>
           <View>
