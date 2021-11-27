@@ -8,7 +8,6 @@ function checkStudent(token, onChangeIsLoggedIn, onChangeLoginChecker) {
     }
   })
     .then(function (response) {
-      console.log(response.data[0]);
       if (response.data[0] === 'true') {
         onChangeIsLoggedIn(true)
       } else {
