@@ -61,4 +61,18 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations }
+function getSession(token) {
+  axios.get(`${serverUrl}/api/v1/student/marks/distributionSession`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession }

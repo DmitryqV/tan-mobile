@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import storage from "../../utils/storage.utils";
-import { getEvaluations } from "../../api/api.get";
+import { getEvaluations, getSession } from "../../api/api.get";
 import { Subject, FilterSubject } from "../../components/components.export";
 
 export const Evaluations = () => {
@@ -14,7 +14,8 @@ export const Evaluations = () => {
       id: 228,
     })
       .then(ret => {
-        getEvaluations(ret, onChangeDataEvaluations)
+        getEvaluations(ret, onChangeDataEvaluations),
+          getSession(ret)
       })
       .catch(err => {
         console.warn(err.message);
