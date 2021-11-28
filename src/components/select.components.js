@@ -20,7 +20,7 @@ export const Select = ({ props }) => {
             // console.log(props[0])
             props[0].map((obj) => {
               return (
-                <Pressable>
+                <Pressable key={obj.id} >
                   <Text style={styles.option}>{obj.title}</Text>
                 </Pressable>
               )
