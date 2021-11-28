@@ -8,12 +8,14 @@ export const Select = ({ props }) => {
 
   return (
     <>
-      <Pressable onPress={() => { openOptions ? setOpenOptions(false) : setOpenOptions(true) }}>
-        <View style={styles.select}>
-          <Text style={styles.value}>{selectedValue !== null ? selectedValue : 'Всё'}</Text>
-          <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
-        </View>
-      </Pressable>
+      <View style={{ width: 160 }}>
+        <Pressable onPress={() => { openOptions ? setOpenOptions(false) : setOpenOptions(true) }}>
+          <View style={styles.select}>
+            <Text style={styles.value}>{selectedValue !== null ? selectedValue : 'Всё'}</Text>
+            <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
+          </View>
+        </Pressable>
+      </View>
       <View style={openOptions ? styles.optionsList : styles.hide}>
         <Pressable onPress={() => { setSelectedValue(null), setOpenOptions(false) }}>
           <Text style={styles.option}>Всё</Text>
