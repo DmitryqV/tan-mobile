@@ -3,10 +3,18 @@ import { View, Text, StyleSheet } from 'react-native'
 
 export const Select = ({ props }) => {
   return (
-    <View style={styles.select}>
-      <Text style={styles.value}>Всё</Text>
-      <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
-    </View>
+    <>
+      <View style={styles.select}>
+        <Text style={styles.value}>Всё</Text>
+        <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
+      </View>
+      <View style={styles.optionsList}>
+        <Text style={styles.option}>2016/2017</Text>
+        <Text style={styles.option}>2018/2019</Text>
+        <Text style={styles.option}>2019/2020</Text>
+        <Text style={styles.option}>2020/2021</Text>
+      </View>
+    </>
   )
 }
 
@@ -32,5 +40,19 @@ const styles = StyleSheet.create({
   arrow: {
     color: '#495057',
     fontSize: 12,
+  },
+  optionsList: {
+    width: 160,
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#e2e5ec',
+  },
+  option: {
+    color: '#495057',
+    height: 35,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 7,
+    paddingBottom: 7,
   }
 })
