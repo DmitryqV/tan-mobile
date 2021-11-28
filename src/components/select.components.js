@@ -15,6 +15,9 @@ export const Select = ({ props }) => {
         </View>
       </Pressable>
       <View style={openOptions ? styles.optionsList : styles.hide}>
+        <Pressable onPress={() => { setSelectedValue(null), setOpenOptions(false) }}>
+          <Text style={styles.option}>Всё</Text>
+        </Pressable>
         {
 
           props[0] !== undefined ?
