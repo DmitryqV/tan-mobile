@@ -4,6 +4,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 export const Select = ({ props }) => {
 
   const [openOptions, setOpenOptions] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(null)
 
   return (
     <>
@@ -14,10 +15,9 @@ export const Select = ({ props }) => {
         </View>
       </Pressable>
       <View style={openOptions ? styles.optionsList : styles.hide}>
-        <Text style={styles.option}>2016/2017</Text>
-        <Text style={styles.option}>2018/2019</Text>
-        <Text style={styles.option}>2019/2020</Text>
-        <Text style={styles.option}>2020/2021</Text>
+        <Pressable>
+          <Text style={styles.option}>2016/2017</Text>
+        </Pressable>
       </View>
     </>
   )
