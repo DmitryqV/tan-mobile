@@ -6,6 +6,7 @@ export const Select = ({ props, getSelectValue }) => {
   const [openOptions, setOpenOptions] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
 
+  console.log('VIBRAL: ' + selectedValue);
   return (
     <>
       <View style={{ width: 160 }}>
@@ -17,7 +18,7 @@ export const Select = ({ props, getSelectValue }) => {
         </Pressable>
       </View>
       <View style={openOptions ? styles.optionsList : styles.hide}>
-        <Pressable onPress={() => { setSelectedValue(null), setOpenOptions(false) }}>
+        <Pressable onPress={() => { setSelectedValue(null), setOpenOptions(false), getSelectValue(null) }}>
           <Text style={styles.option}>Всё</Text>
         </Pressable>
         {

@@ -5,10 +5,11 @@ import { Select } from "../select.components";
 export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) => {
 
   const [radioButton, setRadioButton] = useState(null);
-  const [SelectValue, setSelectValue] = useState()
+  const [SelectValue, setSelectValue] = useState(null)
 
   function getSelectValue(value) {
     setSelectValue(value);
+    console.log('ZAPISAL: ' + value);
   }
 
   return (
