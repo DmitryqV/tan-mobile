@@ -5,11 +5,12 @@ export const Select = ({ props }) => {
 
   const [openOptions, setOpenOptions] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
+
   return (
     <>
       <Pressable onPress={() => { openOptions ? setOpenOptions(false) : setOpenOptions(true) }}>
         <View style={styles.select}>
-          <Text style={styles.value}>Всё</Text>
+          <Text style={styles.value}>{selectedValue !== null ? selectedValue : 'Всё'}</Text>
           <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
         </View>
       </Pressable>
@@ -19,7 +20,7 @@ export const Select = ({ props }) => {
           props[0] !== undefined ?
             props[0].map((obj) => {
               return (
-                <Pressable key={obj.id} >
+                <Pressable key={obj.id} onPress={() => { setSelectedValue(obj.title), setOpenOptions(false) }}>
                   <Text style={styles.option}>{obj.title}</Text>
                 </Pressable>
               )
