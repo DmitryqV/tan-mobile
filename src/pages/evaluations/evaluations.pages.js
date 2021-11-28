@@ -23,9 +23,9 @@ export const Evaluations = () => {
 
   return (
     <>
-      <FilterSubject />
       {dataEvaluations !== undefined ?
         <ScrollView>
+          <FilterSubject />
           <View>
             {
               dataEvaluations !== undefined ?
