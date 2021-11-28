@@ -17,7 +17,6 @@ export const Select = ({ props }) => {
         {
 
           props[0] !== undefined ?
-            // console.log(props[0])
             props[0].map((obj) => {
               return (
                 <Pressable key={obj.id} >
@@ -26,9 +25,8 @@ export const Select = ({ props }) => {
               )
             })
             :
-            console.log('ZALUPA')
+            null
         }
-
       </View>
     </>
   )
