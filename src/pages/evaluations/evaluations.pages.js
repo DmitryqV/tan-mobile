@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import storage from "../../utils/storage.utils";
-import { getEvaluations, getSession } from "../../api/api.get";
+import { getEvaluations, getSession, getEducationYear } from "../../api/api.get";
 import { Subject, FilterSubject } from "../../components/components.export";
 
 export const Evaluations = () => {
 
   const [dataEvaluations, onChangeDataEvaluations] = useState();
   const [dataSession, setDataSession] = useState();
+  const [dataEducationYear, setDataEducationYear] = useState();
 
-  if (dataEvaluations === undefined) {
+  if (dataEvaluations === undefined && dataSession === undefined && dataEducationYear === undefined) {
     storage.load({
       key: 'token',
       id: 228,
     })
       .then(ret => {
-        getEvaluations(ret, onChangeDataEvaluations),
-          getSession(ret, setDataSession)
+        getEvaluations(ret, onChangeDataEvaluations);
+        getSession(ret, setDataSession);
+        getEducationYear(ret, setDataEducationYear);
       })
       .catch(err => {
         console.warn(err.message);
@@ -27,7 +29,7 @@ export const Evaluations = () => {
     <>
       {dataEvaluations !== undefined ?
         <ScrollView>
-          <FilterSubject dataSession={dataSession} />
+          <FilterSubject dataSession={dataSession} dataEducationYear={dataEducationYear} />
           <View>
             {
               dataEvaluations !== undefined ?

@@ -4,8 +4,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 export const Select = ({ props }) => {
 
   const [openOptions, setOpenOptions] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(null)
-
+  const [selectedValue, setSelectedValue] = useState(null);
   return (
     <>
       <Pressable onPress={() => { openOptions ? setOpenOptions(false) : setOpenOptions(true) }}>
@@ -17,10 +16,19 @@ export const Select = ({ props }) => {
       <View style={openOptions ? styles.optionsList : styles.hide}>
         {
 
+          props[0] !== undefined ?
+            // console.log(props[0])
+            props[0].map((obj) => {
+              return (
+                <Pressable>
+                  <Text style={styles.option}>{obj.title}</Text>
+                </Pressable>
+              )
+            })
+            :
+            console.log('ZALUPA')
         }
-        <Pressable>
-          <Text style={styles.option}>2016/2017</Text>
-        </Pressable>
+
       </View>
     </>
   )
