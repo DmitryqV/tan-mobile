@@ -36,9 +36,34 @@ export const Evaluations = () => {
             {
               dataEvaluations !== undefined ?
                 dataEvaluations.map((subject) => {
-                  return (
-                    <Subject props={subject} key={subject.id} />
-                  );
+                  if (filters === undefined) {
+                    return (
+                      <Subject props={subject} key={subject.id} />
+                    );
+                  } else if (filters[0] === null && filters[1] === null) {
+                    return (
+                      <Subject props={subject} key={subject.id} />
+                    );
+                  } else if (filters[0] !== null && filters[1] !== null) {
+                    if (filters[0] === subject.year_title && filters[1] === subject.semester) {
+                      return (
+                        <Subject props={subject} key={subject.id} />
+                      );
+                    }
+                  } else if (filters[0] !== null && filters[1] === null) {
+                    if (filters[0] === subject.year_title) {
+                      return (
+                        <Subject props={subject} key={subject.id} />
+                      );
+                    }
+                  } else if (filters[1] !== null) {
+                    if (filters[1] === subject.semester) {
+                      return (
+                        <Subject props={subject} key={subject.id} />
+                      );
+                    }
+                  }
+
                 })
                 :
                 null
