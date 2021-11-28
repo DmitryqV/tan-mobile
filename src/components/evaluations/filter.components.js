@@ -9,7 +9,6 @@ export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) =>
 
   function getSelectValue(value) {
     setSelectValue(value);
-    console.log('ZAPISAL: ' + value);
   }
 
   return (

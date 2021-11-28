@@ -6,7 +6,6 @@ export const Select = ({ props, getSelectValue }) => {
   const [openOptions, setOpenOptions] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
 
-  console.log('VIBRAL: ' + selectedValue);
   return (
     <>
       <View style={{ width: 160 }}>
