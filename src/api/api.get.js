@@ -61,14 +61,14 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
-function getSession(token) {
+function getSession(token, setDataSession) {
   axios.get(`${serverUrl}/api/v1/student/marks/distributionSession`, {
     params: {
       api_token: token,
     }
   })
     .then((response) => {
-      console.log(response.data);
+      setDataSession(response.data);
     })
     .catch((error) => {
       console.log(error);

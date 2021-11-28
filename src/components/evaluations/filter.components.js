@@ -2,7 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Select } from "../select.components";
 
-export const FilterSubject = () => {
+export const FilterSubject = ({ dataSession }) => {
+
   return (
     <>
       <View style={styles.container}>
@@ -11,7 +12,8 @@ export const FilterSubject = () => {
       <View>
         <View>
           <Text>Учебный год: </Text>
-          <Select />
+          {/* В props будем передавать свои данные, а кастом свойства в доп.свойства элемента*/}
+          <Select props={[dataSession]} />
         </View>
       </View>
     </>

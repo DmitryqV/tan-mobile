@@ -7,6 +7,7 @@ import { Subject, FilterSubject } from "../../components/components.export";
 export const Evaluations = () => {
 
   const [dataEvaluations, onChangeDataEvaluations] = useState();
+  const [dataSession, setDataSession] = useState();
 
   if (dataEvaluations === undefined) {
     storage.load({
@@ -15,7 +16,7 @@ export const Evaluations = () => {
     })
       .then(ret => {
         getEvaluations(ret, onChangeDataEvaluations),
-          getSession(ret)
+          getSession(ret, setDataSession)
       })
       .catch(err => {
         console.warn(err.message);
@@ -26,7 +27,7 @@ export const Evaluations = () => {
     <>
       {dataEvaluations !== undefined ?
         <ScrollView>
-          <FilterSubject />
+          <FilterSubject dataSession={dataSession} />
           <View>
             {
               dataEvaluations !== undefined ?

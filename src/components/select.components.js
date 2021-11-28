@@ -15,6 +15,9 @@ export const Select = ({ props }) => {
         </View>
       </Pressable>
       <View style={openOptions ? styles.optionsList : styles.hide}>
+        {
+
+        }
         <Pressable>
           <Text style={styles.option}>2016/2017</Text>
         </Pressable>
