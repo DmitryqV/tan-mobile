@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 
-export const Select = ({ props }) => {
+export const Select = ({ props, getSelectValue }) => {
 
   const [openOptions, setOpenOptions] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -25,7 +25,7 @@ export const Select = ({ props }) => {
           props[0] !== undefined ?
             props[0].map((obj) => {
               return (
-                <Pressable key={obj.id} onPress={() => { setSelectedValue(obj.title), setOpenOptions(false) }}>
+                <Pressable key={obj.id} onPress={() => { setSelectedValue(obj.title), setOpenOptions(false), getSelectValue(obj.title) }}>
                   <Text style={styles.option}>{obj.title}</Text>
                 </Pressable>
               )

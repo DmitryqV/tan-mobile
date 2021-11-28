@@ -9,7 +9,8 @@ export const Evaluations = () => {
   const [dataEvaluations, onChangeDataEvaluations] = useState();
   const [dataSession, setDataSession] = useState();
   const [dataEducationYear, setDataEducationYear] = useState();
-
+  const [filters, setFilters] = useState();
+  console.log(filters);
   if (dataEvaluations === undefined && dataSession === undefined && dataEducationYear === undefined) {
     storage.load({
       key: 'token',
@@ -29,7 +30,7 @@ export const Evaluations = () => {
     <>
       {dataEvaluations !== undefined ?
         <ScrollView>
-          <FilterSubject dataSession={dataSession} dataEducationYear={dataEducationYear} />
+          <FilterSubject dataSession={dataSession} dataEducationYear={dataEducationYear} setFilters={setFilters} />
           <View>
             {
               dataEvaluations !== undefined ?

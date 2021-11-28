@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Select } from "../select.components";
 
-export const FilterSubject = ({ dataSession, dataEducationYear }) => {
+export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) => {
 
   const [radioButton, setRadioButton] = useState(null);
+  const [SelectValue, setSelectValue] = useState()
+
+  function getSelectValue(value) {
+    setSelectValue(value);
+  }
 
   return (
     <>
@@ -15,7 +20,7 @@ export const FilterSubject = ({ dataSession, dataEducationYear }) => {
         <View>
           <Text>Учебный год: </Text>
           {/* В props будем передавать свои данные, а кастом свойства в доп.свойства элемента*/}
-          <Select props={[dataEducationYear]} />
+          <Select props={[dataEducationYear]} getSelectValue={getSelectValue} />
         </View>
         <View>
           <Text>Семестр: </Text>
@@ -38,7 +43,7 @@ export const FilterSubject = ({ dataSession, dataEducationYear }) => {
             null
           }
         </View>
-        <Pressable>
+        <Pressable onPress={() => { setFilters([SelectValue, radioButton]) }}>
           <View style={styles.applyFilterButton}>
             <Text>Применить фильтры</Text>
           </View>
