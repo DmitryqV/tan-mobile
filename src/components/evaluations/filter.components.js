@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { Select } from "../select.components";
 
 export const FilterSubject = () => {
   return (
@@ -10,6 +11,7 @@ export const FilterSubject = () => {
       <View>
         <View>
           <Text>Учебный год: </Text>
+          <Select />
         </View>
       </View>
     </>
