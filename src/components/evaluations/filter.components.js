@@ -38,6 +38,11 @@ export const FilterSubject = ({ dataSession, dataEducationYear }) => {
             null
           }
         </View>
+        <Pressable>
+          <View style={styles.applyFilterButton}>
+            <Text>Применить фильтры</Text>
+          </View>
+        </Pressable>
       </View>
     </>
   )
@@ -74,7 +79,16 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     backgroundColor: '#5d78ff',
-    borderWidth: 1,
     borderRadius: 50
+  },
+  applyFilterButton: {
+    height: 30,
+    width: 160,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#5d78ff',
+    borderRadius: 4
   }
 })
