@@ -1,14 +1,19 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, Pressable, StyleSheet } from 'react-native'
 
 export const Select = ({ props }) => {
+
+  const [openOptions, setOpenOptions] = useState(false);
+
   return (
     <>
-      <View style={styles.select}>
-        <Text style={styles.value}>Всё</Text>
-        <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
-      </View>
-      <View style={styles.optionsList}>
+      <Pressable onPress={() => { openOptions ? setOpenOptions(false) : setOpenOptions(true) }}>
+        <View style={styles.select}>
+          <Text style={styles.value}>Всё</Text>
+          <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
+        </View>
+      </Pressable>
+      <View style={openOptions ? styles.optionsList : styles.hide}>
         <Text style={styles.option}>2016/2017</Text>
         <Text style={styles.option}>2018/2019</Text>
         <Text style={styles.option}>2019/2020</Text>
@@ -54,5 +59,8 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     paddingTop: 7,
     paddingBottom: 7,
+  },
+  hide: {
+    display: 'none'
   }
 })
