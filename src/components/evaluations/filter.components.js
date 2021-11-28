@@ -9,7 +9,7 @@ export const FilterSubject = () => {
       </View>
       <View>
         <View>
-          <Text>Учебный год:</Text>
+          <Text>Учебный год: </Text>
         </View>
       </View>
     </>
