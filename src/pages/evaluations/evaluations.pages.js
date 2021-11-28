@@ -10,7 +10,7 @@ export const Evaluations = () => {
   const [dataSession, setDataSession] = useState();
   const [dataEducationYear, setDataEducationYear] = useState();
   const [filters, setFilters] = useState();
-  console.log(filters);
+
   if (dataEvaluations === undefined && dataSession === undefined && dataEducationYear === undefined) {
     storage.load({
       key: 'token',
