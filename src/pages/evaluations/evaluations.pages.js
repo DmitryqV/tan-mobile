@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import storage from "../../utils/storage.utils";
-import { getEvaluations } from "../../api/api.get";
-import { Subject } from "../../components/components.export";
+import { getEvaluations, getSession, getEducationYear } from "../../api/api.get";
+import { Subject, FilterSubject } from "../../components/components.export";
 
 export const Evaluations = () => {
 
   const [dataEvaluations, onChangeDataEvaluations] = useState();
+  const [dataSession, setDataSession] = useState();
+  const [dataEducationYear, setDataEducationYear] = useState();
+  const [filters, setFilters] = useState();
 
-  if (dataEvaluations === undefined) {
+  if (dataEvaluations === undefined && dataSession === undefined && dataEducationYear === undefined) {
     storage.load({
       key: 'token',
       id: 228,
     })
       .then(ret => {
-        getEvaluations(ret, onChangeDataEvaluations)
+        getEvaluations(ret, onChangeDataEvaluations);
+        getSession(ret, setDataSession);
+        getEducationYear(ret, setDataEducationYear);
       })
       .catch(err => {
         console.warn(err.message);
@@ -25,13 +30,39 @@ export const Evaluations = () => {
     <>
       {dataEvaluations !== undefined ?
         <ScrollView>
+          <FilterSubject dataSession={dataSession} dataEducationYear={dataEducationYear} setFilters={setFilters} />
           <View>
             {
               dataEvaluations !== undefined ?
                 dataEvaluations.map((subject) => {
-                  return (
-                    <Subject props={subject} key={subject.id} />
-                  );
+                  if (filters === undefined) {
+                    return (
+                      <Subject props={subject} key={subject.id} />
+                    );
+                  } else if (filters[0] === null && filters[1] === null) {
+                    return (
+                      <Subject props={subject} key={subject.id} />
+                    );
+                  } else if (filters[0] !== null && filters[1] !== null) {
+                    if (filters[0] === subject.year_title && filters[1] === subject.semester) {
+                      return (
+                        <Subject props={subject} key={subject.id} />
+                      );
+                    }
+                  } else if (filters[0] !== null && filters[1] === null) {
+                    if (filters[0] === subject.year_title) {
+                      return (
+                        <Subject props={subject} key={subject.id} />
+                      );
+                    }
+                  } else if (filters[1] !== null) {
+                    if (filters[1] === subject.semester) {
+                      return (
+                        <Subject props={subject} key={subject.id} />
+                      );
+                    }
+                  }
+
                 })
                 :
                 null

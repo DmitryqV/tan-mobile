@@ -61,4 +61,32 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations }
+function getSession(token, setDataSession) {
+  axios.get(`${serverUrl}/api/v1/student/marks/distributionSession`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setDataSession(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+function getEducationYear(token, setDataEducationYear) {
+  axios.get(`${serverUrl}/api/v1/student/marks/edu-year`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setDataEducationYear(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear }
