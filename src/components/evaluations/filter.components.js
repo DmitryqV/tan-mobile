@@ -16,26 +16,26 @@ export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) =>
       <View style={styles.container}>
         <Text style={styles.title}>Фильтры</Text>
       </View>
-      <View>
+      <View style={styles.allFilters}>
         <View>
-          <Text>Учебный год: </Text>
+          <Text style={styles.titleFilter}>Учебный год: </Text>
           {/* В props будем передавать свои данные, а кастом свойства в доп.свойства элемента*/}
-          <Select props={[dataEducationYear]} getSelectValue={getSelectValue} />
+          <Select style={styles.select} props={[dataEducationYear]} getSelectValue={getSelectValue} />
         </View>
         <View>
-          <Text>Семестр: </Text>
+          <Text style={styles.titleFilter}>Семестр: </Text>
           {dataSession !== undefined ?
             <View style={styles.sessionFilter}>
               <Pressable onPress={() => { radioButton !== dataSession['21'] ? setRadioButton(dataSession['21']) : setRadioButton(null) }}>
                 <View style={styles.radioButtons}>
                   <View style={radioButton === dataSession['21'] ? styles.radioButtonActive : styles.radioButton}></View>
-                  <Text>{dataSession['21']}</Text>
+                  <Text style={styles.radiotitle}>{dataSession['21']}</Text>
                 </View>
               </Pressable>
               <Pressable onPress={() => { radioButton !== dataSession['22'] ? setRadioButton(dataSession['22']) : setRadioButton(null) }}>
                 <View style={styles.radioButtons}>
                   <View style={radioButton === dataSession['22'] ? styles.radioButtonActive : styles.radioButton}></View>
-                  <Text>{dataSession['22']}</Text>
+                  <Text style={styles.radiotitle}>{dataSession['22']}</Text>
                 </View>
               </Pressable>
             </View>
@@ -66,11 +66,29 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#5d78ff'
   },
+  allFilters: {
+    backgroundColor: '#fff',
+    padding: 20,
+    paddingTop: 0,
+  },
+  titleFilter: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#646c9a',
+    marginBottom: 10,
+    marginTop: 10
+  },
   sessionFilter: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 15,
+    justifyContent: 'space-evenly'
   },
   radioButtons: {
     flexDirection: 'row'
+  },
+  radiotitle: {
+    color: '#495057',
+    marginLeft: 5
   },
   radioButton: {
     height: 20,
