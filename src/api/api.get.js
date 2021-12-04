@@ -89,4 +89,18 @@ function getEducationYear(token, setDataEducationYear) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear }
+function getNews(token) {
+  axios.get(`${serverUrl}/api/v1/news`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((request) => {
+      console.log(request);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getNews }
