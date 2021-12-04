@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useWindowDimensions, View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import RenderHtml from 'react-native-render-html';
 
-export const PreviewNews = (data, { navigation }) => {
+export const PreviewNews = (data) => {
 
   const [openMoreInfo, setOpenMoreInfo] = useState(false);
   const { width } = useWindowDimensions();

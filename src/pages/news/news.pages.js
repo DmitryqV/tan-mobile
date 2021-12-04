@@ -8,7 +8,7 @@ const wait = (timeout) => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
-export const News = () => {
+export const News = ({ navigation }) => {
 
   const [refreshing, setRefreshing] = useState(false);
   const [newsData, setNewsData] = useState();
@@ -31,6 +31,11 @@ export const News = () => {
         console.warn(err.message);
       });
   }
+
+  React.useEffect(
+    () => navigation.addListener('focus', () => setNewsData()),
+    []
+  );
 
   return (
     <ScrollView
