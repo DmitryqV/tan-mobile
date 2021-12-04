@@ -5,8 +5,18 @@ import RenderHtml from 'react-native-render-html';
 export const PreviewNews = (data, { navigation }) => {
 
   const { width } = useWindowDimensions();
+
   const source = {
     html: data.data.html
+  };
+
+  const tagsStyles = {
+    p: {
+      color: '#74788d',
+      fontSize: 15,
+      marginTop: 1,
+      marginBottom: 10,
+    },
   };
   return (
     <View style={styles.component}>
@@ -19,6 +29,7 @@ export const PreviewNews = (data, { navigation }) => {
       <RenderHtml
         contentWidth={width}
         source={source}
+        tagsStyles={tagsStyles}
       />
       <View style={styles.timeView}>
         <Text style={styles.timeText}>
@@ -52,7 +63,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f3ff',
     padding: 5,
     borderRadius: 4,
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+    marginTop: 14,
   },
   timeText: {
     fontWeight: 'bold',
