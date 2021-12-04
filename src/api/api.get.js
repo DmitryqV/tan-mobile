@@ -89,4 +89,18 @@ function getEducationYear(token, setDataEducationYear) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear }
+function getSdoLink(token) {
+  axios.get(`${serverUrl}/api/v1/student/sdo/link`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink }
