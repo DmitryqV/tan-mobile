@@ -99,7 +99,8 @@ function getSdoLink(token) {
       console.log(response);
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
+      alert('К сожалению не можем отобразить данную информацию')
     })
 }
 
