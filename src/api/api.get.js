@@ -89,13 +89,14 @@ function getEducationYear(token, setDataEducationYear) {
     })
 }
 
-function getNews(token) {
+function getNews(token, setNewsData) {
   axios.get(`${serverUrl}/api/v1/news`, {
     params: {
       api_token: token,
     }
   })
     .then((request) => {
+      setNewsData(request)
       console.log(request);
     })
     .catch((error) => {
