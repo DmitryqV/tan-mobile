@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { RefreshControl, ScrollView, View, Text } from "react-native";
+import { RefreshControl, ScrollView, View, Text, StyleSheet } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getNews } from "../../api/api.get";
 import { PreviewNews } from "../../components/components.export";
@@ -32,7 +32,6 @@ export const News = () => {
       });
   }
 
-
   return (
     <ScrollView
       refreshControl={
@@ -41,7 +40,7 @@ export const News = () => {
           onRefresh={onRefresh}
         />
       }>
-      <View>
+      <View style={styles.newsPage}>
         {newsData !== undefined ?
           newsData.map((news) => {
             return (
@@ -55,3 +54,11 @@ export const News = () => {
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  newsPage: {
+    backgroundColor: '#f2f3f8',
+    flex: 1,
+    alignItems: 'center',
+  },
+})
