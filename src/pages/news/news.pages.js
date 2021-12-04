@@ -15,7 +15,7 @@ export const News = ({ navigation }) => {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    setNewsData()
+    setNewsData();
     wait(2000).then(() => setRefreshing(false));
   }, []);
 

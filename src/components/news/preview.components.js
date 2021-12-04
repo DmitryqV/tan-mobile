@@ -19,6 +19,7 @@ export const PreviewNews = (data) => {
       marginBottom: 10,
     },
   };
+
   return (
     <View style={styles.component}>
       <TouchableOpacity onPress={() => {
