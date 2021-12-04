@@ -97,7 +97,6 @@ function getNews(token, setNewsData) {
   })
     .then((request) => {
       setNewsData(request.data.data)
-      console.log(request.data.data);
     })
     .catch((error) => {
       console.log(error);
