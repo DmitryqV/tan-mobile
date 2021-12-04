@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import { RefreshControl, ScrollView, View, Text } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getNews } from "../../api/api.get";
+import { PreviewNews } from "../../components/components.export";
 
 const wait = (timeout) => {
   return new Promise(resolve => setTimeout(resolve, timeout));
@@ -41,7 +42,15 @@ export const News = () => {
         />
       }>
       <View>
-        <Text>NEWS</Text>
+        {newsData !== undefined ?
+          newsData.map((news) => {
+            return (
+              <PreviewNews key={news.id} data={news} />
+            )
+          })
+          :
+          <Text>Загрузка...</Text>
+        }
       </View>
     </ScrollView>
   )

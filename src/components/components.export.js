@@ -3,3 +3,4 @@ export { SutentInfo } from './profile/studentInfo.components';
 export { Subject } from './evaluations/subject.components';
 export { FilterSubject } from './evaluations/filter.components';
 export { Select } from './select.components';
+export { PreviewNews } from './news/preview.components'
