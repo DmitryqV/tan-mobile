@@ -1,9 +1,20 @@
 import React from "react";
-import { ScrollView, View, Text } from "react-native";
+import { RefreshControl, ScrollView, View, Text } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getNews } from "../../api/api.get";
 
+const wait = (timeout) => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+}
+
 export const News = () => {
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
   storage.load({
     key: 'token',
@@ -17,7 +28,13 @@ export const News = () => {
     });
 
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+        />
+      }>
       <View>
         <Text>NEWS</Text>
       </View>
