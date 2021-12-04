@@ -14,10 +14,11 @@ export const News = () => {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+    setNewsData()
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  if (newsData !== undefined) {
+  if (newsData === undefined) {
     storage.load({
       key: 'token',
       id: 228,
