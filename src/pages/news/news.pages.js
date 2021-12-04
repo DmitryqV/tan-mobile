@@ -11,7 +11,7 @@ const wait = (timeout) => {
 export const News = () => {
 
   const [refreshing, setRefreshing] = useState(false);
-  const [newsData, setNewsData] = useState()
+  const [newsData, setNewsData] = useState();
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);

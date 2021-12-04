@@ -1,7 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { useWindowDimensions, View, Text, StyleSheet } from "react-native";
+import RenderHtml from 'react-native-render-html';
 
 export const PreviewNews = (data, { navigation }) => {
+
+  const { width } = useWindowDimensions();
+  const source = {
+    html: data.data.html
+  };
   return (
     <View style={styles.component}>
       <Text style={styles.title} onPress={() => navigation.navigate('profile')}>
@@ -10,6 +16,10 @@ export const PreviewNews = (data, { navigation }) => {
       <Text style={styles.preview}>
         {data.data.preview}
       </Text>
+      <RenderHtml
+        contentWidth={width}
+        source={source}
+      />
       <View style={styles.timeView}>
         <Text style={styles.timeText}>
           {data.data.published_at}
