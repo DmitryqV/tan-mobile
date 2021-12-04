@@ -1,9 +1,10 @@
-import React from "react";
-import { useWindowDimensions, View, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { useWindowDimensions, View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import RenderHtml from 'react-native-render-html';
 
 export const PreviewNews = (data, { navigation }) => {
 
+  const [openMoreInfo, setOpenMoreInfo] = useState(false);
   const { width } = useWindowDimensions();
 
   const source = {
@@ -20,22 +21,33 @@ export const PreviewNews = (data, { navigation }) => {
   };
   return (
     <View style={styles.component}>
-      <Text style={styles.title} onPress={() => navigation.navigate('profile')}>
-        {data.data.title}
-      </Text>
-      <Text style={styles.preview}>
-        {data.data.preview}
-      </Text>
-      <RenderHtml
-        contentWidth={width}
-        source={source}
-        tagsStyles={tagsStyles}
-      />
-      <View style={styles.timeView}>
-        <Text style={styles.timeText}>
-          {data.data.published_at}
+      <TouchableOpacity onPress={() => {
+        openMoreInfo === false ?
+          setOpenMoreInfo(true)
+          :
+          setOpenMoreInfo(false)
+      }}>
+        <Text style={styles.title}>
+          {data.data.title}
         </Text>
-      </View>
+        <Text style={styles.preview}>
+          {data.data.preview}
+        </Text>
+        {openMoreInfo !== false ?
+          <RenderHtml
+            contentWidth={width}
+            source={source}
+            tagsStyles={tagsStyles}
+          />
+          :
+          null
+        }
+        <View style={styles.timeView}>
+          <Text style={styles.timeText}>
+            {data.data.published_at}
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -64,7 +76,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 4,
     alignSelf: 'flex-start',
-    marginTop: 14,
+    marginTop: 12,
   },
   timeText: {
     fontWeight: 'bold',
