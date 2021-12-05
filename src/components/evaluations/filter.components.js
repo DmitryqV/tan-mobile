@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, TouchableOpacity } from "react-native";
 import { Select } from "../select.components";
 
 export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) => {
 
   const [radioButton, setRadioButton] = useState(null);
-  const [SelectValue, setSelectValue] = useState(null)
+  const [SelectValue, setSelectValue] = useState(null);
+  const [hideFilters, setHideFilters] = useState(false);
 
   function getSelectValue(value) {
     setSelectValue(value);
@@ -13,42 +14,51 @@ export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) =>
 
   return (
     <>
-      <View style={styles.container}>
-        <Text style={styles.title}>Фильтры</Text>
-      </View>
-      <View style={styles.allFilters}>
-        <View>
-          <Text style={styles.titleFilter}>Учебный год: </Text>
-          {/* В props будем передавать свои данные, а кастом свойства в доп.свойства элемента*/}
-          <Select style={styles.select} props={[dataEducationYear]} getSelectValue={getSelectValue} />
+      <TouchableOpacity
+        onPress={() => { hideFilters === false ? setHideFilters(true) : setHideFilters(false) }}
+      >
+        <View style={styles.container}>
+          <Text style={styles.title}>Фильтры</Text>
         </View>
-        <View>
-          <Text style={styles.titleFilter}>Семестр: </Text>
-          {dataSession !== undefined ?
-            <View style={styles.sessionFilter}>
-              <Pressable onPress={() => { radioButton !== dataSession['21'] ? setRadioButton(dataSession['21']) : setRadioButton(null) }}>
-                <View style={styles.radioButtons}>
-                  <View style={radioButton === dataSession['21'] ? styles.radioButtonActive : styles.radioButton}></View>
-                  <Text style={styles.radiotitle}>{dataSession['21']}</Text>
-                </View>
-              </Pressable>
-              <Pressable onPress={() => { radioButton !== dataSession['22'] ? setRadioButton(dataSession['22']) : setRadioButton(null) }}>
-                <View style={styles.radioButtons}>
-                  <View style={radioButton === dataSession['22'] ? styles.radioButtonActive : styles.radioButton}></View>
-                  <Text style={styles.radiotitle}>{dataSession['22']}</Text>
-                </View>
-              </Pressable>
-            </View>
-            :
-            null
-          }
-        </View>
-        <Pressable onPress={() => { setFilters([SelectValue, radioButton]) }}>
-          <View style={styles.applyFilterButton}>
-            <Text>Применить фильтры</Text>
+      </TouchableOpacity>
+
+      {hideFilters !== false ?
+        <View style={styles.allFilters}>
+          <View>
+            <Text style={styles.titleFilter}>Учебный год: </Text>
+            {/* В props будем передавать свои данные, а кастом свойства в доп.свойства элемента*/}
+            <Select style={styles.select} props={[dataEducationYear]} getSelectValue={getSelectValue} />
           </View>
-        </Pressable>
-      </View>
+          <View>
+            <Text style={styles.titleFilter}>Семестр: </Text>
+            {dataSession !== undefined ?
+              <View style={styles.sessionFilter}>
+                <Pressable onPress={() => { radioButton !== dataSession['21'] ? setRadioButton(dataSession['21']) : setRadioButton(null) }}>
+                  <View style={styles.radioButtons}>
+                    <View style={radioButton === dataSession['21'] ? styles.radioButtonActive : styles.radioButton}></View>
+                    <Text style={styles.radiotitle}>{dataSession['21']}</Text>
+                  </View>
+                </Pressable>
+                <Pressable onPress={() => { radioButton !== dataSession['22'] ? setRadioButton(dataSession['22']) : setRadioButton(null) }}>
+                  <View style={styles.radioButtons}>
+                    <View style={radioButton === dataSession['22'] ? styles.radioButtonActive : styles.radioButton}></View>
+                    <Text style={styles.radiotitle}>{dataSession['22']}</Text>
+                  </View>
+                </Pressable>
+              </View>
+              :
+              null
+            }
+          </View>
+          <Pressable onPress={() => { setFilters([SelectValue, radioButton]) }}>
+            <View style={styles.applyFilterButton}>
+              <Text>Применить фильтры</Text>
+            </View>
+          </Pressable>
+        </View>
+        :
+        null
+      }
     </>
   )
 }
