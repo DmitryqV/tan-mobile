@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, Image, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
+import Logo from '../../images/logo.png'
 
 export const Login = ({ onChangeIsLoggedIn }) => {
 
@@ -10,6 +11,10 @@ export const Login = ({ onChangeIsLoggedIn }) => {
 
   return (
     <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={Logo}
+      />
       <Text style={styles.loginTitle}>Вход</Text>
       <TextInput
         id='inputEmail'
@@ -57,11 +62,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logo: {
+    width: 70,
+    height: 70,
+  },
   loginTitle: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 15,
-
   },
   inputLogin: {
     width: '65%',
@@ -93,5 +101,5 @@ const styles = StyleSheet.create({
   },
   errorTxt: {
     color: 'red'
-  }
+  },
 })
