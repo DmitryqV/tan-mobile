@@ -90,15 +90,16 @@ const styles = StyleSheet.create({
   },
   sessionFilter: {
     flexDirection: 'row',
-    marginBottom: 15,
-    justifyContent: 'space-evenly'
+    marginBottom: 25,
+    justifyContent: 'flex-start'
   },
   radioButtons: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   radiotitle: {
     color: '#495057',
-    marginLeft: 5
+    marginLeft: 5,
+    marginRight: 20,
   },
   radioButton: {
     height: 20,
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: '#5d78ff',
-    borderRadius: 50
+    borderRadius: 50,
   },
   radioButtonActive: {
     height: 20,
