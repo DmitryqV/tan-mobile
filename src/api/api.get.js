@@ -61,4 +61,17 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations }
+function getSchedule(token) {
+  axios.get(`${serverUrl}/api/v1/student/schedule`, {
+    params: {
+      api_token: token,
+    }
+  }).then((response) => {
+    console.log(response.data.data);
+  })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { getSchedule, checkStudent, getProfile, getStudentInfo, getEvaluations }
