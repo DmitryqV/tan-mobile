@@ -89,6 +89,20 @@ function getEducationYear(token, setDataEducationYear) {
     })
 }
 
+function getSdoLink(token, setLinkSdo) {
+  axios.get(`${serverUrl}/api/v1/student/sdo/link`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setLinkSdo(response.data.link);
+    })
+    .catch(() => {
+      alert('К сожалению не можем отобразить данную информацию');
+    })
+}
+
 function getNews(token, setNewsData) {
   axios.get(`${serverUrl}/api/v1/news`, {
     params: {
@@ -103,4 +117,4 @@ function getNews(token, setNewsData) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getNews }
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews }

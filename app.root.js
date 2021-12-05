@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Login, Profile, Main, Evaluations, News } from './src/pages/index.export.js';
+import { Login, Profile, Main, Evaluations, Sdo, News } from './src/pages/index.export.js';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator();
@@ -18,7 +18,8 @@ function MyDrawer() {
       <Drawer.Screen name="profile" component={Profile} options={{ drawerLabel: 'Профиль', title: 'Профиль' }} />
       <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Зачетная книжка', title: 'Зачетная книжка' }} />
       <Drawer.Screen name="news" component={News} options={{ drawerLabel: 'Новости', title: 'Новости' }} />
-    </Drawer.Navigator>
+      <Drawer.Screen name="sdo" component={Sdo} options={{ drawerLabel: 'СДО', title: 'СДО' }} />
+    </Drawer.Navigator >
   );
 }
 
