@@ -40,16 +40,16 @@ export const Evaluations = () => {
   }
 
   return (
-    <><ScrollView
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-        />
-      }
-    >
+    <>
       {dataEvaluations !== undefined ?
-        <>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+          }
+        >
           <FilterSubject dataSession={dataSession} dataEducationYear={dataEducationYear} setFilters={setFilters} />
           <View>
             {
@@ -88,14 +88,12 @@ export const Evaluations = () => {
                 null
             }
           </View>
-        </>
+        </ScrollView>
         :
         <View style={styles.containerLoad}>
           <Text style={styles.textLoad}>Загрузка...</Text>
         </View>
       }
-
-    </ScrollView>
     </>
 
   )
