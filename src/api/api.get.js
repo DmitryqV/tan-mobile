@@ -89,7 +89,7 @@ function getEducationYear(token, setDataEducationYear) {
     })
 }
 
-function getSdoLink(token) {
+function getSdoLink(token, setLinkSdo) {
   axios.get(`${serverUrl}/api/v1/student/sdo/link`, {
     params: {
       api_token: token,
@@ -97,11 +97,12 @@ function getSdoLink(token) {
   })
     .then((response) => {
       console.log(response.data.link);
+      setLinkSdo(response.data.link);
     })
     .catch((error) => {
       // console.log(error);
       //нужно обработать ошибку
-      alert('К сожалению не можем отобразить данную информацию')
+      alert('К сожалению не можем отобразить данную информацию');
     })
 }
 
