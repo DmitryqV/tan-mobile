@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo, SutentInfo } from "../../components/components.export";
@@ -30,11 +30,13 @@ export const Profile = () => {
           <>
             <UserInfo dataProfile={dataProfile} />
             <SutentInfo studentInfo={studentInfo} />
-            <View style={styles.logoutButton}>
-              <Text style={styles.logoutText}>
-                Выйти
-              </Text>
-            </View>
+            <TouchableOpacity style={styles.logoutButton}>
+              <View >
+                <Text style={styles.logoutText}>
+                  Выйти
+                </Text>
+              </View>
+            </TouchableOpacity>
           </>
           :
           null
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: '95%',
     borderRadius: 4,
-    backgroundColor: '#FF7373',
+    backgroundColor: '#ffadad',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,
