@@ -15,7 +15,7 @@ export const Login = ({ onChangeIsLoggedIn }) => {
         style={styles.logo}
         source={Logo}
       />
-      <Text style={styles.loginTitle}>Вход</Text>
+      <Text style={styles.loginTitle}>Вход в систему</Text>
       <TextInput
         id='inputEmail'
         style={styles.inputLogin}
@@ -65,11 +65,12 @@ const styles = StyleSheet.create({
   logo: {
     width: 70,
     height: 70,
+    marginBottom: 40
   },
   loginTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 15,
+    color: '#242939'
   },
   inputLogin: {
     width: '65%',
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
   },
   buttonRecoveryPassword: {
     color: '#d4d4d4',
+    marginBottom: 110
   },
   errorTxt: {
     color: 'red'
