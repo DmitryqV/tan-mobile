@@ -100,8 +100,23 @@ function getSdoLink(token) {
     })
     .catch((error) => {
       // console.log(error);
+      //нужно обработать ошибку
       alert('К сожалению не можем отобразить данную информацию')
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink }
+function getNews(token, setNewsData) {
+  axios.get(`${serverUrl}/api/v1/news`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((request) => {
+      setNewsData(request.data.data)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews }
