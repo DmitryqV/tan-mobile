@@ -96,12 +96,9 @@ function getSdoLink(token, setLinkSdo) {
     }
   })
     .then((response) => {
-      console.log(response.data.link);
       setLinkSdo(response.data.link);
     })
-    .catch((error) => {
-      // console.log(error);
-      //нужно обработать ошибку
+    .catch(() => {
       alert('К сожалению не можем отобразить данную информацию');
     })
 }
