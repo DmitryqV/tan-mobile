@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo, SutentInfo } from "../../components/components.export";
@@ -30,6 +30,11 @@ export const Profile = () => {
           <>
             <UserInfo dataProfile={dataProfile} />
             <SutentInfo studentInfo={studentInfo} />
+            <View style={styles.logoutButton}>
+              <Text style={styles.logoutText}>
+                Выйти
+              </Text>
+            </View>
           </>
           :
           null
@@ -45,4 +50,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  logoutButton: {
+    height: 30,
+    width: '95%',
+    borderRadius: 4,
+    backgroundColor: '#FF7373',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  logoutText: {
+    fontWeight: 'bold',
+    color: '#A60000'
+  }
 })
