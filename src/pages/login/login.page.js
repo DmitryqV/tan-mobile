@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
 import Logo from '../../images/logo.png'
 
@@ -40,17 +40,17 @@ export const Login = ({ onChangeIsLoggedIn }) => {
             null
       }
 
-      <Pressable
+      <TouchableOpacity
         style={styles.loginButton}
         onPress={() => {
           loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn)
         }}
       >
         <Text style={styles.loginButtonText}>Войти</Text>
-      </Pressable>
-      <Pressable>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text style={styles.buttonRecoveryPassword}>Восстановить пароль</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View >
   );
 }
