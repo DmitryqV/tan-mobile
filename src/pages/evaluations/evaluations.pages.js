@@ -1,15 +1,28 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import React, { useState, useCallback } from "react";
+import { RefreshControl, View, Text, StyleSheet, ScrollView } from "react-native";
 import storage from "../../utils/storage.utils";
 import { getEvaluations, getSession, getEducationYear } from "../../api/api.get";
 import { Subject, FilterSubject } from "../../components/components.export";
 
+const wait = (timeout) => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+}
+
 export const Evaluations = () => {
 
+  const [refreshing, setRefreshing] = useState(false);
   const [dataEvaluations, onChangeDataEvaluations] = useState();
   const [dataSession, setDataSession] = useState();
   const [dataEducationYear, setDataEducationYear] = useState();
   const [filters, setFilters] = useState();
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    onChangeDataEvaluations();
+    setDataSession();
+    setDataEducationYear();
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
   if (dataEvaluations === undefined && dataSession === undefined && dataEducationYear === undefined) {
     storage.load({
@@ -29,7 +42,14 @@ export const Evaluations = () => {
   return (
     <>
       {dataEvaluations !== undefined ?
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+          }
+        >
           <FilterSubject dataSession={dataSession} dataEducationYear={dataEducationYear} setFilters={setFilters} />
           <View>
             {
