@@ -11,11 +11,13 @@ const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
-function MyDrawer() {
+function MyDrawer({ onChangeIsLoggedIn }) {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Главная', title: 'Главная' }} />
-      <Drawer.Screen name="profile" component={Profile} options={{ drawerLabel: 'Профиль', title: 'Профиль' }} />
+      <Drawer.Screen name="profile" options={{ drawerLabel: 'Профиль', title: 'Профиль' }} >
+        {() => <Profile onChangeIsLoggedIn={onChangeIsLoggedIn} />}
+      </Drawer.Screen>
       <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Зачетная книжка', title: 'Зачетная книжка' }} />
       <Drawer.Screen name="news" component={News} options={{ drawerLabel: 'Новости', title: 'Новости' }} />
       <Drawer.Screen name="sdo" component={Sdo} options={{ drawerLabel: 'СДО', title: 'СДО' }} />
@@ -32,7 +34,7 @@ export const App = () => {
       <SafeAreaProvider>
         <NavigationContainer>
           {isLoggedIn ?
-            <MyDrawer />
+            <MyDrawer onChangeIsLoggedIn={onChangeIsLoggedIn} />
             :
             <Stack.Navigator>
               <Stack.Screen name="login" options={{ headerShown: false }}>

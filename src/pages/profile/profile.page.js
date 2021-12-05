@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo, SutentInfo } from "../../components/components.export";
 
-export const Profile = () => {
+export const Profile = ({ onChangeIsLoggedIn }) => {
 
   const [dataProfile, onChangeDataProfile] = useState();
   const [studentInfo, onChangeStudentInfo] = useState();
@@ -30,6 +30,15 @@ export const Profile = () => {
           <>
             <UserInfo dataProfile={dataProfile} />
             <SutentInfo studentInfo={studentInfo} />
+            <TouchableOpacity
+              style={styles.logoutButton}
+              onPress={() => { onChangeIsLoggedIn(false) }}>
+              <View>
+                <Text style={styles.logoutText}>
+                  Выйти
+                </Text>
+              </View>
+            </TouchableOpacity>
           </>
           :
           null
@@ -45,4 +54,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  logoutButton: {
+    height: 30,
+    width: '95%',
+    borderRadius: 4,
+    backgroundColor: '#ffadad',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  logoutText: {
+    fontWeight: 'bold',
+    color: '#A60000'
+  }
 })
