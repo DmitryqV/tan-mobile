@@ -4,7 +4,7 @@ import storage from '../../utils/storage.utils';
 import { getProfile, getStudentInfo } from "../../api/api.get";
 import { UserInfo, SutentInfo } from "../../components/components.export";
 
-export const Profile = () => {
+export const Profile = ({ onChangeIsLoggedIn }) => {
 
   const [dataProfile, onChangeDataProfile] = useState();
   const [studentInfo, onChangeStudentInfo] = useState();
@@ -30,8 +30,10 @@ export const Profile = () => {
           <>
             <UserInfo dataProfile={dataProfile} />
             <SutentInfo studentInfo={studentInfo} />
-            <TouchableOpacity style={styles.logoutButton}>
-              <View >
+            <TouchableOpacity
+              style={styles.logoutButton}
+              onPress={() => { onChangeIsLoggedIn(false) }}>
+              <View>
                 <Text style={styles.logoutText}>
                   Выйти
                 </Text>
