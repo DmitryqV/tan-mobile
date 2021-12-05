@@ -52,7 +52,7 @@ export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) =>
           </View>
           <Pressable onPress={() => { setFilters([SelectValue, radioButton]) }}>
             <View style={styles.applyFilterButton}>
-              <Text>Применить фильтры</Text>
+              <Text style={styles.applyFilterText}>Применить фильтры</Text>
             </View>
           </Pressable>
         </View>
@@ -124,5 +124,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#5d78ff',
     borderRadius: 4
+  },
+  applyFilterText: {
+    fontWeight: 'bold',
+    color: '#5d78ff'
   }
 })
