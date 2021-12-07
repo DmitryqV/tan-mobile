@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getOrders } from '../../api/api.get';
 import { Order } from '../../components/components.export';
@@ -23,15 +23,17 @@ export const Oredrs = () => {
 
   return (
     <>
-      {dataOrders !== undefined ?
-        <View>
-          {dataOrders.map((order) => {
-            return <Order props={order} key={order.id} />
-          })}
-        </View>
-        :
-        null
-      }
+      <ScrollView>
+        {dataOrders !== undefined ?
+          <View>
+            {dataOrders.map((order) => {
+              return <Order props={order} key={order.id} />
+            })}
+          </View>
+          :
+          null
+        }
+      </ScrollView>
     </>
   )
 }
