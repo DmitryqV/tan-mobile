@@ -93,8 +93,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15
   },
-  date: {
-    marginRight: 25,
-    color: '#595d6e'
-  },
 })
