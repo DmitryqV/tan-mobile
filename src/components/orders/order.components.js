@@ -14,8 +14,10 @@ export const Order = ({ props }) => {
           >
             &#5125;
           </Text>
-          <Text style={styles.title}>{props.number}</Text>
-          <Text style={styles.title}>{props.date}</Text>
+          <View style={styles.mainInfo}>
+            <Text style={styles.title}>{props.number}</Text>
+            <Text style={styles.date}>{props.date}</Text>
+          </View>
         </View>
       </Pressable>
       <View style={moreInfo === false ? styles.hideMoreInfo : styles.moreInfo}>
@@ -47,7 +49,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopWidth: 1.5,
     borderColor: '#f2f3f8',
-    justifyContent: 'center',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
@@ -58,7 +59,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginRight: 10
   },
+  mainInfo: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
   title: {
+    color: '#595d6e',
+    marginLeft: 5
+  },
+  date: {
+    marginRight: 25,
     color: '#595d6e'
   },
   moreInfo: {
