@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { ScrollView, RefreshControl, View } from 'react-native';
+import { ScrollView, RefreshControl, View, Text, StyleSheet } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getOrders } from '../../api/api.get';
 import { Order } from '../../components/components.export';
@@ -43,11 +43,17 @@ export const Oredrs = () => {
         }
       >
         {dataOrders !== undefined ?
-          <View>
-            {dataOrders.map((order) => {
-              return <Order props={order} key={order.id} />
-            })}
-          </View>
+          <>
+            <View style={styles.headerSpans}>
+              <Text style={styles.headerSpan}>Номер</Text>
+              <Text style={styles.headerSpan}>Дата приказа</Text>
+            </View>
+            <View>
+              {dataOrders.map((order) => {
+                return <Order props={order} key={order.id} />
+              })}
+            </View>
+          </>
           :
           null
         }
@@ -55,3 +61,35 @@ export const Oredrs = () => {
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  subject: {
+    backgroundColor: '#ffffff',
+    minHeight: 50,
+    padding: 10,
+    borderTopWidth: 1.5,
+    borderColor: '#f2f3f8',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  headerSpans: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    padding: 10,
+    paddingLeft: 40,
+    paddingRight: 40,
+  },
+  headerSpan: {
+    color: '#595d6e',
+    fontWeight: 'bold',
+    fontSize: 15
+  },
+  date: {
+    marginRight: 25,
+    color: '#595d6e'
+  },
+})
