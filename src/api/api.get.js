@@ -117,4 +117,18 @@ function getNews(token, setNewsData) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews }
+function getOrders(token) {
+  axios.get(`${serverUrl}/api/v1/student/orders`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders }
