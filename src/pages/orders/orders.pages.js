@@ -26,7 +26,7 @@ export const Oredrs = () => {
       {dataOrders !== undefined ?
         <View>
           {dataOrders.map((order) => {
-            return <Order props={order} />
+            return <Order props={order} key={order.id} />
           })}
         </View>
         :
