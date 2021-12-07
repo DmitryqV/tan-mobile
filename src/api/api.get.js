@@ -117,14 +117,15 @@ function getNews(token, setNewsData) {
     })
 }
 
-function getOrders(token) {
+function getOrders(token, setDataOrders) {
   axios.get(`${serverUrl}/api/v1/student/orders`, {
     params: {
       api_token: token,
     }
   })
     .then((response) => {
-      console.log(response);
+      console.log(response.data.data);
+      setDataOrders(response.data.data);
     })
     .catch((error) => {
       console.log(error);
