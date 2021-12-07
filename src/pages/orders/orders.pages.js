@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { getOrders } from '../../api/api.get';
+import { Order } from '../../components/components.export';
 
 export const Oredrs = () => {
 
@@ -23,7 +24,7 @@ export const Oredrs = () => {
   return (
     <View>
       <Text>
-        orders
+        <Order />
       </Text>
     </View>
   )
