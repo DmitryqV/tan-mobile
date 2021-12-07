@@ -22,10 +22,16 @@ export const Oredrs = () => {
   }
 
   return (
-    <View>
-      <Text>
-        <Order />
-      </Text>
-    </View>
+    <>
+      {dataOrders !== undefined ?
+        <View>
+          {dataOrders.map((order) => {
+            return <Order props={order} />
+          })}
+        </View>
+        :
+        null
+      }
+    </>
   )
 }
