@@ -124,7 +124,6 @@ function getOrders(token, setDataOrders) {
     }
   })
     .then((response) => {
-      console.log(response.data.data);
       setDataOrders(response.data.data);
     })
     .catch((error) => {
