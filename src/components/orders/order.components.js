@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
   },
   moreInfo: {
     backgroundColor: '#ffffff',
+    paddingRight: 25,
   },
   hideMoreInfo: {
     display: 'none'
