@@ -8,7 +8,7 @@ const wait = (timeout) => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
-export const Oredrs = () => {
+export const Oredrs = ({ navigation }) => {
 
   const [refreshing, setRefreshing] = useState(false);
   const [dataOrders, setDataOrders] = useState();
@@ -31,6 +31,11 @@ export const Oredrs = () => {
         console.warn(err.message);
       });
   }
+
+  React.useEffect(
+    () => navigation.addListener('focus', () => setDataOrders()),
+    []
+  );
 
   return (
     <>
