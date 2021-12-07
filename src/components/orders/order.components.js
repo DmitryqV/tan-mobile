@@ -15,55 +15,27 @@ export const Order = ({ props }) => {
             &#5125;
           </Text>
           <Text style={styles.title}>{props.number}</Text>
+          <Text style={styles.title}>{props.date}</Text>
         </View>
       </Pressable>
-      {/* <View style={moreInfo === false ? styles.hideMoreInfo : styles.moreInfo}>
+      <View style={moreInfo === false ? styles.hideMoreInfo : styles.moreInfo}>
         <Text style={styles.spanMoreInfo}>
-          Учебный год
-          <Text style={styles.dataMoreInfo}>&#8199;{props.year_title}</Text>
+          Содержание
+          <Text style={styles.dataMoreInfo}>&#8199;{props.title}</Text>
         </Text>
         <Text style={styles.spanMoreInfo}>
-          Семестр
-          <Text style={styles.dataMoreInfo}>&#8199;{props.semester}</Text>
-        </Text>
-        <Text style={styles.spanMoreInfo}>
-          Форма контроля
-          <Text style={styles.dataMoreInfo}>&#8199;{props.controlaction_title}</Text>
-        </Text>
-        <Text style={styles.spanMoreInfo}>
-          Оценка в сессию
+          Статус
           <Text style={
             [styles.dataMoreInfo,
-            props.value_shorttitle_session !== 'неуваж.' ?
-              props.value_shorttitle_session !== 'незач.' ?
-                styles.greenText
-                :
-                styles.redText
+            props.state === 'Проведено' ?
+              styles.greenText
               :
               styles.redText
             ]}>
-            &#8199;{props.value_session_title}
+            &#8199;{props.state}
           </Text>
         </Text>
-        <Text style={styles.spanMoreInfo}>
-          Итоговая оценка
-          <Text style={
-            [styles.dataMoreInfo,
-            props.value_shorttitle !== 'неуваж.' ?
-              props.value_shorttitle !== 'незач.' ?
-                styles.greenText
-                :
-                styles.redText
-              :
-              styles.redText
-            ]}>
-            &#8199;{props.value_title}</Text>
-        </Text>
-        <Text style={styles.spanMoreInfo}>
-          Дата сдачи
-          <Text style={styles.dataMoreInfo}>  {props.mark_perform_date}</Text>
-        </Text>
-      </View> */}
+      </View>
     </>
   )
 }
