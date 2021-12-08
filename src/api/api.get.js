@@ -61,12 +61,14 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
-function getSchedule(token) {
-  axios.get(`${serverUrl}/api/v1/student/schedule`, {
+function getLessons(token, id, scheduleHandler) {
+  return axios.get(`${serverUrl}/api/v1/student/lessons`, {
     params: {
       api_token: token,
+      schedule_id: id
     }
   }).then((response) => {
+    scheduleHandler(response.data.data);
     console.log(response.data.data);
   })
     .catch((error) => {
@@ -74,4 +76,19 @@ function getSchedule(token) {
     })
 }
 
-export { getSchedule, checkStudent, getProfile, getStudentInfo, getEvaluations }
+
+function getSchedule(token, scheduleHandler, lessonsHandler) {
+  return axios.get(`${serverUrl}/api/v1/student/schedule`, {
+    params: {
+      api_token: token,
+    }
+  }).then((response) => {
+    scheduleHandler(response.data.data);
+    getLessons(token, response.data.data.id, lessonsHandler);
+  })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { getSchedule, checkStudent, getProfile, getStudentInfo, getEvaluations, getLessons }
