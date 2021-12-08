@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
+import { TrainingForm } from "../../components/components.export";
 
 export const Payment = () => {
 
@@ -18,9 +19,16 @@ export const Payment = () => {
   ];
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Для оплаты введите ваши данные.</Text>
       <Select props={[forms]} getSelectValue={getSelectValue} />
+      <TrainingForm />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+  },
+})
