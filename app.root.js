@@ -4,7 +4,16 @@ import { SafeAreaView } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Login, Profile, Main, Evaluations, Sdo, News, Oredrs } from './src/pages/index.export.js';
+import {
+  Login,
+  Profile,
+  Main,
+  Evaluations,
+  Sdo,
+  News,
+  Oredrs,
+  Payment
+} from './src/pages/index.export.js';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +30,7 @@ function MyDrawer({ onChangeIsLoggedIn }) {
       <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Зачетная книжка', title: 'Зачетная книжка' }} />
       <Drawer.Screen name="news" component={News} options={{ drawerLabel: 'Новости', title: 'Новости' }} />
       <Drawer.Screen name="orders" component={Oredrs} options={{ drawerLabel: 'Приказы', title: 'Приказы' }} />
+      <Drawer.Screen name="payment" component={Payment} options={{ drawerLabel: 'Оплата', title: 'Оплата' }} />
       <Drawer.Screen name="sdo" component={Sdo} options={{ drawerLabel: 'СДО', title: 'СДО' }} />
     </Drawer.Navigator >
   );
