@@ -4,8 +4,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { getSchedule, getLessons } from '../../api/api.get';
 
 export const Schedule = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(undefined);
   const [lessons, setLessons] = useState([]);
+  const [odd, setOdd] = useState(1);
+
   if (state === undefined) {
     storage.load({
       key: 'token',
@@ -17,13 +19,13 @@ export const Schedule = () => {
       .catch(err => {
         console.warn(err.message);
       });
-  }
+  };
 
   return (
     <View>
       {
         state !== undefined ?
-          <Text>
+          <View>
             группа {state.group.title}
             {state.group.faculty.accusativecasetitle}
             <View style={styles.container}>
@@ -33,15 +35,13 @@ export const Schedule = () => {
                     <Text>{el}</Text>
                     <View>
                       {lessons.filter((el) => el.time.weekday === index).map((el) => {
-                        if (el.time.odd > 0) {
+                        if (el.time.odd === odd) {
                           return (
                             <View key={el.time.id}>
                               <Text>{el.time.number}) {el.time.start_time} / {el.time.end_time} {el.workplan_row.title} {el.type.title}</Text>
                               <Text>{el.room}</Text>
                               <View>
-                                {el.teachers.map(el => {
-                                  return <Text key={el.id}>{el.name}</Text>
-                                })}
+                                {el.teachers.map(el => <Text key={el.id}>{el.name}</Text>)}
                               </View>
                             </View>
                           );
@@ -52,7 +52,7 @@ export const Schedule = () => {
                 )
               })}
             </View>
-          </Text>
+          </View>
           :
           null
       }
