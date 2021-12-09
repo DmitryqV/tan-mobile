@@ -12,23 +12,43 @@ export const TrainingForm = () => {
     <View style={styles.form}>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>Номер договора<Text style={{ color: 'red' }}>*</Text></Text>
-        <TextInput style={styles.input} onChangeText={onChangeContractNumber} />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeContractNumber}
+          placeholder='0000-00'
+        />
       </View>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>ФИО (заказчик)<Text style={{ color: 'red' }}>*</Text></Text>
-        <TextInput style={styles.input} onChangeText={onChangeNameCustomer} />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeContractNumber}
+          placeholder='Иванов Иван Иванович'
+        />
       </View>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>ФИО (обучающегося)<Text style={{ color: 'red' }}>*</Text></Text>
-        <TextInput style={styles.input} onChangeText={onChangeNameStudent} />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeContractNumber}
+          placeholder='Иванова Анастасия Ивановна'
+        />
       </View>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>Электронная почта<Text style={{ color: 'red' }}>*</Text></Text>
-        <TextInput style={styles.input} onChangeText={onChangeEmail} />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeContractNumber}
+          placeholder='ivanov@pgups.ru'
+        />
       </View>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
-        <TextInput style={styles.input} onChangeText={onChangePaymentAmount} />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeContractNumber}
+          placeholder='46000'
+        />
       </View>
       <TouchableOpacity>
         <View>
