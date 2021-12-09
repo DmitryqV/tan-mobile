@@ -9,10 +9,15 @@ export const UniversityResourcesForm = () => {
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
   const [paymentAmount, onChangePaymentAmount] = useState('');
-  const [selectValue, setSelectValue] = useState(null);
+  const [selectValueMonth, setSelectValueMonth] = useState(null);
+  const [selectValuePeriod, setSelectValuePeriod] = useState(null);
 
-  function getSelectValue(value) {
-    setSelectValue(value);
+  function getSelectValueMonth(value) {
+    setSelectValueMonth(value);
+  }
+
+  function getSelectValuePeriod(value) {
+    setSelectValuePeriod(value);
   }
 
   const months = [
@@ -28,6 +33,12 @@ export const UniversityResourcesForm = () => {
     { title: 'Октябрь', id: 10 },
     { title: 'Ноябрь', id: 11 },
     { title: 'Декабрь', id: 12 },
+  ];
+
+  const periods = [
+    { title: 'Первая половина месяца', id: 1 },
+    { title: 'Вторая половина месяца', id: 2 },
+    { title: 'Месяц полностью', id: 3 },
   ];
 
   return (
@@ -66,7 +77,11 @@ export const UniversityResourcesForm = () => {
       </View>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>Месяц<Text style={{ color: 'red' }}>*</Text></Text>
-        <Select props={[months]} getSelectValue={getSelectValue} />
+        <Select props={[months]} getSelectValue={getSelectValueMonth} />
+      </View>
+      <View style={styles.textInput}>
+        <Text style={styles.inputTitle}>Период<Text style={{ color: 'red' }}>*</Text></Text>
+        <Select props={[periods]} getSelectValue={getSelectValuePeriod} />
       </View>
       <View style={styles.textInput}>
         <Text style={styles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
