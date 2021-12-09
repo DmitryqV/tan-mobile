@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Platform, StyleSheet } from "react-native";
 
 export const TrainingForm = () => {
 
@@ -16,6 +16,7 @@ export const TrainingForm = () => {
           style={styles.input}
           onChangeText={onChangeContractNumber}
           placeholder='0000-00'
+          keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
       <View style={styles.textInput}>
@@ -48,6 +49,7 @@ export const TrainingForm = () => {
           style={styles.input}
           onChangeText={onChangeContractNumber}
           placeholder='46000'
+          keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
       <TouchableOpacity>
