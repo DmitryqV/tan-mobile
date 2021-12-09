@@ -5,4 +5,4 @@ export { FilterSubject } from './evaluations/filter.components';
 export { Select } from './select.components';
 export { PreviewNews } from './news/preview.components'
 export { Order } from './orders/order.components';
-export { TrainingForm, UniversityResourcesForm } from './payment/payment.export';
+export { TrainingForm, UniversityResourcesForm, FdkForm } from './payment/payment.export';

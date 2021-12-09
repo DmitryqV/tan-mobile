@@ -1,5 +1,5 @@
 import React from "react";
-import View from "react-native-gesture-handler/lib/typescript/GestureHandlerRootView";
+import { View } from "react-native";
 
 export const FdkForm = () => {
   return (
