@@ -52,10 +52,8 @@ export const TrainingForm = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity>
-        <View>
-          <Text>Оплатить</Text>
-        </View>
+      <TouchableOpacity style={styles.payButton}>
+        <Text style={styles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>
   )
@@ -80,5 +78,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#F2F2F2',
     borderRadius: 4,
-  }
+  },
+  payButton: {
+    width: '65%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    backgroundColor: '#5d78ff',
+    marginTop: 10,
+    marginBottom: 10,
+    maxWidth: 400
+  },
+  payButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+  },
 })
