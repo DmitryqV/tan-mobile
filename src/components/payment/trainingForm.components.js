@@ -23,7 +23,7 @@ export const TrainingForm = () => {
         <Text style={styles.inputTitle}>ФИО (заказчик)<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeContractNumber}
+          onChangeText={onChangeNameCustomer}
           placeholder='Иванов Иван Иванович'
         />
       </View>
@@ -31,7 +31,7 @@ export const TrainingForm = () => {
         <Text style={styles.inputTitle}>ФИО (обучающегося)<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeContractNumber}
+          onChangeText={onChangeNameStudent}
           placeholder='Иванова Анастасия Ивановна'
         />
       </View>
@@ -39,7 +39,7 @@ export const TrainingForm = () => {
         <Text style={styles.inputTitle}>Электронная почта<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeContractNumber}
+          onChangeText={onChangeEmail}
           placeholder='ivanov@pgups.ru'
         />
       </View>
@@ -47,7 +47,7 @@ export const TrainingForm = () => {
         <Text style={styles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeContractNumber}
+          onChangeText={onChangePaymentAmount}
           placeholder='46000'
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
