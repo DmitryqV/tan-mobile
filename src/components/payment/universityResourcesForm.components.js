@@ -108,14 +108,14 @@ const styles = StyleSheet.create({
     width: '95%'
   },
   inputTitle: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 5,
   },
   input: {
     padding: 0,
     paddingLeft: 5,
     height: 35,
-    marginTop: 5,
-    marginBottom: 10,
     backgroundColor: '#F2F2F2',
     borderRadius: 4,
   },
