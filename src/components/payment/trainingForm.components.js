@@ -11,24 +11,23 @@ export const TrainingForm = () => {
   return (
     <View style={styles.form}>
       <View style={styles.textInput}>
-        <Text>Номер договора*</Text>
+        <Text style={styles.inputTitle}>Номер договора<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput style={styles.input} onChangeText={onChangeContractNumber} />
       </View>
       <View style={styles.textInput}>
-        <Text>ФИО (заказчик)*</Text>
+        <Text style={styles.inputTitle}>ФИО (заказчик)<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput style={styles.input} onChangeText={onChangeNameCustomer} />
       </View>
       <View style={styles.textInput}>
-        <Text>ФИО (обучающегося)*</Text>
+        <Text style={styles.inputTitle}>ФИО (обучающегося)<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput style={styles.input} onChangeText={onChangeNameStudent} />
       </View>
       <View style={styles.textInput}>
-
-        <Text>Электронная почта *</Text>
+        <Text style={styles.inputTitle}>Электронная почта<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput style={styles.input} onChangeText={onChangeEmail} />
       </View>
       <View style={styles.textInput}>
-        <Text>Сумма оплаты *</Text>
+        <Text style={styles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput style={styles.input} onChangeText={onChangePaymentAmount} />
       </View>
       <TouchableOpacity>
@@ -48,12 +47,16 @@ const styles = StyleSheet.create({
   textInput: {
     width: '95%'
   },
+  inputTitle: {
+    fontWeight: 'bold'
+  },
   input: {
     padding: 0,
-    borderColor: '#000000',
-    borderWidth: 1,
+    paddingLeft: 5,
     height: 35,
     marginTop: 5,
-    marginBottom: 10
+    marginBottom: 10,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 4,
   }
 })
