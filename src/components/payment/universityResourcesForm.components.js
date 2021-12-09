@@ -4,7 +4,7 @@ import { Select } from "../select.components";
 
 export const UniversityResourcesForm = () => {
 
-  const [contractNumber, onChangeContractNumber] = useState('');
+  const [login, onChangeLogin] = useState('');
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
@@ -47,7 +47,7 @@ export const UniversityResourcesForm = () => {
         <Text style={styles.inputTitle}>Логин<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeContractNumber}
+          onChangeText={onChangeLogin}
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
