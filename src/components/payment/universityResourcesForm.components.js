@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: '#5d78ff',
-    marginTop: 10,
+    marginTop: 25,
     marginBottom: 10,
     maxWidth: 400
   },
