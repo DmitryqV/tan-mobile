@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Platform, StyleSheet } from "react-native";
 import { Select } from "../select.components";
 
-export const FdkForm = () => {
+export const DfkForm = () => {
 
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
