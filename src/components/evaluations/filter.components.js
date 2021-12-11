@@ -27,7 +27,7 @@ export const FilterSubject = ({ dataSession, dataEducationYear, setFilters }) =>
           <View>
             <Text style={styles.titleFilter}>Учебный год: </Text>
             {/* В props будем передавать свои данные, а кастом свойства в доп.свойства элемента*/}
-            <Select style={styles.select} props={[dataEducationYear]} getSelectValue={getSelectValue} width={160} />
+            <Select style={styles.select} props={[dataEducationYear]} getSelectValue={getSelectValue} width={160} firstOption={'Всё'} />
           </View>
           <View>
             <Text style={styles.titleFilter}>Семестр: </Text>
