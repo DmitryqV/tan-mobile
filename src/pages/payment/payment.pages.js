@@ -22,7 +22,13 @@ export const Payment = () => {
     <View style={styles.container}>
       <Text>Для оплаты введите ваши данные.</Text>
       <Select props={[forms]} getSelectValue={getSelectValue} />
-      <Dormitory />
+      {selectValue === 'Обучение' ? <TrainingForm /> :
+        selectValue === 'Ресурсы университета' ? <UniversityResourcesForm /> :
+          selectValue === 'ДФК' ? <DfkForm /> :
+            selectValue === 'Общежитие' ? <Dormitory />
+              :
+              null
+      }
     </View>
   )
 }
