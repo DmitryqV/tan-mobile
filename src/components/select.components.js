@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 
-export const Select = ({ props, getSelectValue, width }) => {
-
+export const Select = ({ props, getSelectValue, width, firstOption }) => {
   const [openOptions, setOpenOptions] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
 
@@ -11,15 +10,29 @@ export const Select = ({ props, getSelectValue, width }) => {
       <View style={{ maxWidth: width }}>
         <Pressable onPress={() => { openOptions ? setOpenOptions(false) : setOpenOptions(true) }}>
           <View style={{ maxWidth: width }, styles.select}>
-            <Text style={styles.value}>{selectedValue !== null ? selectedValue : 'Всё'}</Text>
+            <Text style={styles.value}>
+              {selectedValue !== null ?
+                selectedValue
+                :
+                firstOption === null ?
+                  setSelectedValue(props[0][0].title)
+                  :
+                  firstOption
+              }
+            </Text>
             <Text style={[styles.arrow, { transform: [{ rotate: "90deg" }] }]}>&#5171;</Text>
           </View>
         </Pressable>
       </View>
       <View style={openOptions ? [styles.optionsList, { maxWidth: width }] : styles.hide}>
-        <Pressable onPress={() => { setSelectedValue(null), setOpenOptions(false), getSelectValue(null) }}>
-          <Text style={styles.option}>Всё</Text>
-        </Pressable>
+        {firstOption !== null ?
+          <Pressable onPress={() => { setSelectedValue(null), setOpenOptions(false), getSelectValue(null) }}>
+            <Text style={styles.option}>{firstOption}</Text>
+          </Pressable>
+          :
+          null
+        }
+
         {
 
           props[0] !== undefined ?
