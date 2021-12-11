@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
-import { TrainingForm, UniversityResourcesForm, DfkForm } from "../../components/components.export";
+import { TrainingForm, UniversityResourcesForm, DfkForm, Dormitory } from "../../components/components.export";
 
 export const Payment = () => {
 
@@ -22,7 +22,7 @@ export const Payment = () => {
     <View style={styles.container}>
       <Text>Для оплаты введите ваши данные.</Text>
       <Select props={[forms]} getSelectValue={getSelectValue} />
-      <DfkForm />
+      <Dormitory />
     </View>
   )
 }
