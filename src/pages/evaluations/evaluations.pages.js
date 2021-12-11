@@ -21,6 +21,7 @@ export const Evaluations = () => {
     onChangeDataEvaluations();
     setDataSession();
     setDataEducationYear();
+    setFilters();
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
