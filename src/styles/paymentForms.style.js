@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const paymentFormsStyles = StyleSheet.create({
   form: {
-    padding: 10,
+    marginTop: 10,
     alignItems: 'center'
   },
   textInput: {

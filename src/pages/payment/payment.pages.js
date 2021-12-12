@@ -36,6 +36,7 @@ export const Payment = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    height: '100%'
+    height: '100%',
+    padding: 20,
   },
 })
