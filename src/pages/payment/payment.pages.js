@@ -20,7 +20,7 @@ export const Payment = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Для оплаты введите ваши данные.</Text>
+      <Text style={styles.title}>Выберите форму для оплаты</Text>
       <Select props={[forms]} getSelectValue={getSelectValue} firstOption={null} />
       {selectValue === 'Обучение' ? <TrainingForm /> :
         selectValue === 'Ресурсы университета' ? <UniversityResourcesForm /> :
@@ -39,4 +39,8 @@ const styles = StyleSheet.create({
     height: '100%',
     padding: 20,
   },
+  title: {
+    fontWeight: 'bold',
+    marginBottom: 10,
+  }
 })
