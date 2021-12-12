@@ -78,11 +78,11 @@ export const UniversityResourcesForm = () => {
       </View>
       <View style={paymentFormsStyles.textInput}>
         <Text style={paymentFormsStyles.inputTitle}>Месяц<Text style={{ color: 'red' }}>*</Text></Text>
-        <Select props={[months]} getSelectValue={getSelectValueMonth} />
+        <Select props={[months]} getSelectValue={getSelectValueMonth} firstOption={'Выберите месяц'} />
       </View>
       <View style={paymentFormsStyles.textInput}>
         <Text style={paymentFormsStyles.inputTitle}>Период<Text style={{ color: 'red' }}>*</Text></Text>
-        <Select props={[periods]} getSelectValue={getSelectValuePeriod} />
+        <Select props={[periods]} getSelectValue={getSelectValuePeriod} firstOption={'Выберите период'} />
       </View>
       <View style={paymentFormsStyles.textInput}>
         <Text style={paymentFormsStyles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>

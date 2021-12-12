@@ -66,7 +66,7 @@ export const Dormitory = () => {
       </View>
       <View style={paymentFormsStyles.textInput}>
         <Text style={paymentFormsStyles.inputTitle}>Тип услуги<Text style={{ color: 'red' }}>*</Text></Text>
-        <Select props={[services]} getSelectValue={getSelectValue} />
+        <Select props={[services]} getSelectValue={getSelectValue} firstOption={'Выберите тип услуги'} />
       </View>
       <View style={paymentFormsStyles.textInput}>
         <Text style={paymentFormsStyles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
