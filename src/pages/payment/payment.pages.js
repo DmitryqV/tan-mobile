@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
 import { TrainingForm, UniversityResourcesForm, DfkForm, Dormitory } from "../../components/components.export";
 
-export const Payment = () => {
+export const Payment = ({ navigation }) => {
 
   const forms = [
     { title: 'Обучение', id: 1 },
@@ -17,6 +17,11 @@ export const Payment = () => {
   function getSelectValue(value) {
     setSelectValue(value);
   }
+
+  React.useEffect(
+    () => navigation.addListener('focus', () => setSelectValue(forms[0].title)),
+    []
+  );
 
   return (
     <View style={styles.container}>
