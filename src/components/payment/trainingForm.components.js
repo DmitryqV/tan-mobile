@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const TrainingForm = () => {
+export const TrainingForm = ({ payTraning }) => {
 
   const [contractNumber, onChangeContractNumber] = useState('');
   const [nameCustomer, onChangeNameCustomer] = useState('');
@@ -53,7 +53,12 @@ export const TrainingForm = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity style={paymentFormsStyles.payButton}>
+      <TouchableOpacity
+        style={paymentFormsStyles.payButton}
+        onPress={() => {
+          payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount)
+        }}
+      >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
 import { TrainingForm, UniversityResourcesForm, DfkForm, Dormitory } from "../../components/components.export";
+import { payTraning } from "../../api/api.get";
 
 export const Payment = ({ navigation }) => {
 
@@ -27,7 +28,7 @@ export const Payment = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Выберите форму для оплаты</Text>
       <Select props={[forms]} getSelectValue={getSelectValue} firstOption={null} />
-      {selectValue === 'Обучение' ? <TrainingForm /> :
+      {selectValue === 'Обучение' ? <TrainingForm payTraning={payTraning} /> :
         selectValue === 'Ресурсы университета' ? <UniversityResourcesForm /> :
           selectValue === 'ДФК' ? <DfkForm /> :
             selectValue === 'Общежитие' ? <Dormitory />

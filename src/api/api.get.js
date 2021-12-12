@@ -1,5 +1,6 @@
 import axios from 'axios';
 const serverUrl = 'http://178.154.210.118';
+const paymentUrl = 'https://www.pgups.ru/oplata-processing.php';
 
 function checkStudent(token, onChangeIsLoggedIn, onChangeLoginChecker) {
   axios.get(`${serverUrl}/api/v1/is/student`, {
@@ -131,4 +132,22 @@ function getOrders(token, setDataOrders) {
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders }
+function payTraning(orderid, clientid, client_phone, client_email, sum) {
+  axios.get(paymentUrl, {
+    params: {
+      orderid: orderid,
+      clientid: clientid,
+      client_phone: client_phone,
+      client_email: client_email,
+      sum: sum,
+    }
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning }
