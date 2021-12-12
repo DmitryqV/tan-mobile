@@ -1,6 +1,6 @@
 import axios from 'axios';
 const serverUrl = 'http://178.154.210.118';
-const paymentUrl = 'https://www.pgups.ru/oplata-processing.php';
+const paymentUrl = 'https://www.pgups.ru/oplata-processing-api.php';
 
 function checkStudent(token, onChangeIsLoggedIn, onChangeLoginChecker) {
   axios.get(`${serverUrl}/api/v1/is/student`, {
@@ -135,6 +135,9 @@ function getOrders(token, setDataOrders) {
 function payTraning(orderid, clientid, client_phone, client_email, sum) {
   axios.get(paymentUrl, {
     params: {
+      PGUPS_KEY: '1KjsnKSDJJJJJJiiefDLLLLsdkk4solpLSPGUPSKEY',
+      service_name: 'Оплата за обучение',
+      service_type: 1,
       orderid: orderid,
       clientid: clientid,
       client_phone: client_phone,
