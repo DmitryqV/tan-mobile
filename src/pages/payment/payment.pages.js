@@ -5,12 +5,6 @@ import { TrainingForm, UniversityResourcesForm, DfkForm, Dormitory } from "../..
 
 export const Payment = () => {
 
-  const [selectValue, setSelectValue] = useState(null);
-
-  function getSelectValue(value) {
-    setSelectValue(value);
-  }
-
   const forms = [
     { title: 'Обучение', id: 1 },
     { title: 'Ресурсы университета', id: 2 },
@@ -18,10 +12,16 @@ export const Payment = () => {
     { title: 'Общежитие', id: 4 },
   ];
 
+  const [selectValue, setSelectValue] = useState(forms[0].title);
+
+  function getSelectValue(value) {
+    setSelectValue(value);
+  }
+
   return (
     <View style={styles.container}>
       <Text>Для оплаты введите ваши данные.</Text>
-      <Select props={[forms]} getSelectValue={getSelectValue} />
+      <Select props={[forms]} getSelectValue={getSelectValue} firstOption={null} />
       {selectValue === 'Обучение' ? <TrainingForm /> :
         selectValue === 'Ресурсы университета' ? <UniversityResourcesForm /> :
           selectValue === 'ДФК' ? <DfkForm /> :
