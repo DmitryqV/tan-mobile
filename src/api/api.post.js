@@ -21,4 +21,36 @@ function loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn) {
     });
 }
 
-export { loginPOST }
+function updatePassword(api_token, current_password, new_password, new_password_confirmation, updatePasswordHandler) {
+  axios.post(`${serverUrl}/api/v1/user/profile/password/update`, {
+    api_token, current_password, new_password, new_password_confirmation
+  })
+    .then(function (response) {
+      updatePasswordHandler({ successfully: 'Пароль успешно изменен!' });
+    })
+    .catch(function () {
+      updatePasswordHandler({ error: 'Ошибка (Пароль не соответствует длине в 8 символов, параметры не переданы подтверждение не соответствует новому паролю или старый пароль введен некорректно).' })
+    });
+};
+
+function updatePhone(api_token, phone, updatePhoneHandler) {
+  axios.post(`${serverUrl}/api/v1/user/profile/phone/update`, {
+    api_token, phone
+  }).then(() => {
+    updatePhoneHandler({ ok: 'ok' })
+  }).catch(() => {
+    updatePhoneHandler({ error: 'Ошибка!' });
+  })
+}
+
+function confirmPhone(api_token, code, confirmPhoneHandler) {
+  axios.post(`${serverUrl}/api/v1/user/profile/phone/code`, {
+    api_token, code
+  }).then(() => {
+    confirmPhoneHandler({ ok: 'Телефон привязан!' })
+  }).catch(() => {
+    confirmPhoneHandler({ error: 'Ошибка (параметр phone отсутствует или номер телефона привязан уже к другому пользователю)' })
+  })
+}
+
+export { loginPOST, updatePhone, updatePassword, confirmPhone }
