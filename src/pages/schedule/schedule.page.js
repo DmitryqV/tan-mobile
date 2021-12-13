@@ -50,9 +50,10 @@ export const Schedule = () => {
                     if (el.time.odd === odd) {
                       return (
                         <View key={el.time.id} style={styles.pair}>
-                          <Text>{el.time.number} пара {el.time.start_time} - {el.time.end_time}</Text>
-                          <Text><Text style={styles.typePair}>{el.type.title}</Text></Text>
-                          <Text style={styles.pairTitle}>{el.workplan_row.title}</Text>
+                          <Text style={styles.h2}>{el.time.number} пара {el.time.start_time} - {el.time.end_time}</Text>
+                          <Text style={styles.pairTitle}>{el.workplan_row.title}
+                            <Text><Text style={styles.typePair}>{el.type.title}</Text></Text>
+                          </Text>
                           <Text>Аудитория: {el.room}</Text>
                           <Text>
                             Преподаватель: {el.teachers.map(el => <Text key={el.id}>{el.name}</Text>)}
@@ -75,14 +76,20 @@ export const Schedule = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#f9f9f9',
     padding: 10,
-    Width: 300,
+    minWidth: 300,
+    Width: '100%',
     height: 'auto',
     flex: 1,
     flexDirection: 'column',
-    margin: [0, 'auto']
   },
   h1: {
+    color: '#212121',
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  h2: {
     color: '#212121',
     fontSize: 14,
     fontWeight: 'bold'
@@ -124,13 +131,15 @@ const styles = StyleSheet.create({
     gap: 5
   },
   pairTitle: {
-    wordBreak: 'break-all'
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 4
   },
   typePair: {
-    width: 'auto',
     padding: 4,
     borderRadius: 5,
-    backgroundColor: '#5d78ff',
-    color: '#fff'
+    backgroundColor: 'rgb(240, 243, 255)',
+    fontWeight: 'bold',
+    color: 'rgb(93, 120, 255)'
   }
 });
