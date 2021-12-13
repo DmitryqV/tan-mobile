@@ -13,7 +13,8 @@ import {
   News,
   Oredrs,
   Payment,
-  Schedule
+  Schedule,
+  Settings
 } from './src/pages/index.export.js';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -36,6 +37,8 @@ function MyDrawer({ onChangeIsLoggedIn }) {
       <Drawer.Screen name="orders" component={Oredrs} options={{ drawerLabel: 'Приказы', title: 'Приказы' }} />
       <Drawer.Screen name="payment" component={Payment} options={{ drawerLabel: 'Оплата', title: 'Оплата' }} />
       <Drawer.Screen name="sdo" component={Sdo} options={{ drawerLabel: 'СДО', title: 'СДО' }} />
+
+      <Drawer.Screen name="settings" component={Settings} options={{ drawerLabel: 'Настройки', title: 'Настройки' }} />
     </Drawer.Navigator >
   );
 }

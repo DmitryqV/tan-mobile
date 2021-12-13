@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import storage from '../../utils/storage.utils';
+import { updatePassword, updatePhone, confirmPhone } from "../../api/api.post";
 
 export const Settings = () => {
-  const [updatePhoneHandler, updatePhone] = useState();
-  const [updatePasswordHandler, updatePassword] = useState();
-  const [confirmPhoneHandler, confirmPhone] = useState();
+  const [updatePhoneHandler, uPhone] = useState();
+  const [updatePasswordHandler, uPassword] = useState();
+  const [confirmPhoneHandler, cPhone] = useState();
   const [token, setToken] = useState(undefined);
 
   storage.load({
