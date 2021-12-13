@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { loginPOST } from "../../api/api.post";
+import Logo from '../../images/logo.png'
 
 export const Login = ({ onChangeIsLoggedIn }) => {
 
@@ -10,7 +11,11 @@ export const Login = ({ onChangeIsLoggedIn }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.loginTitle}>Вход</Text>
+      <Image
+        style={styles.logo}
+        source={Logo}
+      />
+      <Text style={styles.loginTitle}>Вход в систему</Text>
       <TextInput
         id='inputEmail'
         style={styles.inputLogin}
@@ -35,17 +40,17 @@ export const Login = ({ onChangeIsLoggedIn }) => {
             null
       }
 
-      <Pressable
+      <TouchableOpacity
         style={styles.loginButton}
         onPress={() => {
           loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn)
         }}
       >
         <Text style={styles.loginButtonText}>Войти</Text>
-      </Pressable>
-      <Pressable>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text style={styles.buttonRecoveryPassword}>Восстановить пароль</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View >
   );
 }
@@ -57,11 +62,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logo: {
+    width: 70,
+    height: 70,
+    marginBottom: 40
+  },
   loginTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 15,
-
+    color: '#242939'
   },
   inputLogin: {
     width: '65%',
@@ -90,8 +99,9 @@ const styles = StyleSheet.create({
   },
   buttonRecoveryPassword: {
     color: '#d4d4d4',
+    marginBottom: 110
   },
   errorTxt: {
     color: 'red'
-  }
+  },
 })

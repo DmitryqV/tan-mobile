@@ -61,6 +61,7 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
+<<<<<<< HEAD
 function getLessons(token, id, scheduleHandler) {
   return axios.get(`${serverUrl}/api/v1/student/lessons`, {
     params: {
@@ -71,11 +72,23 @@ function getLessons(token, id, scheduleHandler) {
     scheduleHandler(response.data.data);
     console.log(response.data.data);
   })
+=======
+function getSession(token, setDataSession) {
+  axios.get(`${serverUrl}/api/v1/student/marks/distributionSession`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setDataSession(response.data);
+    })
+>>>>>>> origin/main
     .catch((error) => {
       console.log(error);
     })
 }
 
+<<<<<<< HEAD
 
 function getSchedule(token, scheduleHandler, lessonsHandler) {
   return axios.get(`${serverUrl}/api/v1/student/schedule`, {
@@ -87,9 +100,66 @@ function getSchedule(token, scheduleHandler, lessonsHandler) {
     scheduleHandler(response.data.data);
     getLessons(token, response.data.data.id, lessonsHandler);
   })
+=======
+function getEducationYear(token, setDataEducationYear) {
+  axios.get(`${serverUrl}/api/v1/student/marks/edu-year`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setDataEducationYear(response.data);
+    })
     .catch((error) => {
       console.log(error);
     })
 }
 
+function getSdoLink(token, setLinkSdo) {
+  axios.get(`${serverUrl}/api/v1/student/sdo/link`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setLinkSdo(response.data.link);
+    })
+    .catch(() => {
+      alert('К сожалению не можем отобразить данную информацию');
+    })
+}
+
+function getNews(token, setNewsData) {
+  axios.get(`${serverUrl}/api/v1/news`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((request) => {
+      setNewsData(request.data.data)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+function getOrders(token, setDataOrders) {
+  axios.get(`${serverUrl}/api/v1/student/orders`, {
+    params: {
+      api_token: token,
+    }
+  })
+    .then((response) => {
+      setDataOrders(response.data.data);
+    })
+>>>>>>> origin/main
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+<<<<<<< HEAD
 export { getSchedule, checkStudent, getProfile, getStudentInfo, getEvaluations, getLessons }
+=======
+export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders }
+>>>>>>> origin/main

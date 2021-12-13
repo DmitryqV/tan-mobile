@@ -4,3 +4,7 @@ export { Main } from './main/main.page';
 export { Evaluations } from './evaluations/evaluations.page';
 export { Schedule } from './schedule/schedule.page';
 export { Settings } from './settings/settings.page';
+export { Sdo } from './sdo/sdo.pages';
+export { News } from './news/news.pages';
+export { Oredrs } from './orders/orders.pages';
+export { Payment } from './payment/payment.pages';
