@@ -61,6 +61,18 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
+<<<<<<< HEAD
+function getLessons(token, id, scheduleHandler) {
+  return axios.get(`${serverUrl}/api/v1/student/lessons`, {
+    params: {
+      api_token: token,
+      schedule_id: id
+    }
+  }).then((response) => {
+    scheduleHandler(response.data.data);
+    console.log(response.data.data);
+  })
+=======
 function getSession(token, setDataSession) {
   axios.get(`${serverUrl}/api/v1/student/marks/distributionSession`, {
     params: {
@@ -70,11 +82,25 @@ function getSession(token, setDataSession) {
     .then((response) => {
       setDataSession(response.data);
     })
+>>>>>>> origin/main
     .catch((error) => {
       console.log(error);
     })
 }
 
+<<<<<<< HEAD
+
+function getSchedule(token, scheduleHandler, lessonsHandler) {
+  return axios.get(`${serverUrl}/api/v1/student/schedule`, {
+    params: {
+      api_token: token,
+    }
+  }).then((response) => {
+    console.log(response.data);
+    scheduleHandler(response.data.data);
+    getLessons(token, response.data.data.id, lessonsHandler);
+  })
+=======
 function getEducationYear(token, setDataEducationYear) {
   axios.get(`${serverUrl}/api/v1/student/marks/edu-year`, {
     params: {
@@ -126,9 +152,14 @@ function getOrders(token, setDataOrders) {
     .then((response) => {
       setDataOrders(response.data.data);
     })
+>>>>>>> origin/main
     .catch((error) => {
       console.log(error);
     })
 }
 
+<<<<<<< HEAD
+export { getSchedule, checkStudent, getProfile, getStudentInfo, getEvaluations, getLessons }
+=======
 export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders }
+>>>>>>> origin/main
