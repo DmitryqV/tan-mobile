@@ -70,7 +70,6 @@ function getLessons(token, id, scheduleHandler) {
     }
   }).then((response) => {
     scheduleHandler(response.data.data);
-    console.log(response.data.data);
   })
 }
 
@@ -94,7 +93,6 @@ function getSchedule(token, scheduleHandler, lessonsHandler) {
       api_token: token,
     }
   }).then((response) => {
-    console.log(response.data);
     scheduleHandler(response.data.data);
     getLessons(token, response.data.data.id, lessonsHandler);
   })
