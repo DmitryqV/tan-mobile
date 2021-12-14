@@ -9,6 +9,24 @@ export const TrainingForm = ({ payTraning, setAnsver }) => {
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
   const [paymentAmount, onChangePaymentAmount] = useState('');
+  const [inputsChecker, setInputsChecker] = useState(null);
+
+  function inputsValueChecker(contractNumber, nameCustomer, nameStudent, email, paymentAmount) {
+    let inputsValue = [contractNumber, nameCustomer, nameStudent, email, paymentAmount];
+    let checker = 0;
+
+    inputsValue.map(value => value === '' ?
+      checker--
+      :
+      checker++
+    );
+
+    checker === 5 ?
+      payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount, setAnsver)
+      :
+      setInputsChecker(false);
+  }
+
   return (
     <View style={paymentFormsStyles.form}>
       <View style={paymentFormsStyles.textInput}>
@@ -53,10 +71,11 @@ export const TrainingForm = ({ payTraning, setAnsver }) => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
+      <Text style={inputsChecker === false ? paymentFormsStyles.errorText : paymentFormsStyles.hide}>Вы ввели не все данные</Text>
       <TouchableOpacity
         style={paymentFormsStyles.payButton}
         onPress={() => {
-          payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount, setAnsver)
+          inputsValueChecker(contractNumber, nameCustomer, nameStudent, email, paymentAmount)
         }}
       >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
