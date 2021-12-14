@@ -30,7 +30,7 @@ function MyDrawer({ onChangeIsLoggedIn }) {
       <Drawer.Screen name="profile" options={{ drawerLabel: 'Профиль', title: 'Профиль' }} >
         {() => <Profile onChangeIsLoggedIn={onChangeIsLoggedIn} />}
       </Drawer.Screen>
-      <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Зачетная книжка', title: 'Зачетная книжка' }} />
+      <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Оценки', title: 'Оценки' }} />
       <Drawer.Screen name="schedule" component={Schedule} options={{ drawerLabel: 'Расписание', title: 'Расписание' }} />
 
       <Drawer.Screen name="orders" component={Oredrs} options={{ drawerLabel: 'Приказы', title: 'Приказы' }} />
