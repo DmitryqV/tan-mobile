@@ -14,7 +14,7 @@ export const Dormitory = () => {
   const [selectValue, setSelectValue] = useState(null);
 
   function getSelectValue(value) {
-    setSelectValue(value);
+    value === 'Проживание' ? setSelectValue(6) : setSelectValue(7)
   }
 
   const services = [
