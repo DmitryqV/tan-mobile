@@ -47,7 +47,7 @@ export const Payment = ({ navigation }) => {
         :
         <>
           {
-            // openUrl()
+            openUrl()
           }
           <Text style={styles.goBackTitle}>
             Вы будете перенаправлены в браузер для оплаты. Если вы уже оплатили, то можете вернуться обратно.
