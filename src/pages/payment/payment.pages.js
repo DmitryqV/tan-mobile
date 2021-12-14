@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, Linking, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, Linking, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
 import { TrainingForm, UniversityResourcesForm, DfkForm, Dormitory } from "../../components/components.export";
 import { payTraning } from "../../api/api.get";
+import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
 export const Payment = ({ navigation }) => {
 
@@ -48,7 +49,15 @@ export const Payment = ({ navigation }) => {
           {
             openUrl()
           }
-          <Text>Вас перенесёт в браузер</Text>
+          <Text>Вы будете перенаправлены в браузер для оплаты</Text>
+          <TouchableOpacity
+            style={paymentFormsStyles.payGoBackButton}
+            onPress={() => {
+              payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount, setAnsver)
+            }}
+          >
+            <Text style={paymentFormsStyles.payGoBackButtonText}>Вернуться обратно</Text>
+          </TouchableOpacity>
         </>
 
       }

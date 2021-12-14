@@ -36,4 +36,20 @@ export const paymentFormsStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
+  payGoBackButton: {
+    width: '65%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    backgroundColor: '#5d78ff',
+    marginTop: 25,
+    marginBottom: 10,
+    maxWidth: 400
+  },
+  payGoBackButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+  },
 });
