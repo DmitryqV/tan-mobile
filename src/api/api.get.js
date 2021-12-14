@@ -62,6 +62,18 @@ function getEvaluations(token, onChangeDataEvaluations) {
     })
 }
 
+function getLessons(token, id, scheduleHandler) {
+  return axios.get(`${serverUrl}/api/v1/student/lessons`, {
+    params: {
+      api_token: token,
+      schedule_id: id
+    }
+  }).then((response) => {
+    scheduleHandler(response.data.data);
+    console.log(response.data.data);
+  })
+}
+
 function getSession(token, setDataSession) {
   axios.get(`${serverUrl}/api/v1/student/marks/distributionSession`, {
     params: {
@@ -74,6 +86,18 @@ function getSession(token, setDataSession) {
     .catch((error) => {
       console.log(error);
     })
+}
+
+function getSchedule(token, scheduleHandler, lessonsHandler) {
+  return axios.get(`${serverUrl}/api/v1/student/schedule`, {
+    params: {
+      api_token: token,
+    }
+  }).then((response) => {
+    console.log(response.data);
+    scheduleHandler(response.data.data);
+    getLessons(token, response.data.data.id, lessonsHandler);
+  })
 }
 
 function getEducationYear(token, setDataEducationYear) {
@@ -153,4 +177,4 @@ function payTraning(orderid, clientid, client_phone, client_email, sum, setAnsve
     })
 }
 
-export { checkStudent, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning }
+export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning };
