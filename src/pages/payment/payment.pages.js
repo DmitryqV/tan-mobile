@@ -31,7 +31,7 @@ export const Payment = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={ansver === null ? styles.container : styles.goBackContainer}>
       {ansver === null ?
         <>
           <Text style={styles.title}>Выберите форму для оплаты</Text>
@@ -47,13 +47,15 @@ export const Payment = ({ navigation }) => {
         :
         <>
           {
-            openUrl()
+            // openUrl()
           }
-          <Text>Вы будете перенаправлены в браузер для оплаты</Text>
+          <Text style={styles.goBackTitle}>
+            Вы будете перенаправлены в браузер для оплаты. Если вы уже оплатили, то можете вернуться обратно.
+          </Text>
           <TouchableOpacity
             style={paymentFormsStyles.payGoBackButton}
             onPress={() => {
-              payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount, setAnsver)
+              setAnsver(null)
             }}
           >
             <Text style={paymentFormsStyles.payGoBackButtonText}>Вернуться обратно</Text>
@@ -62,7 +64,7 @@ export const Payment = ({ navigation }) => {
 
       }
 
-    </View>
+    </View >
   )
 }
 
@@ -75,5 +77,15 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  goBackContainer: {
+    backgroundColor: '#fff',
+    height: '100%',
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  goBackTitle: {
+    fontSize: 16,
   }
 })
