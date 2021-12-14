@@ -37,10 +37,9 @@ export const Payment = ({ navigation }) => {
           <Select props={[forms]} getSelectValue={getSelectValue} firstOption={null} />
           {selectValue === 'Обучение' ? <TrainingForm payTraning={payTraning} setAnsver={setAnsver} /> :
             selectValue === 'Ресурсы университета' ? <UniversityResourcesForm /> :
-              selectValue === 'ДФК' ? <DfkForm /> :
-                selectValue === 'Общежитие' ? <Dormitory />
-                  :
-                  null
+              selectValue === 'Общежитие' ? <Dormitory />
+                :
+                null
           }
         </>
         :
