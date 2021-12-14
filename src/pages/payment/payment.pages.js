@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, Linking, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
-import { TrainingForm, UniversityResourcesForm, DfkForm, Dormitory } from "../../components/components.export";
+import { TrainingForm, UniversityResourcesForm, Dormitory } from "../../components/components.export";
 import { payTraning } from "../../api/api.get";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
@@ -10,8 +10,7 @@ export const Payment = ({ navigation }) => {
   const forms = [
     { title: 'Обучение', id: 1 },
     { title: 'Ресурсы университета', id: 2 },
-    { title: 'ДФК', id: 3 },
-    { title: 'Общежитие', id: 4 },
+    { title: 'Общежитие', id: 3 },
   ];
 
   const [ansver, setAnsver] = useState(null);
