@@ -11,6 +11,8 @@ export const TrainingForm = ({ payTraning, setAnsver }) => {
   const [paymentAmount, onChangePaymentAmount] = useState('');
   const [inputsChecker, setInputsChecker] = useState(null);
 
+
+  //Временно... Нужно будет переделать нормально
   function inputsValueChecker(contractNumber, nameCustomer, nameStudent, email, paymentAmount) {
     let inputsValue = [contractNumber, nameCustomer, nameStudent, email, paymentAmount];
     let checker = 0;
