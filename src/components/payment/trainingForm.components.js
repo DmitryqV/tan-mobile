@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const TrainingForm = ({ payTraning }) => {
+export const TrainingForm = ({ payTraning, setAnsver }) => {
 
   const [contractNumber, onChangeContractNumber] = useState('');
   const [nameCustomer, onChangeNameCustomer] = useState('');
@@ -56,7 +56,7 @@ export const TrainingForm = ({ payTraning }) => {
       <TouchableOpacity
         style={paymentFormsStyles.payButton}
         onPress={() => {
-          payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount)
+          payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount, setAnsver)
         }}
       >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>

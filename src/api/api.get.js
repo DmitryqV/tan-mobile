@@ -132,7 +132,7 @@ function getOrders(token, setDataOrders) {
     })
 }
 
-function payTraning(orderid, clientid, client_phone, client_email, sum) {
+function payTraning(orderid, clientid, client_phone, client_email, sum, setAnsver) {
   axios.get(paymentUrl, {
     params: {
       PGUPS_KEY: '1KjsnKSDJJJJJJiiefDLLLLsdkk4solpLSPGUPSKEY',
@@ -146,7 +146,7 @@ function payTraning(orderid, clientid, client_phone, client_email, sum) {
     }
   })
     .then((response) => {
-      console.log(response);
+      setAnsver(response);
     })
     .catch((error) => {
       console.log(error);
