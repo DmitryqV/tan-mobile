@@ -2,13 +2,33 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const TrainingForm = () => {
+export const TrainingForm = ({ payTraning, setAnsver }) => {
 
   const [contractNumber, onChangeContractNumber] = useState('');
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
   const [paymentAmount, onChangePaymentAmount] = useState('');
+  const [inputsChecker, setInputsChecker] = useState(null);
+
+
+  //Временно... Нужно будет переделать нормально
+  function inputsValueChecker(contractNumber, nameCustomer, nameStudent, email, paymentAmount) {
+    let inputsValue = [contractNumber, nameCustomer, nameStudent, email, paymentAmount];
+    let checker = 0;
+
+    inputsValue.map(value => value === '' ?
+      checker--
+      :
+      checker++
+    );
+
+    checker === 5 ?
+      payTraning(contractNumber, nameCustomer, nameStudent, email, paymentAmount, setAnsver)
+      :
+      setInputsChecker(false);
+  }
+
   return (
     <View style={paymentFormsStyles.form}>
       <View style={paymentFormsStyles.textInput}>
@@ -53,7 +73,13 @@ export const TrainingForm = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity style={paymentFormsStyles.payButton}>
+      <Text style={inputsChecker === false ? paymentFormsStyles.errorText : paymentFormsStyles.hide}>Вы ввели не все данные</Text>
+      <TouchableOpacity
+        style={paymentFormsStyles.payButton}
+        onPress={() => {
+          inputsValueChecker(contractNumber, nameCustomer, nameStudent, email, paymentAmount)
+        }}
+      >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 const serverUrl = 'http://178.154.210.118';
+const paymentUrl = 'https://www.pgups.ru/oplata-processing-api.php';
 
 function checkStudent(token, onChangeIsLoggedIn, onChangeLoginChecker) {
   axios.get(`${serverUrl}/api/v1/is/student`, {
@@ -69,7 +70,6 @@ function getLessons(token, id, scheduleHandler) {
     }
   }).then((response) => {
     scheduleHandler(response.data.data);
-    console.log(response.data.data);
   })
 }
 
@@ -93,7 +93,6 @@ function getSchedule(token, scheduleHandler, lessonsHandler) {
       api_token: token,
     }
   }).then((response) => {
-    console.log(response.data);
     scheduleHandler(response.data.data);
     getLessons(token, response.data.data.id, lessonsHandler);
   })
@@ -155,4 +154,25 @@ function getOrders(token, setDataOrders) {
     })
 }
 
-export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders };
+function payTraning(orderid, clientid, client_phone, client_email, sum, setAnsver) {
+  axios.get(paymentUrl, {
+    params: {
+      PGUPS_KEY: '1KjsnKSDJJJJJJiiefDLLLLsdkk4solpLSPGUPSKEY',
+      service_name: 'Оплата за обучение',
+      service_type: 1,
+      orderid: orderid,
+      clientid: clientid,
+      client_phone: client_phone,
+      client_email: client_email,
+      sum: sum,
+    }
+  })
+    .then((response) => {
+      setAnsver(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning };

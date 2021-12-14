@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export const paymentFormsStyles = StyleSheet.create({
+  hide: {
+    display: 'none'
+  },
   form: {
     marginTop: 10,
     alignItems: 'center'
@@ -20,6 +23,9 @@ export const paymentFormsStyles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     borderRadius: 4,
   },
+  errorText: {
+    color: 'red'
+  },
   payButton: {
     width: '65%',
     height: 35,
@@ -32,6 +38,22 @@ export const paymentFormsStyles = StyleSheet.create({
     maxWidth: 400
   },
   payButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  payGoBackButton: {
+    width: '65%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    backgroundColor: '#5d78ff',
+    marginTop: 25,
+    marginBottom: 10,
+    maxWidth: 400
+  },
+  payGoBackButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
