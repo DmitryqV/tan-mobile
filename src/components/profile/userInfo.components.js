@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, Text, StyleSheet, Dimensions } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -7,7 +7,12 @@ export const UserInfo = ({ dataProfile }) => {
   return (
     <View style={styles.userInfo}>
       <View style={styles.mainInfo}>
-        <View style={styles.profilePicture}></View>
+        <Image
+          style={styles.profilePicture}
+          source={{
+            uri: dataProfile.avatar_url,
+          }}
+        />
         <View style={styles.mainInfoText}>
           <Text style={styles.name}>{dataProfile.full_name}</Text>
         </View>
