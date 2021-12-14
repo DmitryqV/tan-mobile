@@ -48,9 +48,6 @@ export const Login = ({ onChangeIsLoggedIn }) => {
       >
         <Text style={styles.loginButtonText}>Войти</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.buttonRecoveryPassword}>Восстановить пароль</Text>
-      </TouchableOpacity>
     </View >
   );
 }
@@ -89,17 +86,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#5d78ff',
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 120,
     maxWidth: 400
   },
   loginButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
-  },
-  buttonRecoveryPassword: {
-    color: '#d4d4d4',
-    marginBottom: 110
   },
   errorTxt: {
     color: 'red'
