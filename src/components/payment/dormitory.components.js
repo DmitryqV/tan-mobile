@@ -77,6 +77,14 @@ export const Dormitory = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
+      <TouchableOpacity>
+        <View style={paymentFormsStyles.checkboxBlock}>
+          <View style={paymentFormsStyles.checkbox}>
+            <Text style={paymentFormsStyles.tick}>&#10003;</Text>
+          </View>
+          <Text style={paymentFormsStyles.checkboxSpan}>Я являюсь студентом Университета ПГУПС</Text>
+        </View>
+      </TouchableOpacity>
       <TouchableOpacity style={paymentFormsStyles.payButton}>
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
