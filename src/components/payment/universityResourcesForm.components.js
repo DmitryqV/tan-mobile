@@ -13,6 +13,28 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
   const [selectValueMonth, setSelectValueMonth] = useState(null);
   const [selectValuePeriod, setSelectValuePeriod] = useState(null);
   const [textPeriod, setTextPeriod] = useState();
+  const [inputsChecker, setInputsChecker] = useState(null);
+
+  //Временно... Нужно будет переделать нормально
+  function inputsValueChecker(login, nameCustomer, nameStudent, email, paymentAmount, selectValueMonth, selectValuePeriod, textPeriod) {
+    let inputsValue = [login, nameCustomer, nameStudent, email];
+    let checker = 0;
+
+    selectValueMonth !== 0 ? checker++ : checker--;
+    selectValuePeriod !== null ? checker++ : checker--;
+    textPeriod !== undefined ? checker++ : checker--;
+
+    inputsValue.map(value => value === '' ?
+      checker--
+      :
+      checker++
+    );
+    console.log(checker);
+    checker === 7 ?
+      payUniversityRes('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383', login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver)
+      :
+      setInputsChecker(false);
+  }
 
   function getSelectValueMonth(value) {
     setSelectValueMonth(value);
@@ -109,14 +131,15 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
+      <Text
+        style={inputsChecker === false ? paymentFormsStyles.errorText : paymentFormsStyles.hide}
+      >
+        Вы ввели не все данные
+      </Text>
       <TouchableOpacity
         style={paymentFormsStyles.payButton}
         onPress={() => {
-          // createServiceName();
-          // serviceName !== null ?
-          payUniversityRes('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383', login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver)
-          // :
-          // null
+          inputsValueChecker(login, nameCustomer, nameStudent, email, paymentAmount, selectValueMonth, selectValuePeriod, textPeriod)
         }}
       >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
