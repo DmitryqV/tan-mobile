@@ -29,7 +29,7 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
       :
       checker++
     );
-    console.log(checker);
+
     checker === 7 ?
       payUniversityRes('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383', login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver)
       :
