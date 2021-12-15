@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, TouchableOpacity, Text, Linking, StyleSheet } from "react-native";
 import { Select } from '../../components/select.components';
 import { TrainingForm, UniversityResourcesForm, Dormitory } from "../../components/components.export";
-import { payTraning } from "../../api/api.get";
+import { payTraning, payDormitory } from "../../api/api.get";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
 export const Payment = ({ navigation }) => {
@@ -37,7 +37,8 @@ export const Payment = ({ navigation }) => {
           <Select props={[forms]} getSelectValue={getSelectValue} firstOption={null} />
           {selectValue === 'Обучение' ? <TrainingForm payTraning={payTraning} setAnsver={setAnsver} /> :
             selectValue === 'Ресурсы университета' ? <UniversityResourcesForm /> :
-              selectValue === 'Общежитие' ? <Dormitory />
+              selectValue === 'Общежитие' ?
+                <Dormitory payDormitory={payDormitory} setAnsver={setAnsver} />
                 :
                 null
           }

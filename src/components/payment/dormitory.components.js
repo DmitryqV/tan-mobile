@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native"
 import { Select } from "../select.components";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const Dormitory = () => {
+export const Dormitory = ({ payDormitory, setAnsver }) => {
 
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
@@ -91,7 +91,12 @@ export const Dormitory = () => {
           <Text style={paymentFormsStyles.checkboxSpan}>Я являюсь студентом Университета ПГУПС</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={paymentFormsStyles.payButton}>
+      <TouchableOpacity
+        style={paymentFormsStyles.payButton}
+        onPress={() => {
+          payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount, selectValue, isStudent, setAnsver)
+        }}
+      >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>
