@@ -9,7 +9,7 @@ export const UniversityResourcesForm = () => {
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
-  const [paymentAmount, onChangePaymentAmount] = useState('');
+  const [paymentAmount, onChangePaymentAmount] = useState(0);
   const [selectValueMonth, setSelectValueMonth] = useState(null);
   const [selectValuePeriod, setSelectValuePeriod] = useState(null);
 
@@ -19,6 +19,13 @@ export const UniversityResourcesForm = () => {
 
   function getSelectValuePeriod(value) {
     setSelectValuePeriod(value);
+    value === 'Месяц полностью' ?
+      onChangePaymentAmount(500)
+      :
+      value === 0 ?
+        onChangePaymentAmount(0)
+        :
+        onChangePaymentAmount(250)
   }
 
   const months = [
@@ -88,12 +95,12 @@ export const UniversityResourcesForm = () => {
         <Text style={paymentFormsStyles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={paymentFormsStyles.input}
-          onChangeText={onChangePaymentAmount}
-          placeholder='250'
+          placeholder={paymentAmount}
+          editable={false}
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity style={paymentFormsStyles.payButton}>
+      <TouchableOpacity style={paymentFormsStyles.payButton} onPress={() => { console.log(paymentAmount) }}>
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>
