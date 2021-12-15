@@ -12,6 +12,7 @@ export const Dormitory = () => {
   const [roomNumber, onChangeRoomNumber] = useState('');
   const [paymentAmount, onChangePaymentAmount] = useState('');
   const [selectValue, setSelectValue] = useState(null);
+  const [isStudent, setIsStudent] = useState(0);
 
   function getSelectValue(value) {
     value === 'Проживание' ? setSelectValue(6) : setSelectValue(7)
@@ -77,10 +78,15 @@ export const Dormitory = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => { isStudent === 0 ? setIsStudent(1) : setIsStudent(0) }}>
         <View style={paymentFormsStyles.checkboxBlock}>
           <View style={paymentFormsStyles.checkbox}>
-            <Text style={paymentFormsStyles.tick}>&#10003;</Text>
+            {
+              isStudent !== 0 ?
+                <Text style={paymentFormsStyles.tick}>&#10003;</Text>
+                :
+                null
+            }
           </View>
           <Text style={paymentFormsStyles.checkboxSpan}>Я являюсь студентом Университета ПГУПС</Text>
         </View>
