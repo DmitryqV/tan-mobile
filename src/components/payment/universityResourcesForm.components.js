@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native"
 import { Select } from "../select.components";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const UniversityResourcesForm = () => {
+export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
 
   const [login, onChangeLogin] = useState('');
   const [nameCustomer, onChangeNameCustomer] = useState('');
@@ -12,21 +12,35 @@ export const UniversityResourcesForm = () => {
   const [paymentAmount, onChangePaymentAmount] = useState(0);
   const [selectValueMonth, setSelectValueMonth] = useState(null);
   const [selectValuePeriod, setSelectValuePeriod] = useState(null);
+  const [textPeriod, setTextPeriod] = useState();
+  const [serviceName, setServiceName] = useState(null);
 
   function getSelectValueMonth(value) {
     setSelectValueMonth(value);
   }
 
   function getSelectValuePeriod(value) {
-    setSelectValuePeriod(value);
-    value === 'Месяц полностью' ?
-      onChangePaymentAmount(500)
-      :
-      value === 0 ?
-        onChangePaymentAmount(0)
-        :
-        onChangePaymentAmount(250)
+    if (value === 'Месяц полностью') {
+      onChangePaymentAmount(450);
+      setSelectValuePeriod(450);
+      setTextPeriod('месяц полностью');
+    } else if (value === null) {
+      onChangePaymentAmount(0);
+      setSelectValuePeriod(0);
+    } else if (value === 'Первая половина месяца') {
+      onChangePaymentAmount(250);
+      setSelectValuePeriod(250);
+      setTextPeriod('первую половину месяца');
+    } else if (value === 'Вторая половина месяца') {
+      onChangePaymentAmount(250);
+      setSelectValuePeriod(250);
+      setTextPeriod('вторую половину месяца');
+    }
   }
+
+  // function createServiceName() {
+  //   setServiceName('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383')
+  // }
 
   const months = [
     { title: 'Январь', id: 1 },
@@ -100,7 +114,16 @@ export const UniversityResourcesForm = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity style={paymentFormsStyles.payButton} onPress={() => { console.log(paymentAmount) }}>
+      <TouchableOpacity
+        style={paymentFormsStyles.payButton}
+        onPress={() => {
+          // createServiceName();
+          // serviceName !== null ?
+          payUniversityRes('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383', login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver)
+          // :
+          // null
+        }}
+      >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>

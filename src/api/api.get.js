@@ -175,6 +175,29 @@ function payTraning(orderid, clientid, client_phone, client_email, sum, setAnsve
     })
 }
 
+function payUniversityRes(serviceName, login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver) {
+  console.log(serviceName, login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount);
+  axios.get(paymentUrl, {
+    params: {
+      PGUPS_KEY: '1KjsnKSDJJJJJJiiefDLLLLsdkk4solpLSPGUPSKEY',
+      service_name: serviceName,
+      service_type: 2,
+      orderid: login,
+      clientid: nameCustomer,
+      client_phone: nameStudent,
+      client_email: email,
+      period: selectValuePeriod,
+      sum: paymentAmount,
+    }
+  })
+    .then((response) => {
+      setAnsver(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
 function payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount, selectValue, isStudent, setAnsver) {
   axios.get(paymentUrl, {
     params: {
@@ -198,4 +221,4 @@ function payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNum
     })
 }
 
-export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning, payDormitory };
+export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning, payUniversityRes, payDormitory };
