@@ -13,6 +13,7 @@ export const Dormitory = ({ payDormitory, setAnsver }) => {
   const [paymentAmount, onChangePaymentAmount] = useState('');
   const [selectValue, setSelectValue] = useState(null);
   const [isStudent, setIsStudent] = useState(0);
+  const [inputsChecker, setInputsChecker] = useState(null);
 
   function getSelectValue(value) {
     value === 'Проживание' ? setSelectValue(6) : setSelectValue(7)
@@ -22,6 +23,24 @@ export const Dormitory = ({ payDormitory, setAnsver }) => {
     { title: 'Проживание', id: 1 },
     { title: 'Дополнительные услуги', id: 2 },
   ];
+
+  //Временно... Нужно будет переделать нормально
+  function inputsValueChecker() {
+    let inputsValue = [nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount];
+    let checker = 0;
+
+    inputsValue.map(value => value === '' ?
+      checker--
+      :
+      checker++
+    );
+
+    selectValue !== null ? checker++ : checker--;
+    checker === 7 ?
+      payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount, selectValue, isStudent, setAnsver)
+      :
+      setInputsChecker(false);
+  }
 
   return (
     <View style={paymentFormsStyles.form}>
@@ -91,10 +110,11 @@ export const Dormitory = ({ payDormitory, setAnsver }) => {
           <Text style={paymentFormsStyles.checkboxSpan}>Я являюсь студентом Университета ПГУПС</Text>
         </View>
       </TouchableOpacity>
+      <Text style={inputsChecker === false ? paymentFormsStyles.errorText : paymentFormsStyles.hide}>Вы ввели не все данные</Text>
       <TouchableOpacity
         style={paymentFormsStyles.payButton}
         onPress={() => {
-          payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount, selectValue, isStudent, setAnsver)
+          inputsValueChecker();
         }}
       >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
