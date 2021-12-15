@@ -48,22 +48,38 @@ export const Payment = ({ navigation }) => {
           }
         </>
         :
-        <>
-          {
-            openUrl()
-          }
-          <Text style={styles.goBackTitle}>
-            Вы будете перенаправлены в браузер для оплаты. Если вы уже оплатили, то можете вернуться обратно.
-          </Text>
-          <TouchableOpacity
-            style={paymentFormsStyles.payGoBackButton}
-            onPress={() => {
-              setAnsver(null)
-            }}
-          >
-            <Text style={paymentFormsStyles.payGoBackButtonText}>Вернуться обратно</Text>
-          </TouchableOpacity>
-        </>
+        ansver.data === "К сожалению, проводится обработка всех полученных платежей с 23:00 до 00:20 для закрытия операционного дня. Поэтому мы не можем принять Ваш платеж. Пожалуйста, попробуйте позже выполнить данную операцию."
+          ?
+          <>
+            <Text style={styles.goBackTitle}>
+              {ansver.data}
+            </Text>
+            <TouchableOpacity
+              style={paymentFormsStyles.payGoBackButton}
+              onPress={() => {
+                setAnsver(null)
+              }}
+            >
+              <Text style={paymentFormsStyles.payGoBackButtonText}>Вернуться обратно</Text>
+            </TouchableOpacity>
+          </>
+          :
+          <>
+            {
+              openUrl()
+            }
+            <Text style={styles.goBackTitle}>
+              Вы будете перенаправлены в браузер для оплаты. Если вы уже оплатили, то можете вернуться обратно.
+            </Text>
+            <TouchableOpacity
+              style={paymentFormsStyles.payGoBackButton}
+              onPress={() => {
+                setAnsver(null)
+              }}
+            >
+              <Text style={paymentFormsStyles.payGoBackButtonText}>Вернуться обратно</Text>
+            </TouchableOpacity>
+          </>
 
       }
 
