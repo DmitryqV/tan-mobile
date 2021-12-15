@@ -13,7 +13,6 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
   const [selectValueMonth, setSelectValueMonth] = useState(null);
   const [selectValuePeriod, setSelectValuePeriod] = useState(null);
   const [textPeriod, setTextPeriod] = useState();
-  const [serviceName, setServiceName] = useState(null);
 
   function getSelectValueMonth(value) {
     setSelectValueMonth(value);
@@ -37,10 +36,6 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
       setTextPeriod('вторую половину месяца');
     }
   }
-
-  // function createServiceName() {
-  //   setServiceName('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383')
-  // }
 
   const months = [
     { title: 'Январь', id: 1 },
