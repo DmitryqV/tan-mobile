@@ -10,7 +10,10 @@ export const UserInfo = ({ dataProfile }) => {
         <Image
           style={styles.profilePicture}
           source={{
-            uri: dataProfile.avatar_url,
+            uri: dataProfile.avatar_url !== null ?
+              dataProfile.avatar_url
+              :
+              'http://178.154.210.118/images/avatar-men.jpg',
           }}
         />
         <View style={styles.mainInfoText}>
