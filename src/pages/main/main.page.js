@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { NewsBlock } from "../../components/components.export";
 
 export const Main = () => {
   return (
     <View style={styles.container}>
+      <NewsBlock />
     </View>
   )
 }
