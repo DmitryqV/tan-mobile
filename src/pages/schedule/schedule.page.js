@@ -51,9 +51,8 @@ export const Schedule = () => {
                       return (
                         <View key={el.time.id} style={styles.pair}>
                           <Text style={styles.h2}>{el.time.number} пара {el.time.start_time} - {el.time.end_time}</Text>
-                          <Text style={styles.pairTitle}>{el.workplan_row.title}
-                            <Text><Text style={styles.typePair}>{el.type.title}</Text></Text>
-                          </Text>
+                          <Text style={styles.pairTitle}>{el.workplan_row.title}</Text>
+                          <Text style={styles.typePair}>{el.type.title}</Text>
                           <Text>Аудитория: {el.room}</Text>
                           <Text>
                             Преподаватель: {el.teachers.map(el => <Text key={el.id}>{el.name}</Text>)}
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     padding: 10,
     minWidth: 300,
-    Width: '100%',
+    width: '100%',
     height: 'auto',
     flex: 1,
     flexDirection: 'column',
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 'auto',
     height: 38,
-    gap: 20,
+    // gap: 20,
     paddingTop: 10,
     marginBottom: 20
   },
@@ -109,6 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 84,
     height: 32,
+    marginRight: 10,
     backgroundColor: '#5d78ff',
     borderRadius: 4
   },
@@ -128,12 +128,13 @@ const styles = StyleSheet.create({
     width: 'auto',
     height: 'auto',
     borderRadius: 4,
-    gap: 5
+    padding: 10
+    // gap: 5
   },
   pairTitle: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 4
+    // gap: 4
   },
   typePair: {
     padding: 4,
