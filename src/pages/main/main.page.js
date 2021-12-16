@@ -4,7 +4,6 @@ import { View, Text, StyleSheet } from "react-native";
 export const Main = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.note}>Добавте сюда виджеты для максимально быстрого доступа к важным разделам приложения</Text>
     </View>
   )
 }
@@ -12,12 +11,7 @@ export const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f3f8',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  note: {
-    fontSize: 18,
-    textAlign: 'center',
-  }
 })
