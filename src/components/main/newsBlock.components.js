@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { PreviewNews } from "../components.export";
 
 export const NewsBlock = ({ newsData }) => {
+
+  const [slideNum, setSlideNum] = useState(0);
+
   return (
     newsData !== undefined ?
       <View style={styles.newsBlock}>
         <View style={styles.newsBlockHeader}>
           <Text style={styles.newsBlockTitle}>Информация</Text>
           <View style={styles.sliderButtons}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                let previousSlide = slideNum;
+                previousSlide !== 0 ? previousSlide-- : null;
+                setSlideNum(previousSlide);
+              }}
+            >
               <View style={styles.sliderButton}>
                 <Text style={[styles.buttonBack, { transform: [{ rotate: "180deg" }] }]}>&#5171;</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                let nextSlide = slideNum;
+                nextSlide !== newsData.length - 1 ? nextSlide++ : null;
+                setSlideNum(nextSlide);
+              }}
+            >
               <View style={styles.sliderButton}>
                 <Text style={styles.buttonNext}>&#5171;</Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
-        <PreviewNews data={newsData[0]} />
+        <PreviewNews data={newsData[slideNum]} />
       </View>
       :
       null
