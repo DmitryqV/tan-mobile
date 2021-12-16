@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
   typePair: {
     padding: 4,
     borderRadius: 5,
-    backgroundColor: 'rgb(240, 243, 255)',
+    backgroundColor: '#f0f3ff',
     fontWeight: 'bold',
-    color: 'rgb(93, 120, 255)'
+    color: '#5d78ff'
   }
 });
