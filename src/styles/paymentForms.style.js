@@ -58,4 +58,21 @@ export const paymentFormsStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
+  checkboxBlock: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 15
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 4,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tick: {
+    width: 'fit-content',
+  }
 });

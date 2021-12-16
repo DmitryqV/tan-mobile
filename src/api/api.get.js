@@ -175,4 +175,50 @@ function payTraning(orderid, clientid, client_phone, client_email, sum, setAnsve
     })
 }
 
-export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning };
+function payUniversityRes(serviceName, login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver) {
+  console.log(serviceName, login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount);
+  axios.get(paymentUrl, {
+    params: {
+      PGUPS_KEY: '1KjsnKSDJJJJJJiiefDLLLLsdkk4solpLSPGUPSKEY',
+      service_name: serviceName,
+      service_type: 2,
+      orderid: login,
+      clientid: nameCustomer,
+      client_phone: nameStudent,
+      client_email: email,
+      period: selectValuePeriod,
+      sum: paymentAmount,
+    }
+  })
+    .then((response) => {
+      setAnsver(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+function payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount, selectValue, isStudent, setAnsver) {
+  axios.get(paymentUrl, {
+    params: {
+      PGUPS_KEY: '1KjsnKSDJJJJJJiiefDLLLLsdkk4solpLSPGUPSKEY',
+      service_name: 'Общежитие',
+      service_type: selectValue,
+      clientid: nameCustomer,
+      client_phone: nameStudent,
+      client_email: email,
+      n_hostel: dormitoryNumber,
+      n_room: roomNumber,
+      sum: paymentAmount,
+      is_student: isStudent,
+    }
+  })
+    .then((response) => {
+      setAnsver(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+
+export { getLessons, checkStudent, getSchedule, getProfile, getStudentInfo, getEvaluations, getSession, getEducationYear, getSdoLink, getNews, getOrders, payTraning, payUniversityRes, payDormitory };
