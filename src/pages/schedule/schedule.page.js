@@ -52,7 +52,9 @@ export const Schedule = () => {
                         <View key={el.time.id} style={styles.pair}>
                           <Text style={styles.h2}>{el.time.number} пара {el.time.start_time} - {el.time.end_time}</Text>
                           <Text style={styles.pairTitle}>{el.workplan_row.title}</Text>
-                          <Text style={styles.typePair}>{el.type.title}</Text>
+                          <View style={styles.typePairBlock}>
+                            <Text style={styles.typePair}>{el.type.title}</Text>
+                          </View>
                           <Text>Аудитория: {el.room}</Text>
                           <Text>
                             Преподаватель: {el.teachers.map(el => <Text key={el.id}>{el.name}</Text>)}
@@ -136,11 +138,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     // gap: 4
   },
-  typePair: {
+  typePairBlock: {
     padding: 4,
-    borderRadius: 5,
+    borderRadius: 4,
     backgroundColor: '#f0f3ff',
+    alignSelf: 'flex-start',
+  },
+  typePair: {
     fontWeight: 'bold',
     color: '#5d78ff'
-  }
+  },
 });
