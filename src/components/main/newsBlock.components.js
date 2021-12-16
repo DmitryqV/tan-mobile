@@ -1,25 +1,30 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { PreviewNews } from "../components.export";
 
-export const NewsBlock = () => {
+export const NewsBlock = ({ newsData }) => {
   return (
-    <View style={styles.newsBlock}>
-      <View style={styles.newsBlockHeader}>
-        <Text style={styles.newsBlockTitle}>Информация</Text>
-        <View style={styles.sliderButtons}>
-          <TouchableOpacity>
-            <View style={styles.sliderButton}>
-              <Text style={[styles.buttonBack, { transform: [{ rotate: "180deg" }] }]}>&#5171;</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.sliderButton}>
-              <Text style={styles.buttonNext}>&#5171;</Text>
-            </View>
-          </TouchableOpacity>
+    newsData !== undefined ?
+      <View style={styles.newsBlock}>
+        <View style={styles.newsBlockHeader}>
+          <Text style={styles.newsBlockTitle}>Информация</Text>
+          <View style={styles.sliderButtons}>
+            <TouchableOpacity>
+              <View style={styles.sliderButton}>
+                <Text style={[styles.buttonBack, { transform: [{ rotate: "180deg" }] }]}>&#5171;</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={styles.sliderButton}>
+                <Text style={styles.buttonNext}>&#5171;</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
+        <PreviewNews data={newsData[0]} />
       </View>
-    </View>
+      :
+      null
   )
 }
 
