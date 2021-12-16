@@ -24,7 +24,7 @@ export const Schedule = () => {
   return (
     state !== undefined ?
       <View style={styles.container}>
-        <Text style={styles.h1}>
+        <Text style={styles.title}>
           {state.group.faculty.title} {'\n'}
           Группа {state.group.title}
         </Text>
@@ -44,7 +44,7 @@ export const Schedule = () => {
           {state.grid.week_days_study.map((el, index) => {
             return (
               <View key={el}>
-                <Text style={styles.h1}>{el}</Text>
+                <Text style={styles.dayTitle}>{el}</Text>
                 <View style={styles.weekdayItems}>
                   {lessons.filter((el) => el.time.weekday === index).map((el) => {
                     if (el.time.odd === odd) {
@@ -85,22 +85,29 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  h1: {
-    color: '#212121',
-    fontSize: 16,
+  title: {
+    color: '#48465b',
+    fontSize: 18,
     fontWeight: 'bold'
+  },
+  dayTitle: {
+    color: '#646c9a',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
   h2: {
     color: '#212121',
-    fontSize: 14,
-    fontWeight: 'bold'
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#646c9a',
+    marginBottom: 5
   },
   controllers: {
     display: 'flex',
     flexDirection: 'row',
     width: 'auto',
     height: 38,
-    // gap: 20,
     paddingTop: 10,
     marginBottom: 20
   },
@@ -131,18 +138,18 @@ const styles = StyleSheet.create({
     height: 'auto',
     borderRadius: 4,
     padding: 10
-    // gap: 5
   },
   pairTitle: {
     display: 'flex',
     flexDirection: 'column',
-    // gap: 4
+    marginBottom: 5,
   },
   typePairBlock: {
     padding: 4,
     borderRadius: 4,
     backgroundColor: '#f0f3ff',
     alignSelf: 'flex-start',
+    marginBottom: 5,
   },
   typePair: {
     fontWeight: 'bold',
