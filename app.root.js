@@ -25,7 +25,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer({ onChangeIsLoggedIn }) {
   return (
     <Drawer.Navigator>
-      {/* <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Главная', title: 'Главная' }} /> */}
+      <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Главная', title: 'Главная' }} />
       <Drawer.Screen name="news" component={News} options={{ drawerLabel: 'Новости', title: 'Новости' }} />
       <Drawer.Screen name="profile" options={{ drawerLabel: 'Профиль', title: 'Профиль' }} >
         {() => <Profile onChangeIsLoggedIn={onChangeIsLoggedIn} />}

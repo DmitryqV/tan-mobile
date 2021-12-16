@@ -6,3 +6,4 @@ export { Select } from './select.components';
 export { PreviewNews } from './news/preview.components'
 export { Order } from './orders/order.components';
 export { TrainingForm, UniversityResourcesForm, Dormitory } from './payment/payment.export';
+export { NewsBlock } from './main/main.export';
