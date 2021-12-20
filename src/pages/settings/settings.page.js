@@ -33,62 +33,61 @@ export const Settings = () => {
       {!sendCode
         ?
         <>
-          <View style={styles.block}>
-            <Text style={styles.title}>
-              Обновить пароль
-            </Text>
+          <Text style={styles.title}>
 
-            <TextInput style={styles.itemInput} placeholder='Введите старый пароль' onChange={(e) => {
-              setState((prev) => {
-                return { ...prev, current_password: e.target.value };
-              });
-            }}
-              value={state.current_password}
-            />
+            Обновить пароль
+          </Text>
 
-            <TextInput style={styles.itemInput} placeholder='Введите новый пароль' onChange={(e) => {
-              setState((prev) => {
-                return { ...prev, new_password: e.target.value };
-              });
-            }}
-              value={state.new_password}
-            />
+          <TextInput style={styles.itemInput} placeholder='Введите старый пароль' onChange={(e) => {
+            setState((prev) => {
+              return { ...prev, current_password: e.target.value };
+            });
+          }}
+            value={state.current_password}
+          />
 
-            <TextInput style={styles.itemInput} placeholder='Повторите новый пароль' onChange={(e) => {
-              setState((prev) => {
-                return { ...prev, new_password_confirmation: e.target.value };
-              });
-            }}
-              value={state.new_password_confirmation}
-            />
-            <Text
-              style={styles.button}
-              onPress={() => {
-                setState((prev) => ({ ...prev, message: '' }));
-                setState((prev) => ({ ...prev, message: updatePassword(state) }));
-              }}>
-              Обновить
-            </Text>
-          </View>
-          <View style={styles.block}>
-            <Text style={styles.title}>
-              Привязать телефон
-            </Text>
-            <TextInput style={styles.itemInput} onChange={(e) => {
-              setPhone(e.target.value);
-            }}
-              value={phone}
-              placeholder='Введите номер телефона'
-            />
-            <Text style={styles.button} onPress={() => {
-              updatePhone(state.api_token, phone, setSendCode);
+          <TextInput style={styles.itemInput} placeholder='Введите новый пароль' onChange={(e) => {
+            setState((prev) => {
+              return { ...prev, new_password: e.target.value };
+            });
+          }}
+            value={state.new_password}
+          />
+
+          <TextInput style={styles.itemInput} placeholder='Повторите новый пароль' onChange={(e) => {
+            setState((prev) => {
+              return { ...prev, new_password_confirmation: e.target.value };
+            });
+          }}
+            value={state.new_password_confirmation}
+          />
+          <Text
+            style={styles.button}
+            onPress={() => {
+              setState((prev) => ({ ...prev, message: '' }));
+              setState((prev) => ({ ...prev, message: updatePassword(state) }));
             }}>
-              Отправить код
-            </Text>
-          </View>
+            Обновить
+          </Text>
+
+          <Text style={styles.title}>
+            Привязать телефон
+          </Text>
+          <TextInput style={styles.itemInput} onChange={(e) => {
+            setPhone(e.target.value);
+          }}
+            value={phone}
+            placeholder='Введите номер телефона'
+          />
+          <Text style={styles.button} onPress={() => {
+            updatePhone(state.api_token, phone, setSendCode);
+          }}>
+            Отправить код
+          </Text>
+
         </>
         :
-        <View style={styles.block}>
+        <>
           <TextInput style={styles.itemInput}
             onChange={(e) => {
               setCode(e.target.value);
@@ -107,7 +106,7 @@ export const Settings = () => {
           }}>
             Отмена
           </Text>
-        </View>
+        </>
       }
     </View>
   );
@@ -129,16 +128,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#525252',
   },
-  block: {
-    marginTop: 30,
-  },
   itemInput: {
-    width: 250,
-    height: 32,
-    backgroundColor: '#fff',
-    borderBottomWidth: 2,
-    borderBottomColor: '#869bff',
-    marginTop: 5
+    width: '65%',
+    height: 35,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 4,
+    paddingLeft: 10,
+    marginBottom: 15,
+    maxWidth: 400
   },
   button: {
     width: '65%',
