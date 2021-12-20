@@ -141,6 +141,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#525252',
+    marginTop: 30,
+    marginBottom: 10,
   },
   itemInput: {
     width: '65%',
@@ -158,22 +160,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: '#5d78ff',
-    marginTop: 20,
-    maxWidth: 400,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#fff'
-  },
-  button: {
-    width: '65%',
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 4,
-    backgroundColor: '#5d78ff',
     marginTop: 10,
-    marginBottom: 120,
     maxWidth: 400
   },
   buttonText: {
