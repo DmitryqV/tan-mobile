@@ -28,16 +28,16 @@ function updatePassword({ api_token, current_password, new_password, new_passwor
     .then((response) => ({ successfully: 'Пароль успешно изменен!' }))
 };
 
-function updatePhone(api_token, phone) {
+function updatePhone(api_token, phone, callback) {
   axios.post(`${serverUrl}/api/v1/user/profile/phone/update?api_token=${api_token}&phone=${phone}`, {
     api_token, phone
-  }).then(() => true).catch(() => false);
+  }).then(() => callback(true)).catch(() => false);
 }
 
-function confirmPhone(api_token, code) {
+function confirmPhone(api_token, code, callback) {
   axios.post(`${serverUrl}/api/v1/user/profile/phone/code?api_token=${api_token}&code=${code}`, {
     api_token, code
-  }).then(() => true).catch(() => false);
+  }).then(() => callback(false)).catch(() => false);
 }
 
 export { loginPOST, updatePhone, updatePassword, confirmPhone }

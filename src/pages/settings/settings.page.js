@@ -81,8 +81,7 @@ export const Settings = () => {
               placeholder='Введите номер телефона'
             />
             <Text style={styles.button} onPress={() => {
-              updatePhone(state.api_token, phone);
-              setSendCode(true);
+              updatePhone(state.api_token, phone, setSendCode);
             }}>
               Отправить код
             </Text>
@@ -97,9 +96,16 @@ export const Settings = () => {
             value={code}
             placeholder="Введите код из сообщения" />
           <Text style={styles.button} onPress={() => {
-            setSendCode(false)
+            confirmPhone(state.api_token, code, setSendCode);
           }}>
             Подтвердить
+          </Text>
+          <Text onPress={() => {
+            setSendCode(false);
+            setPhone('');
+            setCode('');
+          }}>
+            Отмена
           </Text>
         </View>
       }
