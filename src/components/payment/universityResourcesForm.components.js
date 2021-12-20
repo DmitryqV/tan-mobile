@@ -9,14 +9,14 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
-  const [paymentAmount, onChangePaymentAmount] = useState(0);
+  const [paymentAmount, onChangePaymentAmount] = useState('0');
   const [selectValueMonth, setSelectValueMonth] = useState(null);
   const [selectValuePeriod, setSelectValuePeriod] = useState(null);
   const [textPeriod, setTextPeriod] = useState();
   const [inputsChecker, setInputsChecker] = useState(null);
 
   //Временно... Нужно будет переделать нормально
-  function inputsValueChecker(login, nameCustomer, nameStudent, email, paymentAmount, selectValueMonth, selectValuePeriod, textPeriod) {
+  function inputsValueChecker(login, nameCustomer, nameStudent, email, selectValueMonth, selectValuePeriod, textPeriod) {
     let inputsValue = [login, nameCustomer, nameStudent, email];
     let checker = 0;
 
@@ -42,19 +42,19 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
 
   function getSelectValuePeriod(value) {
     if (value === 'Месяц полностью') {
-      onChangePaymentAmount(450);
-      setSelectValuePeriod(450);
+      onChangePaymentAmount('450');
+      setSelectValuePeriod('450');
       setTextPeriod('месяц полностью');
     } else if (value === null) {
-      onChangePaymentAmount(0);
-      setSelectValuePeriod(0);
+      onChangePaymentAmount('0');
+      setSelectValuePeriod('0');
     } else if (value === 'Первая половина месяца') {
-      onChangePaymentAmount(250);
-      setSelectValuePeriod(250);
+      onChangePaymentAmount('250');
+      setSelectValuePeriod('250');
       setTextPeriod('первую половину месяца');
     } else if (value === 'Вторая половина месяца') {
-      onChangePaymentAmount(250);
-      setSelectValuePeriod(250);
+      onChangePaymentAmount('250');
+      setSelectValuePeriod('250');
       setTextPeriod('вторую половину месяца');
     }
   }
@@ -87,7 +87,7 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
         <TextInput
           style={paymentFormsStyles.input}
           onChangeText={onChangeLogin}
-          keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
+        // keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
       <View style={paymentFormsStyles.textInput}>
@@ -128,7 +128,7 @@ export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
           style={paymentFormsStyles.input}
           placeholder={paymentAmount}
           editable={false}
-          keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
+        // keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
       <Text
