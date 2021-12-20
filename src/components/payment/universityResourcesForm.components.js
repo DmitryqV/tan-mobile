@@ -3,22 +3,60 @@ import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native"
 import { Select } from "../select.components";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const UniversityResourcesForm = () => {
+export const UniversityResourcesForm = ({ payUniversityRes, setAnsver }) => {
 
   const [login, onChangeLogin] = useState('');
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
   const [email, onChangeEmail] = useState('');
-  const [paymentAmount, onChangePaymentAmount] = useState('');
+  const [paymentAmount, onChangePaymentAmount] = useState(0);
   const [selectValueMonth, setSelectValueMonth] = useState(null);
   const [selectValuePeriod, setSelectValuePeriod] = useState(null);
+  const [textPeriod, setTextPeriod] = useState();
+  const [inputsChecker, setInputsChecker] = useState(null);
+
+  //Временно... Нужно будет переделать нормально
+  function inputsValueChecker(login, nameCustomer, nameStudent, email, paymentAmount, selectValueMonth, selectValuePeriod, textPeriod) {
+    let inputsValue = [login, nameCustomer, nameStudent, email];
+    let checker = 0;
+
+    selectValueMonth !== 0 ? checker++ : checker--;
+    selectValuePeriod !== null ? checker++ : checker--;
+    textPeriod !== undefined ? checker++ : checker--;
+
+    inputsValue.map(value => value === '' ?
+      checker--
+      :
+      checker++
+    );
+
+    checker === 7 ?
+      payUniversityRes('Оплата ресурсов университета за ' + selectValueMonth.toLowerCase() + ' на ' + textPeriod + ' с/с 383', login, nameCustomer, nameStudent, email, selectValuePeriod, paymentAmount, setAnsver)
+      :
+      setInputsChecker(false);
+  }
 
   function getSelectValueMonth(value) {
     setSelectValueMonth(value);
   }
 
   function getSelectValuePeriod(value) {
-    setSelectValuePeriod(value);
+    if (value === 'Месяц полностью') {
+      onChangePaymentAmount(450);
+      setSelectValuePeriod(450);
+      setTextPeriod('месяц полностью');
+    } else if (value === null) {
+      onChangePaymentAmount(0);
+      setSelectValuePeriod(0);
+    } else if (value === 'Первая половина месяца') {
+      onChangePaymentAmount(250);
+      setSelectValuePeriod(250);
+      setTextPeriod('первую половину месяца');
+    } else if (value === 'Вторая половина месяца') {
+      onChangePaymentAmount(250);
+      setSelectValuePeriod(250);
+      setTextPeriod('вторую половину месяца');
+    }
   }
 
   const months = [
@@ -88,12 +126,22 @@ export const UniversityResourcesForm = () => {
         <Text style={paymentFormsStyles.inputTitle}>Сумма оплаты<Text style={{ color: 'red' }}>*</Text></Text>
         <TextInput
           style={paymentFormsStyles.input}
-          onChangeText={onChangePaymentAmount}
-          placeholder='250'
+          placeholder={paymentAmount}
+          editable={false}
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity style={paymentFormsStyles.payButton}>
+      <Text
+        style={inputsChecker === false ? paymentFormsStyles.errorText : paymentFormsStyles.hide}
+      >
+        Вы ввели не все данные
+      </Text>
+      <TouchableOpacity
+        style={paymentFormsStyles.payButton}
+        onPress={() => {
+          inputsValueChecker(login, nameCustomer, nameStudent, email, paymentAmount, selectValueMonth, selectValuePeriod, textPeriod)
+        }}
+      >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>

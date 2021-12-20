@@ -26,14 +26,13 @@ const Drawer = createDrawerNavigator();
 function MyDrawer({ onChangeIsLoggedIn }) {
   return (
     <Drawer.Navigator>
-      {/* <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Главная', title: 'Главная' }} /> */}
+      <Drawer.Screen name="main" component={Main} options={{ drawerLabel: 'Главная', title: 'Главная' }} />
       <Drawer.Screen name="news" component={News} options={{ drawerLabel: 'Новости', title: 'Новости' }} />
       <Drawer.Screen name="profile" options={{ drawerLabel: 'Профиль', title: 'Профиль' }} >
         {() => <Profile onChangeIsLoggedIn={onChangeIsLoggedIn} />}
       </Drawer.Screen>
-      <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Зачетная книжка', title: 'Зачетная книжка' }} />
+      <Drawer.Screen name="evaluations" component={Evaluations} options={{ drawerLabel: 'Оценки', title: 'Оценки' }} />
       <Drawer.Screen name="schedule" component={Schedule} options={{ drawerLabel: 'Расписание', title: 'Расписание' }} />
-
       <Drawer.Screen name="orders" component={Oredrs} options={{ drawerLabel: 'Приказы', title: 'Приказы' }} />
       <Drawer.Screen name="payment" component={Payment} options={{ drawerLabel: 'Оплата', title: 'Оплата' }} />
       <Drawer.Screen name="sdo" component={Sdo} options={{ drawerLabel: 'СДО', title: 'СДО' }} />

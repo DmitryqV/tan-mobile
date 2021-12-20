@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import storage from "../../utils/storage.utils";
+import { NewsBlock } from "../../components/components.export";
+import { getNews } from "../../api/api.get";
 
 export const Main = () => {
+
+  const [newsData, setNewsData] = useState();
+
+  if (newsData === undefined) {
+    storage.load({
+      key: 'token',
+      id: 228,
+    })
+      .then(ret => {
+        getNews(ret, setNewsData)
+      })
+      .catch(err => {
+        console.warn(err.message);
+      });
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.note}>Добавте сюда виджеты для максимально быстрого доступа к важным разделам приложения</Text>
+      <NewsBlock newsData={newsData} />
     </View>
   )
 }
@@ -12,12 +31,9 @@ export const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f3f8',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
-  note: {
-    fontSize: 18,
-    textAlign: 'center',
-  }
 })

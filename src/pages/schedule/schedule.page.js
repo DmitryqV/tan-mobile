@@ -24,7 +24,7 @@ export const Schedule = () => {
   return (
     state !== undefined ?
       <View style={styles.container}>
-        <Text style={styles.h1}>
+        <Text style={styles.title}>
           {state.group.faculty.title} {'\n'}
           Группа {state.group.title}
         </Text>
@@ -44,16 +44,17 @@ export const Schedule = () => {
           {state.grid.week_days_study.map((el, index) => {
             return (
               <View key={el}>
-                <Text style={styles.h1}>{el}</Text>
+                <Text style={styles.dayTitle}>{el}</Text>
                 <View style={styles.weekdayItems}>
                   {lessons.filter((el) => el.time.weekday === index).map((el) => {
                     if (el.time.odd === odd) {
                       return (
                         <View key={el.time.id} style={styles.pair}>
                           <Text style={styles.h2}>{el.time.number} пара {el.time.start_time} - {el.time.end_time}</Text>
-                          <Text style={styles.pairTitle}>{el.workplan_row.title}
-                            <Text><Text style={styles.typePair}>{el.type.title}</Text></Text>
-                          </Text>
+                          <Text style={styles.pairTitle}>{el.workplan_row.title}</Text>
+                          <View style={styles.typePairBlock}>
+                            <Text style={styles.typePair}>{el.type.title}</Text>
+                          </View>
                           <Text>Аудитория: {el.room}</Text>
                           <Text>
                             Преподаватель: {el.teachers.map(el => <Text key={el.id}>{el.name}</Text>)}
@@ -79,27 +80,34 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     padding: 10,
     minWidth: 300,
-    Width: '100%',
+    width: '100%',
     height: 'auto',
     flex: 1,
     flexDirection: 'column',
   },
-  h1: {
-    color: '#212121',
-    fontSize: 16,
+  title: {
+    color: '#48465b',
+    fontSize: 18,
     fontWeight: 'bold'
+  },
+  dayTitle: {
+    color: '#646c9a',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
   h2: {
     color: '#212121',
-    fontSize: 14,
-    fontWeight: 'bold'
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#646c9a',
+    marginBottom: 5
   },
   controllers: {
     display: 'flex',
     flexDirection: 'row',
     width: 'auto',
     height: 38,
-    gap: 20,
     paddingTop: 10,
     marginBottom: 20
   },
@@ -109,6 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 84,
     height: 32,
+    marginRight: 10,
     backgroundColor: '#5d78ff',
     borderRadius: 4
   },
@@ -128,18 +137,22 @@ const styles = StyleSheet.create({
     width: 'auto',
     height: 'auto',
     borderRadius: 4,
-    gap: 5
+    padding: 10
   },
   pairTitle: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 4
+    marginBottom: 5,
+  },
+  typePairBlock: {
+    padding: 4,
+    borderRadius: 4,
+    backgroundColor: '#f0f3ff',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
   },
   typePair: {
-    padding: 4,
-    borderRadius: 5,
-    backgroundColor: 'rgb(240, 243, 255)',
     fontWeight: 'bold',
-    color: 'rgb(93, 120, 255)'
-  }
+    color: '#5d78ff'
+  },
 });

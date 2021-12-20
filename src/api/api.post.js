@@ -21,16 +21,11 @@ function loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn) {
     });
 }
 
-function updatePassword(api_token, current_password, new_password, new_password_confirmation, updatePasswordHandler) {
-  axios.post(`${serverUrl}/api/v1/user/profile/password/update`, {
-    api_token, current_password, new_password, new_password_confirmation
+function updatePassword({ api_token, current_password, new_password, new_password_confirmation }) {
+  return axios.post(`${serverUrl}/api/v1/user/profile/password/update?api_token=${api_token}&current_password=${current_password}&new_password=${new_password}&new_password_confirmation=${new_password_confirmation}`, {
+    current_password, new_password, new_password_confirmation
   })
-    .then(function (response) {
-      updatePasswordHandler({ successfully: 'Пароль успешно изменен!' });
-    })
-    .catch(function () {
-      updatePasswordHandler({ error: 'Ошибка (Пароль не соответствует длине в 8 символов, параметры не переданы подтверждение не соответствует новому паролю или старый пароль введен некорректно).' })
-    });
+    .then((response) => ({ successfully: 'Пароль успешно изменен!' }))
 };
 
 function updatePhone(api_token, phone, updatePhoneHandler) {

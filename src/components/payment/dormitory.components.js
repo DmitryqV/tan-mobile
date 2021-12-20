@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Platform } from "react-native"
 import { Select } from "../select.components";
 import { paymentFormsStyles } from "../../styles/paymentForms.style";
 
-export const Dormitory = () => {
+export const Dormitory = ({ payDormitory, setAnsver }) => {
 
   const [nameCustomer, onChangeNameCustomer] = useState('');
   const [nameStudent, onChangeNameStudent] = useState('');
@@ -12,15 +12,35 @@ export const Dormitory = () => {
   const [roomNumber, onChangeRoomNumber] = useState('');
   const [paymentAmount, onChangePaymentAmount] = useState('');
   const [selectValue, setSelectValue] = useState(null);
+  const [isStudent, setIsStudent] = useState(0);
+  const [inputsChecker, setInputsChecker] = useState(null);
 
   function getSelectValue(value) {
-    setSelectValue(value);
+    value === 'Проживание' ? setSelectValue(6) : setSelectValue(7)
   }
 
   const services = [
     { title: 'Проживание', id: 1 },
     { title: 'Дополнительные услуги', id: 2 },
   ];
+
+  //Временно... Нужно будет переделать нормально
+  function inputsValueChecker() {
+    let inputsValue = [nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount];
+    let checker = 0;
+
+    inputsValue.map(value => value === '' ?
+      checker--
+      :
+      checker++
+    );
+
+    selectValue !== null ? checker++ : checker--;
+    checker === 7 ?
+      payDormitory(nameCustomer, nameStudent, email, dormitoryNumber, roomNumber, paymentAmount, selectValue, isStudent, setAnsver)
+      :
+      setInputsChecker(false);
+  }
 
   return (
     <View style={paymentFormsStyles.form}>
@@ -77,7 +97,26 @@ export const Dormitory = () => {
           keyboardType={Platform.OS === 'android' ? 'number-pad' : 'numbers-and-punctuation'}
         />
       </View>
-      <TouchableOpacity style={paymentFormsStyles.payButton}>
+      <TouchableOpacity onPress={() => { isStudent === 0 ? setIsStudent(1) : setIsStudent(0) }}>
+        <View style={paymentFormsStyles.checkboxBlock}>
+          <View style={paymentFormsStyles.checkbox}>
+            {
+              isStudent !== 0 ?
+                <Text style={paymentFormsStyles.tick}>&#10003;</Text>
+                :
+                null
+            }
+          </View>
+          <Text style={paymentFormsStyles.checkboxSpan}>Я являюсь студентом Университета ПГУПС</Text>
+        </View>
+      </TouchableOpacity>
+      <Text style={inputsChecker === false ? paymentFormsStyles.errorText : paymentFormsStyles.hide}>Вы ввели не все данные</Text>
+      <TouchableOpacity
+        style={paymentFormsStyles.payButton}
+        onPress={() => {
+          inputsValueChecker();
+        }}
+      >
         <Text style={paymentFormsStyles.payButtonText}>Оплатить</Text>
       </TouchableOpacity>
     </View>
