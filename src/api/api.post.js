@@ -21,36 +21,23 @@ function loginPOST(email, password, onChangeLoginChecker, onChangeIsLoggedIn) {
     });
 }
 
-function updatePassword(api_token, current_password, new_password, new_password_confirmation, updatePasswordHandler) {
-  axios.post(`${serverUrl}/api/v1/user/profile/password/update`, {
-    api_token, current_password, new_password, new_password_confirmation
+function updatePassword({ api_token, current_password, new_password, new_password_confirmation }) {
+  return axios.post(`${serverUrl}/api/v1/user/profile/password/update?api_token=${api_token}&current_password=${current_password}&new_password=${new_password}&new_password_confirmation=${new_password_confirmation}`, {
+    current_password, new_password, new_password_confirmation
   })
-    .then(function (response) {
-      updatePasswordHandler({ successfully: 'Пароль успешно изменен!' });
-    })
-    .catch(function () {
-      updatePasswordHandler({ error: 'Ошибка (Пароль не соответствует длине в 8 символов, параметры не переданы подтверждение не соответствует новому паролю или старый пароль введен некорректно).' })
-    });
+    .then((response) => ({ successfully: 'Пароль успешно изменен!' }))
 };
 
-function updatePhone(api_token, phone, updatePhoneHandler) {
-  axios.post(`${serverUrl}/api/v1/user/profile/phone/update`, {
+function updatePhone(api_token, phone) {
+  axios.post(`${serverUrl}/api/v1/user/profile/phone/update?api_token=${api_token}&phone=${phone}`, {
     api_token, phone
-  }).then(() => {
-    updatePhoneHandler({ ok: 'ok' })
-  }).catch(() => {
-    updatePhoneHandler({ error: 'Ошибка!' });
-  })
+  }).then(() => true).catch(() => false);
 }
 
-function confirmPhone(api_token, code, confirmPhoneHandler) {
-  axios.post(`${serverUrl}/api/v1/user/profile/phone/code`, {
+function confirmPhone(api_token, code) {
+  axios.post(`${serverUrl}/api/v1/user/profile/phone/code?api_token=${api_token}&code=${code}`, {
     api_token, code
-  }).then(() => {
-    confirmPhoneHandler({ ok: 'Телефон привязан!' })
-  }).catch(() => {
-    confirmPhoneHandler({ error: 'Ошибка (параметр phone отсутствует или номер телефона привязан уже к другому пользователю)' })
-  })
+  }).then(() => true).catch(() => false);
 }
 
 export { loginPOST, updatePhone, updatePassword, confirmPhone }
