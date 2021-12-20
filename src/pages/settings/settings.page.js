@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { updatePassword, updatePhone, confirmPhone } from "../../api/api.post";
 
@@ -34,7 +34,6 @@ export const Settings = () => {
         ?
         <>
           <Text style={styles.title}>
-
             Обновить пароль
           </Text>
 
@@ -61,14 +60,16 @@ export const Settings = () => {
           }}
             value={state.new_password_confirmation}
           />
-          <Text
+
+          <TouchableOpacity
             style={styles.button}
             onPress={() => {
               setState((prev) => ({ ...prev, message: '' }));
               setState((prev) => ({ ...prev, message: updatePassword(state) }));
-            }}>
-            Обновить
-          </Text>
+            }}
+          >
+            <Text style={styles.buttonText}>Обновить</Text>
+          </TouchableOpacity>
 
           <Text style={styles.title}>
             Привязать телефон
@@ -79,11 +80,15 @@ export const Settings = () => {
             value={phone}
             placeholder='Введите номер телефона'
           />
-          <Text style={styles.button} onPress={() => {
-            updatePhone(state.api_token, phone, setSendCode);
-          }}>
-            Отправить код
-          </Text>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              updatePhone(state.api_token, phone, setSendCode);
+            }}
+          >
+            <Text style={styles.buttonText}>Отправить код</Text>
+          </TouchableOpacity>
 
         </>
         :
@@ -94,18 +99,27 @@ export const Settings = () => {
             }}
             value={code}
             placeholder="Введите код из сообщения" />
-          <Text style={styles.button} onPress={() => {
-            confirmPhone(state.api_token, code, setSendCode);
-          }}>
-            Подтвердить
-          </Text>
-          <Text onPress={() => {
-            setSendCode(false);
-            setPhone('');
-            setCode('');
-          }}>
-            Отмена
-          </Text>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              confirmPhone(state.api_token, code, setSendCode);
+            }}
+          >
+            <Text style={styles.buttonText}>Подтвердить</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              setSendCode(false);
+              setPhone('');
+              setCode('');
+            }}
+          >
+            <Text style={styles.buttonText}>Отмена</Text>
+          </TouchableOpacity>
+
         </>
       }
     </View>
@@ -150,5 +164,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     color: '#fff'
+  },
+  button: {
+    width: '65%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    backgroundColor: '#5d78ff',
+    marginTop: 10,
+    marginBottom: 120,
+    maxWidth: 400
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
