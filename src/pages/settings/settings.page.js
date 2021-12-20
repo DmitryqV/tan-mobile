@@ -81,6 +81,7 @@ export const Settings = () => {
               placeholder='Введите номер телефона'
             />
             <Text style={styles.button} onPress={() => {
+              updatePhone(state.api_token, phone);
               setSendCode(true);
             }}>
               Отправить код
