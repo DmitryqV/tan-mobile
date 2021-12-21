@@ -75,7 +75,7 @@ export const Settings = () => {
               Привязать телефон
             </Text>
             <TextInput style={styles.itemInput} onChange={(e) => {
-              setPhone(e.target.value);
+              setPhone(e);
             }}
               value={phone}
               placeholder='Введите номер телефона'
