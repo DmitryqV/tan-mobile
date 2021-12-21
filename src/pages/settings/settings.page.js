@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
 import storage from '../../utils/storage.utils';
 import { updatePassword, updatePhone, confirmPhone } from "../../api/api.post";
 
@@ -33,81 +33,94 @@ export const Settings = () => {
       {!sendCode
         ?
         <>
-          <View style={styles.block}>
-            <Text style={styles.title}>
-              Обновить пароль
-            </Text>
+          <Text style={styles.title}>
+            Обновить пароль
+          </Text>
 
-            <TextInput style={styles.itemInput} placeholder='Введите старый пароль' onChange={(e) => {
-              setState((prev) => {
-                return { ...prev, current_password: e.target.value };
-              });
-            }}
-              value={state.current_password}
-            />
+          <TextInput style={styles.itemInput} placeholder='Введите старый пароль' onChange={(e) => {
+            setState((prev) => {
+              return { ...prev, current_password: e.target.value };
+            });
+          }}
+            value={state.current_password}
+          />
 
-            <TextInput style={styles.itemInput} placeholder='Введите новый пароль' onChange={(e) => {
-              setState((prev) => {
-                return { ...prev, new_password: e.target.value };
-              });
-            }}
-              value={state.new_password}
-            />
+          <TextInput style={styles.itemInput} placeholder='Введите новый пароль' onChange={(e) => {
+            setState((prev) => {
+              return { ...prev, new_password: e.target.value };
+            });
+          }}
+            value={state.new_password}
+          />
 
-            <TextInput style={styles.itemInput} placeholder='Повторите новый пароль' onChange={(e) => {
-              setState((prev) => {
-                return { ...prev, new_password_confirmation: e.target.value };
-              });
+          <TextInput style={styles.itemInput} placeholder='Повторите новый пароль' onChange={(e) => {
+            setState((prev) => {
+              return { ...prev, new_password_confirmation: e.target.value };
+            });
+          }}
+            value={state.new_password_confirmation}
+          />
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              setState((prev) => ({ ...prev, message: '' }));
+              setState((prev) => ({ ...prev, message: updatePassword(state) }));
             }}
-              value={state.new_password_confirmation}
-            />
-            <Text
-              style={styles.button}
-              onPress={() => {
-                setState((prev) => ({ ...prev, message: '' }));
-                setState((prev) => ({ ...prev, message: updatePassword(state) }));
-              }}>
-              Обновить
-            </Text>
-          </View>
-          <View style={styles.block}>
-            <Text style={styles.title}>
-              Привязать телефон
-            </Text>
-            <TextInput style={styles.itemInput} onChange={(e) => {
-              setPhone(e.target.value);
-            }}
-              value={phone}
-              placeholder='Введите номер телефона'
-            />
-            <Text style={styles.button} onPress={() => {
+          >
+            <Text style={styles.buttonText}>Обновить</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.title}>
+            Привязать телефон
+          </Text>
+          <TextInput style={styles.itemInput} onChange={(e) => {
+            setPhone(e.target.value);
+          }}
+            value={phone}
+            placeholder='Введите номер телефона'
+          />
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
               updatePhone(state.api_token, phone, setSendCode);
-            }}>
-              Отправить код
-            </Text>
-          </View>
+            }}
+          >
+            <Text style={styles.buttonText}>Отправить код</Text>
+          </TouchableOpacity>
+
         </>
         :
-        <View style={styles.block}>
+        <>
           <TextInput style={styles.itemInput}
             onChange={(e) => {
               setCode(e.target.value);
             }}
             value={code}
             placeholder="Введите код из сообщения" />
-          <Text style={styles.button} onPress={() => {
-            confirmPhone(state.api_token, code, setSendCode);
-          }}>
-            Подтвердить
-          </Text>
-          <Text onPress={() => {
-            setSendCode(false);
-            setPhone('');
-            setCode('');
-          }}>
-            Отмена
-          </Text>
-        </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              confirmPhone(state.api_token, code, setSendCode);
+            }}
+          >
+            <Text style={styles.buttonText}>Подтвердить</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              setSendCode(false);
+              setPhone('');
+              setCode('');
+            }}
+          >
+            <Text style={styles.buttonText}>Отмена</Text>
+          </TouchableOpacity>
+
+        </>
       }
     </View>
   );
@@ -128,17 +141,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#525252',
-  },
-  block: {
     marginTop: 30,
+    marginBottom: 10,
   },
   itemInput: {
-    width: 250,
-    height: 32,
-    backgroundColor: '#fff',
-    borderBottomWidth: 2,
-    borderBottomColor: '#869bff',
-    marginTop: 5
+    width: '65%',
+    height: 35,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 4,
+    paddingLeft: 10,
+    marginBottom: 15,
+    maxWidth: 400
   },
   button: {
     width: '65%',
@@ -147,11 +160,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: '#5d78ff',
-    marginTop: 20,
-    maxWidth: 400,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#fff'
+    marginTop: 10,
+    maxWidth: 400
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
