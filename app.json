@@ -1,13 +1,16 @@
 {
   "expo": {
-    "name": "LKM",
-    "slug": "LKM",
+    "name": "Мой ПГУПС",
+    "slug": "MyPGUPS",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "bundleIdentifier": "com.snaf.LKM"
+    },
+    "android": {
+      "package": "com.snaf.LKM"
     }
   },
   "ios": {
@@ -16,5 +19,5 @@
   "android": {
     "package": "com.yourcompany.yourappname"
   },
-  "name": "LKM"
+  "name": "Мой ПГУПС"
 }
