@@ -3,14 +3,15 @@
     "name": "Мой ПГУПС",
     "slug": "MyPGUPS",
     "version": "1.0.0",
+    "icon": "./assets/icons/applicationLogo.png",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.snaf.LKM"
+      "bundleIdentifier": "com.tandem.pgups"
     },
     "android": {
-      "package": "com.snaf.LKM"
+      "package": "com.tandem.pgups"
     }
   },
   "ios": {
