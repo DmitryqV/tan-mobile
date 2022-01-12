@@ -1,13 +1,17 @@
 {
   "expo": {
-    "name": "LKM",
-    "slug": "LKM",
+    "name": "Мой ПГУПС",
+    "slug": "MyPGUPS",
     "version": "1.0.0",
+    "icon": "./assets/icons/applicationLogo.png",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.snaf.LKM"
+      "bundleIdentifier": "com.tandem.pgups"
+    },
+    "android": {
+      "package": "com.tandem.pgups"
     }
   },
   "ios": {
@@ -16,5 +20,5 @@
   "android": {
     "package": "com.yourcompany.yourappname"
   },
-  "name": "LKM"
+  "name": "Мой ПГУПС"
 }
